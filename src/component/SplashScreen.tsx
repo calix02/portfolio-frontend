@@ -14,14 +14,14 @@ export function SplashScreen({ onComplete }: { onComplete: () => void }) {
         if (prev >= 100) {
           clearInterval(timer);
           // Buffer time before hiding splash screen
-          setTimeout(onComplete, 2000); 
+          setTimeout(onComplete, 300); 
           return 100;
         }
         // Random increment for realistic feel
         const increment = Math.random() * 15; 
         return Math.min(prev + increment, 100);
       });
-    }, 500); // Speed of updates
+    }, 300); // Speed of updates
 
     return () => clearInterval(timer);
   }, [onComplete]);

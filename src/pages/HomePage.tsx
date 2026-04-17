@@ -1,8 +1,12 @@
 
 import Me from "@/assets/me.svg"
-import {motion} from  "framer-motion";
+import {motion, type Variants} from  "framer-motion";
+interface HomePageProps {
+  containerVariants: Variants;
+  revealVariant: Variants;
+}
 
-export default function HomePage({ containerVariants, revealVariant }: any) {
+export default function HomePage({ containerVariants, revealVariant }: HomePageProps) {
  
 
   return (
