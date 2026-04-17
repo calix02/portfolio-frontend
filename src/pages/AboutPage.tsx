@@ -1,26 +1,36 @@
 import { motion } from "framer-motion";
 import Me from "@/assets/me.svg";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
-import { FaUserCircle, FaMapMarkerAlt, FaCode } from "react-icons/fa";
-import BorderGlow from "@/component/BorderGlow";
-import { RiComputerLine } from "react-icons/ri";
+import { FaUserCircle, FaMapMarkerAlt, FaCode, FaBriefcase } from "react-icons/fa";
 import { IoRibbonSharp } from "react-icons/io5";
 import CircularGallery from "@/component/CircularGallery";
 
 export function AboutPage() {
+  // Animation Variants
   const containerVariants = {
-    initial: { opacity: 0, y: 20 },
+    initial: { opacity: 0 },
     whileInView: {
       opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, staggerChildren: 0.2 },
+      transition: { staggerChildren: 0.2, delayChildren: 0.1 },
     },
   };
 
-  const itemVariants = {
-    initial: { opacity: 0, x: -20 },
-    whileInView: { opacity: 1, x: 0 },
+  const fadeInUp = {
+    initial: { opacity: 0, y: 30 },
+    whileInView: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" as const } },
   };
+
+  const fadeInLeft = {
+    initial: { opacity: 0, x: -50 },
+    whileInView: { opacity: 1, x: 0, transition: { duration: 0.8 } },
+  };
+
+  // Mock Experience Data
+  const experiences = [
+    { title: "IT Intern", company: "Tech Solutions Inc.", date: "2024 - Present", desc: "Developing full-stack applications using React and Node.js." },
+    { title: "Full Stack Developer", company: "Freelance", date: "2023 - 2024", desc: "Built various SaaS dashboards and IoT monitoring systems." },
+    { title: "Junior Web Developer", company: "Almajer's Smoke & Dried Fish", date: "2022 - 2023", desc: "Integrated ESP32 hardware with real-time Firebase dashboards." },
+  ];
 
   return (
     <motion.section
@@ -28,122 +38,118 @@ export function AboutPage() {
       variants={containerVariants}
       initial="initial"
       whileInView="whileInView"
-      viewport={{ once: true, amount: 0.3 }}
-      className="relative z-10 flex flex-col md:flex-row items-center justify-center min-h-screen w-full px-6 md:px-20 py-20 gap-12"
+      viewport={{ once: true, amount: 0.2 }}
+      className="relative z-10 flex flex-col lg:flex-row items-center justify-center min-h-screen w-full px-6 md:px-20 py-24 gap-16 overflow-hidden bg-[#fdfdfd]"
     >
-      {/* Left Column: Profile Card */}
-      <div className="w-full md:w-1/2 flex flex-col items-start">
-        <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start">
-          <motion.img
-            whileHover={{ scale: 1.05 }}
-            src={Me}
-            className="w-40 h-40 md:w-52 md:h-52 border-2 border-blue-500/20 rounded-2xl object-cover shadow-xl"
-            alt="Mark Angelo Alvarado"
-          />
-          <div className="text-center sm:text-left">
-            <h1 className="font-bold tracking-tight text-3xl md:text-4xl text-gray-600 flex items-center justify-center sm:justify-start gap-2">
-              Mark Angelo Alvarado
-              <RiVerifiedBadgeFill
-                className="text-blue-500 text-2xl"
-                title="Verified Developer"
-              />
-            </h1>
-            <div className="mt-3 space-y-1">
-              <p className="text-black font-medium flex items-center justify-center sm:justify-start gap-2">
+      {/* Background Decorative Element */}
+      <div className="absolute top-0 left-0 w-full h-full -z-10 opacity-30 pointer-events-none">
+        <div className="absolute top-1/4 left-10 w-72 h-72 bg-blue-200 rounded-full blur-[120px]" />
+        <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-purple-100 rounded-full blur-[120px]" />
+      </div>
+
+      {/* Left Column: Profile & Experience */}
+      <motion.div variants={fadeInLeft} className="w-full lg:w-1/2 flex flex-col gap-10">
+        
+        {/* Header Section */}
+        <div className="flex flex-col sm:flex-row gap-8 items-center sm:items-start">
+          <motion.div 
+            whileHover={{ scale: 1.05, rotate: 2 }}
+            className="relative group"
+          >
+            <div className="absolute -inset-1 bg-linear-to-r from-blue-500 to-cyan-400 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+            <img
+              src={Me}
+              className="relative w-40 h-40 md:w-48 md:h-48 border border-white/50 rounded-2xl object-cover shadow-2xl backdrop-blur-sm"
+              alt="Mark Angelo Alvarado"
+            />
+          </motion.div>
+
+          <div className="text-center sm:text-left pt-2">
+            <motion.h1 
+              variants={fadeInUp}
+              className="font-bold tracking-tight text-4xl md:text-5xl text-gray-900 flex items-center justify-center sm:justify-start gap-3"
+            >
+              Mark Alvarado
+              <RiVerifiedBadgeFill className="text-blue-500 text-3xl drop-shadow-md" title="Verified Developer" />
+            </motion.h1>
+            
+            <motion.div variants={fadeInUp} className="mt-4 space-y-2">
+              <p className="text-blue-600 font-semibold flex items-center justify-center sm:justify-start gap-2 text-lg">
                 <FaCode className="text-sm" /> Full Stack Developer
               </p>
-              <p className="text-gray-400 flex items-center justify-center sm:justify-start gap-2">
+              <p className="text-gray-500 flex items-center justify-center sm:justify-start gap-2 italic">
                 <FaMapMarkerAlt className="text-sm" /> Lupi, Camarines Sur, PH
               </p>
-            </div>
+            </motion.div>
 
-            <button className="mt-6 px-6 py-2 bg-black hover:bg-white cursor-pointer hover:text-gray-800 text-white rounded-full transition-all duration-300 shadow-lg shadow-blue-500/20 font-medium">
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="mt-8 px-8 py-3 bg-gray-900 text-white rounded-xl hover:bg-black transition-all shadow-xl shadow-gray-200 font-medium"
+            >
               Download CV
-            </button>
+            </motion.button>
           </div>
-           
         </div>
-         <div className="grid grid-cols-3 gap-4 pt-4">
-            <BorderGlow
-              edgeSensitivity={30}
-              glowColor="40 80 80"
-              backgroundColor="#050505"
-              borderRadius={28}
-              glowRadius={40}
-              glowIntensity={1}
-              coneSpread={25}
-              animated={false}
-              colors={["#c084fc", "#f472b6", "#38bdf8"]}
-              className=" h-40 rounded-xl relative bg-white/5 border flex justify-center items-center border-white/10"
-            >
-              <h3 className="text-white font-bold text-4xl text-center">15+</h3>
-              <p className="text-gray-400 text-sm mt-5">Projects Completed</p>
-            </BorderGlow>
-            <BorderGlow
-              edgeSensitivity={30}
-              glowColor="40 80 80"
-              backgroundColor="#050505"
-              borderRadius={28}
-              glowRadius={40}
-              glowIntensity={1}
-              coneSpread={25}
-              animated={false}
-              colors={["#c084fc", "#f472b6", "#38bdf8"]}
-              className="p-4 h-40 rounded-xl bg-white/5 border border-white/10"
-            >
-              <h3 className="text-white font-bold text-xl">15+</h3>
-              <p className="text-gray-400 text-sm">Years Experience</p>
-            </BorderGlow>
-            <BorderGlow
-              edgeSensitivity={30}
-              glowColor="40 80 80"
-              backgroundColor="#050505"
-              borderRadius={28}
-              glowRadius={40}
-              glowIntensity={1}
-              coneSpread={25}
-              animated={false}
-              colors={["#c084fc", "#f472b6", "#38bdf8"]}
-              className="p-4 rounded-xl bg-white/5 border border-white/10"
-            >
-              <h3 className="text-white font-bold text-xl">15+</h3>
-              <p className="text-gray-400 text-sm">Projects Completed</p>
-            </BorderGlow>
-          </div>
-      </div>
 
-      {/* Right Column: Bio & Details */}
-      <div className="w-full md:w-1/2">
-        <motion.div variants={itemVariants} className="space-y-6">
-          <h2 className="flex items-center font-bold tracking-widest uppercase text-sm text-gray-800 gap-2">
-            <FaUserCircle className="text-xl" /> About Me
+        {/* Scrollable Experience Section */}
+        <motion.div variants={fadeInUp} className="space-y-4">
+          <h2 className="flex items-center font-bold tracking-[0.2em] uppercase text-xs text-gray-400 gap-2">
+            <FaBriefcase className="text-blue-500" /> Professional Experience
           </h2>
-          <p className="text-gray-800 leading-relaxed text-lg">
-            I am a passionate{" "}
-            <span className="text-black font-semibold">
-              Full Stack Developer
-            </span>{" "}
-            dedicated to building digital experiences that are both functional
-            and visually stunning. With a focus on modern web technologies, I
-            bridge the gap between complex backend logic and intuitive frontend
-            design.
-          </p>
           
-        
-          <div className=" flex items-center px-6" style={{ height: "400px", position: "relative" }}>
-            <h2 className="flex items-center font-bold absolute top-5 left-0 tracking-widest uppercase text-sm text-gray-800 gap-2">
-            <IoRibbonSharp className="text-xl" /> Certifications
+          <div className="h-70 w-full rounded-3xl border border-gray-100 bg-white/50 backdrop-blur-md p-2 shadow-inner overflow-y-auto no-scrollbar">
+            <div className="space-y-3">
+              {experiences.map((exp, index) => (
+                <motion.div 
+                  key={index}
+                  whileHover={{ x: 5 }}
+                  className="p-5 rounded-2xl bg-white border border-gray-50 shadow-sm hover:shadow-md transition-all"
+                >
+                  <div className="flex justify-between items-start mb-1">
+                    <h3 className="font-bold text-gray-800">{exp.title}</h3>
+                    <span className="text-[10px] font-bold bg-blue-50 text-blue-600 px-2 py-1 rounded-full uppercase italic">{exp.date}</span>
+                  </div>
+                  <p className="text-sm text-blue-500 font-medium mb-2">{exp.company}</p>
+                  <p className="text-sm text-gray-500 leading-relaxed">{exp.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+          <p className="text-center text-[10px] text-gray-400 animate-pulse">↓ Scroll to see more</p>
+        </motion.div>
+      </motion.div>
+
+      {/* Right Column: Bio & Certifications */}
+      <motion.div variants={fadeInUp} className="w-full lg:w-1/2 flex flex-col gap-10">
+        <div className="space-y-6">
+          <h2 className="flex items-center font-bold tracking-[0.2em] uppercase text-xs text-gray-400 gap-2">
+            <FaUserCircle className="text-blue-500 text-lg" /> The Story
           </h2>
+          <p className="text-gray-700 leading-relaxed text-xl font-light">
+            I am a passionate <span className="text-black font-semibold underline decoration-blue-500/30 underline-offset-4">Full Stack Developer</span> dedicated to building digital experiences that are both functional and visually stunning.
+          </p>
+          <p className="text-gray-600 leading-relaxed text-lg">
+            With a focus on modern web technologies like <span className="font-medium text-gray-900">React, TypeScript, and Framer Motion</span>, I bridge the gap between complex logic and intuitive UI.
+          </p>
+        </div>
+
+        {/* Certifications with Gallery */}
+        <div className="relative pt-12 pb-6 border-t border-gray-100" style={{ height: "400px" }}>
+          <h2 className="flex items-center font-bold absolute top-6 left-0 tracking-[0.2em] uppercase text-xs text-gray-400 gap-2">
+            <IoRibbonSharp className="text-blue-500 text-lg" /> Highlights & Certs
+          </h2>
+          <div className="h-full w-full">
             <CircularGallery
-              bend={0}
-              textColor="#ffffff"
-              borderRadius={0.05}
+              bend={2}
+              textColor="#111111"
+              borderRadius={0.08}
               scrollEase={0.02}
-              scrollSpeed={2}
+              scrollSpeed={1.5}
             />
           </div>
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
     </motion.section>
   );
 }
