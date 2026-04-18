@@ -4,6 +4,8 @@ import { SplashScreen } from "@/component/SplashScreen";
 import {  useState } from "react";
 import HomePage from "./HomePage";
 import { AboutPage } from "./AboutPage";
+import { SkillPage } from "./SkillPage";
+
 
 export function MainPortfolio() {
 
@@ -26,8 +28,8 @@ export function MainPortfolio() {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.8,
-      ease: [0.16, 1, 0.3, 1] as const
+      duration: 0.6,
+      ease: [0.12, 1, 0.3, 1] as const
     }
   }
 };
@@ -61,9 +63,8 @@ if(loading) return <SplashScreen onComplete={() => setLoading(false)} />;
       <HomePage containerVariants={containerVariants} revealVariant={revealVariant}/>
 
       {/* --- About Section --- */}
-      <AboutPage  />
-
-     
+      <AboutPage containerVariants={containerVariants} revealVariant={revealVariant} />
+      <SkillPage containerVariants={containerVariants} revealVariant={revealVariant} />
     </div>
   );
 }

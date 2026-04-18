@@ -21,7 +21,7 @@ export default function HomePage({ containerVariants, revealVariant }: HomePageP
         <div className="w-full lg:w-3/5 flex flex-col justify-center space-y-6 text-center lg:text-left">
           <motion.div variants={revealVariant} className="space-y-2">
             <p className="text-gray-400 font-medium tracking-[0.4em] uppercase text-[10px] md:text-xs">
-              Creative Developer & Designer
+              Full Stack Developer & Freelancer
             </p>
             <h1 className="bg-linear-to-b from-gray-200 to-black bg-clip-text text-transparent text-5xl md:text-7xl font-bold  leading-[1.1]">
               From concept to deployment <br />
