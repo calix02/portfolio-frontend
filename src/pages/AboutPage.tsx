@@ -19,22 +19,22 @@ export function AboutPage({ containerVariants, revealVariant }: HomePageProps) {
   // Mock Experience Data
   const experiences = [
     {
-      title: "IT Intern",
-      company: "Tech Solutions Inc.",
-      date: "2024 - Present",
-      desc: "Developing full-stack applications using React and Node.js.",
+      title: "Full Stack Developer - Intern",
+      company: "Wayne Enterprise Solution Corporation",
+      date: "2026 - Present",
+      desc: "Developing full-stack web applications using React + Vite, Typescript and Tailwind for the frontend, and for the backend is Node js / Express and MongoDB.",
     },
     {
-      title: "Full Stack Developer",
-      company: "Freelance",
-      date: "2023 - 2024",
-      desc: "Built various SaaS dashboards and IoT monitoring systems.",
+      title: "Front-End Developer - Student",
+      company: "CBSUA",
+      date: "2024 - 2025",
+      desc: "Built the user interface of our capstone project EfeeSync and contribute to the 4th year's final project Capstone Repository System using React + Vite, Vanilla Javascript and Tailwind",
     },
     {
-      title: "Junior Web Developer",
-      company: "Almajer's Smoke & Dried Fish",
+      title: "Full Stack Developer - Freelance",
+      company: "CBSUA",
       date: "2022 - 2023",
-      desc: "Integrated ESP32 hardware with real-time Firebase dashboards.",
+      desc: "Built systems for student for their final project using Java and MySQL",
     },
   ];
 
@@ -73,7 +73,7 @@ export function AboutPage({ containerVariants, revealVariant }: HomePageProps) {
           <div className="text-center sm:text-left pt-2">
             <motion.h1
               variants={revealVariant}
-              className="font-medium tracking-[0.2rem] text-4xl md:text-5xl text-gray-900 flex items-center justify-center sm:justify-start gap-3"
+              className="font-medium tracking-[0.2rem] text-4xl md:text-5xl bg-clip-text text-transparent bg-linear-to-b from-white to-gray-500 flex items-center justify-center sm:justify-start gap-3"
             >
               Mark Alvarado
               <RiVerifiedBadgeFill
@@ -89,22 +89,24 @@ export function AboutPage({ containerVariants, revealVariant }: HomePageProps) {
                 <FaMapMarkerAlt className="text-sm" /> Lupi, Camarines Sur, PH
               </p>
             </motion.div>
-            <StarBorder
-              as="button"
-              className="custom-class"
-              color="cyan"
-              speed="1s"
-            >
-              Hire Me
-            </StarBorder>
-             <StarBorder
-              as="button"
-              className="custom-class"
-              color="cyan"
-              speed="1s"
-            >
-              Book an Appointment
-            </StarBorder>
+            <motion.div variants={revealVariant} className="mt-3 flex gap-2">
+              <StarBorder
+                as="button"
+                className="custom-class"
+                color="cyan"
+                speed="1s"
+              >
+                Hire Me
+              </StarBorder>
+              <StarBorder
+                as="button"
+                className="custom-class"
+                color="cyan"
+                speed="1s"
+              >
+                Book an Appointment
+              </StarBorder>
+            </motion.div>
           </div>
         </div>
 
