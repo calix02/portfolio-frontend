@@ -5,9 +5,18 @@ import {  useState } from "react";
 import HomePage from "./HomePage";
 import { AboutPage } from "./AboutPage";
 import { SkillPage } from "./SkillPage";
+import { MdOutlineDarkMode } from "react-icons/md";
+import { FiSun } from "react-icons/fi";
+
 
 
 export function MainPortfolio() {
+
+  const [isDark, setIsDark] = useState<boolean>(false);
+
+  const toggleDark = () =>{
+    setIsDark(!isDark);
+  }
 
   const [loading, setLoading] = useState<boolean>(true);
   // Container variant to stagger children animations
@@ -38,7 +47,7 @@ export function MainPortfolio() {
 if(loading) return <SplashScreen onComplete={() => setLoading(false)} />;
 
   return (
-    <div className="w-full min-h-screen relative overflow-x-hidden background-light xt-black selection:bg-black selection:text-white">
+    <div className={`w-full min-h-screen relative transition duration-300 overflow-x-hidden ${isDark ? "background-dark" : "background-light"} xt-black selection:bg-black selection:text-white`}>
       {/* --- Subtle Background Graphics --- */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div
@@ -57,10 +66,10 @@ if(loading) return <SplashScreen onComplete={() => setLoading(false)} />;
         />
       </div>
 
-      <Header />
+      <Header textColor={isDark ? "text-gray-300" : "text-gray-500"} toggleDark={toggleDark} Icon= { isDark ? FiSun : MdOutlineDarkMode} />
 
       {/* --- Home Section --- */}
-      <HomePage containerVariants={containerVariants} revealVariant={revealVariant}/>
+      <HomePage textColor={isDark? "text-gray-300" : "text-gray-600"} containerVariants={containerVariants} revealVariant={revealVariant}/>
 
       {/* --- About Section --- */}
       <AboutPage containerVariants={containerVariants} revealVariant={revealVariant} />

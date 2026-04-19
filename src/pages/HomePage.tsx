@@ -1,12 +1,15 @@
 
 import Me from "@/assets/me.svg"
 import {motion, type Variants} from  "framer-motion";
+import { FaDownload } from "react-icons/fa6";
+import { FaRegEnvelope } from "react-icons/fa6";
 interface HomePageProps {
   containerVariants: Variants;
   revealVariant: Variants;
+  textColor: string;
 }
 
-export default function HomePage({ containerVariants, revealVariant }: HomePageProps) {
+export default function HomePage({ containerVariants, revealVariant, textColor }: HomePageProps) {
  
 
   return (
@@ -29,7 +32,7 @@ export default function HomePage({ containerVariants, revealVariant }: HomePageP
             </h1>
           </motion.div>
 
-          <motion.p variants={revealVariant} className="text-gray-600 max-w-lg mx-auto lg:mx-0 leading-relaxed text-lg border-l-0 lg:border-l-2 border-black/10 lg:pl-6">
+          <motion.p variants={revealVariant} className={`${textColor} max-w-lg mx-auto lg:mx-0 leading-relaxed text-lg border-l-0 lg:border-l-2 border-black/10 lg:pl-6`}>
             Crafting high-performance web applications and IoT solutions with a focus on{" "}
             <span className="text-black font-semibold underline underline-offset-4 decoration-black/10">clean aesthetics</span> and{" "}
             <span className="text-black font-semibold underline underline-offset-4 decoration-black/10">seamless user experience.</span>
@@ -39,15 +42,17 @@ export default function HomePage({ containerVariants, revealVariant }: HomePageP
             <motion.button 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-10 py-4 bg-black text-white font-bold rounded-full hover:shadow-2xl hover:shadow-black/20 transition-all duration-300"
+              className="px-10 py-4 bg-black text-white shadow-md cursor-pointer flex items-center justify-center gap-2 font-bold rounded-full hover:shadow-2xl hover:shadow-black/20 transition-all duration-300"
             >
-              View Projects
+              <FaRegEnvelope/>
+              Hire Me
             </motion.button>
             <motion.button 
-              whileHover={{ backgroundColor: "rgba(0,0,0,0.05)" }}
-              className="px-10 py-4 border border-black/10 rounded-full font-medium transition-colors duration-300"
+             whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-10 py-4 border shadow-md bg-white border-black/10 cursor-pointer rounded-full flex items-center justify-center gap-2 font-medium transition-colors duration-300"
             >
-              Contact Me
+              <FaDownload/>Download CV
             </motion.button>
           </motion.div>
         </div>

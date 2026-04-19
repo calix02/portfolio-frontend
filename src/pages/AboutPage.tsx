@@ -111,12 +111,12 @@ export function AboutPage({ containerVariants, revealVariant }: HomePageProps) {
         </div>
 
         {/* Scrollable Experience Section */}
-        <motion.div variants={revealVariant} className="space-y-4">
+        <motion.div variants={revealVariant} className="space-y-4 ">
           <h2 className="flex items-center font-bold tracking-[0.2em] uppercase text-xs text-gray-400 gap-2">
             <FaBriefcase className="text-blue-500" /> Professional Experience
           </h2>
 
-          <div className="h-70 w-full rounded-3xl border border-gray-100 bg-white/50 backdrop-blur-md p-2 shadow-inner overflow-y-auto no-scrollbar">
+          <div className="h-70 w-full rounded-3xl border border-gray-100 bg-white/50 backdrop-blur-md p-2 shadow-inner overflow-y-auto no-scrollbar hide-scrollbar">
             <div className="space-y-3">
               {experiences.map((exp, index) => (
                 <motion.div

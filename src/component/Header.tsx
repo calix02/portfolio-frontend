@@ -1,7 +1,15 @@
 import { motion } from "framer-motion";
 import Logo from "@/assets/logo.svg";
+import type { IconType } from "react-icons/lib";
 
-export function Header() {
+
+type HeaderProps = {
+  toggleDark : () => void;
+  Icon : IconType;
+  textColor : string;
+}
+
+export function Header({toggleDark, Icon, textColor} : HeaderProps ) {
   const navItems = ["Home", "About", "Skills", "Projects", "Testimonials", "Contact"];
 
   return (
@@ -29,7 +37,7 @@ export function Header() {
           <motion.a
             key={item}
             href={`#${item.toLowerCase()}`}
-            className="relative text-gray-500 text-sm font-medium transition-colors hover:text-black group"
+            className={`relative ${textColor} text-sm font-medium transition-colors hover:text-black group`}
           >
             {item}
             {/* Animated Underline */}
@@ -40,14 +48,14 @@ export function Header() {
 
       {/* --- Action Button --- */}
       <div className="flex items-center gap-4">
-        <motion.a
-          href="#contact"
+        <motion.button 
+        onClick={toggleDark}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="hidden sm:block px-6 py-2 bg-black text-white text-xs font-bold rounded-full shadow-lg shadow-black/10 hover:bg-gray-800 transition-all"
+          className="hidden sm:block cursor-pointer  duration-300  p-2 bg-black text-white text-xl font-bold rounded-full shadow-lg shadow-black/10 hover:bg-gray-800 transition-all"
         >
-          Let's Talk
-        </motion.a>
+          <Icon className=" transition-transform duration-500"/>
+        </motion.button>
         
         {/* Mobile Menu Toggle (Simplified) */}
         <div className="md:hidden flex flex-col gap-1 cursor-pointer p-2">
