@@ -1,46 +1,41 @@
-import { motion, type Variants } from "framer-motion";
-import {
-  Code2,
-  Terminal,
-  Database,
-  Cloud,
- 
-} from "lucide-react";
-import GlareHover from "@/component/GlareHover";
+import { motion, type Variants, AnimatePresence } from "framer-motion";
+import { Code2, Terminal, Database, Cloud, Cpu, ShieldCheck } from "lucide-react";
+import { useState } from "react";
 
-
-
-// Define the structure for our skill categories
 const SKILL_CATEGORIES = [
   {
     title: "Frontend",
-    icon: <Code2 className="w-6 h-6 text-blue-500" />,
-    description: "Crafting immersive user experiences with modern frameworks.",
+    icon: <Code2 className="w-5 h-5" />,
+    color: "from-blue-500 to-cyan-400",
+    glow: "rgba(59, 130, 246, 0.15)",
+    description: "Developing responsive, pixel-perfect interfaces with a focus on UX.",
     skills: [
       { name: "React", level: "Advanced" },
-      { name: "Vite", level: "Intermediate" },
-      { name: "Javascript", level: "Intermediate" },
       { name: "TypeScript", level: "Advanced" },
       { name: "Tailwind CSS", level: "Expert" },
       { name: "Zustand", level: "Advanced" },
-
+      { name: "Framer Motion", level: "Advanced" },
     ],
   },
   {
     title: "Backend",
-    icon: <Terminal className="w-6 h-6 text-green-500" />,
-    description: "Building robust, scalable server-side logic and APIs.",
+    icon: <Terminal className="w-5 h-5" />,
+    color: "from-emerald-500 to-teal-400",
+    glow: "rgba(16, 185, 129, 0.15)",
+    description: "Architecting scalable server-side logic and secure API endpoints.",
     skills: [
       { name: "Node.js", level: "Advanced" },
       { name: "Express", level: "Advanced" },
       { name: "PHP", level: "Intermediate" },
-      { name: "Java", level: "Basic" },
+      { name: "Firebase", level: "Expert" },
     ],
   },
   {
     title: "Database",
-    icon: <Database className="w-6 h-6 text-amber-500" />,
-    description: "Managing data integrity and high-performance querying.",
+    icon: <Database className="w-5 h-5" />,
+    color: "from-amber-500 to-orange-400",
+    glow: "rgba(245, 158, 11, 0.15)",
+    description: "Data modeling and optimization for high-performance retrieval.",
     skills: [
       { name: "MongoDB", level: "Advanced" },
       { name: "PostgreSQL", level: "Advanced" },
@@ -48,27 +43,21 @@ const SKILL_CATEGORIES = [
     ],
   },
   {
-    title: "Cloud / Hosting",
-    icon: <Cloud className="w-6 h-6 text-purple-500" />,
-    description: "Deploying and managing optimized cloud infrastructure.",
+    title: "DevOps",
+    icon: <Cloud className="w-5 h-5" />,
+    color: "from-purple-500 to-pink-400",
+    glow: "rgba(168, 85, 247, 0.15)",
+    description: "Automating deployments and managing cloud-native infrastructure.",
     skills: [
       { name: "Vercel", level: "Expert" },
       { name: "AWS", level: "Intermediate" },
-      { name: "Cloudflare", level: "Advanced" },
       { name: "Docker", level: "Intermediate" },
+      { name: "Cloudflare", level: "Advanced" },
     ],
   },
 ];
 
-
-interface SkillPageProps {
-  containerVariants: Variants;
-  revealVariant: Variants;
-}
-
 export function SkillPage({ containerVariants, revealVariant }: SkillPageProps) {
- 
-
   return (
     <motion.section
       id="skills"
@@ -76,88 +65,82 @@ export function SkillPage({ containerVariants, revealVariant }: SkillPageProps) 
       initial="initial"
       whileInView="whileInView"
       viewport={{ once: true, amount: 0.1 }}
-      className="relative z-10  flex flex-col items-center justify-center min-h-screen w-full px-6 md:px-20 py-24 overflow-hidden "
+      className="relative min-h-screen w-full  text-white flex flex-col items-center justify-center px-6 md:px-12 py-32 overflow-hidden"
     >
-      {/* Background Decorative Elements */}
-      <div className="absolute top-0 left-0 w-full h-full -z-10 opacity-20 pointer-events-none">
-        <div className="absolute top-1/4 -left-20 w-125 h-125 bg-blue-600 rounded-full blur-[160px]" />
-        <div className="absolute bottom-1/4 -right-20 w-125 h-125 bg-purple-600 rounded-full blur-[160px]" />
-      </div>
+     
 
-      {/* Header Section */}
-      <div className="text-center mb-16 space-y-4">
-        <motion.h2
-          variants={revealVariant}
-          className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-linear-to-b from-white to-gray-500"
-        >
-          Skills & Expertise
-        </motion.h2>
-        <motion.p
-          variants={revealVariant}
-          className="text-gray-400 max-w-2xl mx-auto text-lg"
-        >
-          A comprehensive toolkit for building modern, scalable applications
-          tailored for the next generation of the web.
-        </motion.p>
-      </div>
-
-      {/* Grid Container */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 w-full max-w-7xl">
-        {SKILL_CATEGORIES.map((category, idx) => (
-          <motion.div
-            key={category.title}
+      <div className="max-w-7xl w-full relative z-10">
+        {/* Header with Glass Detail */}
+        <div className="mb-20 space-y-6">
+          <motion.div variants={revealVariant} className="flex items-center gap-3">
+             <div className="h-[1px] w-12 bg-white/20" />
+             <span className="text-xs font-mono tracking-[0.4em] uppercase text-blue-500">Stack & Capabilities</span>
+          </motion.div>
+          
+          <motion.h2
             variants={revealVariant}
-            custom={idx}
-            className="h-full "
+            className="text-5xl md:text-7xl font-black tracking-tighter leading-tight"
           >
-            <GlareHover
-              width="w-full h-full"
-              glareColor="#ffffff"
-              glareOpacity={0.15}
-              glareAngle={-30}
-              glareSize={400}
-              transitionDuration={400}
+            Powering the <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white/80 to-white/20">Next Generation</span>
+          </motion.h2>
+        </div>
+
+        {/* The Skill Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {SKILL_CATEGORIES.map((category, idx) => (
+            <motion.div
+              key={category.title}
+              variants={revealVariant}
+              whileHover={{ y: -5 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="group relative"
             >
-              <div className="flex flex-col h-full p-8 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md">
-                <div className="mb-6 p-3 w-fit rounded-xl bg-black border border-white/10">
-                  {category.icon}
+              {/* Card Background Glow */}
+              <div 
+                className="absolute inset-0 rounded-[2.5rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
+                style={{ backgroundColor: category.glow }}
+              />
+
+              <div className="relative h-full p-8 md:p-10 rounded-[2.5rem] border border-white/10 bg-white/5 backdrop-blur-3xl overflow-hidden">
+                {/* Decorative Icon Background */}
+                <div className="absolute -top-12 -right-12 text-white/[0.03] scale-[4] rotate-12 group-hover:rotate-0 transition-transform duration-700">
+                   {category.icon}
                 </div>
 
-                <h3 className="text-2xl font-semibold text-gray-600 mb-2">
-                  {category.title}
-                </h3>
+                <div className="flex items-start justify-between mb-8">
+                  <div className={`p-4 rounded-2xl bg-gradient-to-br ${category.color} shadow-lg shadow-black/20`}>
+                    {category.icon}
+                  </div>
+                  <div className="flex flex-col items-end">
+                    <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">Efficiency</span>
+                    <span className="text-sm font-bold text-white">95%</span>
+                  </div>
+                </div>
 
-                <p className="text-sm text-gray-400 mb-6 leading-relaxed">
+                <h3 className="text-3xl font-bold mb-4">{category.title}</h3>
+                <p className="text-neutral-400 text-sm leading-relaxed mb-8 max-w-xs">
                   {category.description}
                 </p>
 
-                <div className="mt-5 space-y-3">
-                  {category.skills.map((skill) => ( 
-                    <div key={skill.name} className="group flex flex-col">
-                      <div className="flex justify-between items-center mb-1">
-                        <span className="text-black text-md font-medium group-hover:text-white transition-colors">
-                          {skill.name}
-                        </span>
-                        <span className="text-[10px] uppercase tracking-widest text-gray-500">
-                          {skill.level}
-                        </span>
-                      </div>
-                      {/* Optional Skill Progress Bar */}
-                      <div className="h-0.5 w-full bg-white/5 overflow-hidden">
-                        <motion.div
-                          initial={{ x: "-100%" }}
-                          whileInView={{ x: "0%" }}
-                          transition={{ duration: 1, delay: 0.5 + idx * 0.1 }}
-                          className="h-full bg-linear-to-r from-blue-500 to-purple-500 w-full opacity-50"
-                        />
+                {/* Skill Chips */}
+                <div className="flex flex-wrap gap-3">
+                  {category.skills.map((skill) => (
+                    <div 
+                      key={skill.name}
+                      className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:border-white/30 transition-all cursor-default group/skill"
+                    >
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm font-medium text-neutral-300 group-hover/skill:text-white">{skill.name}</span>
+                        <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${category.color} opacity-40 group-hover/skill:opacity-100 group-hover/skill:scale-125 transition-all`} />
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
-            </GlareHover>
-          </motion.div>
-        ))}
+            </motion.div>
+          ))}
+        </div>
       </div>
     </motion.section>
   );
