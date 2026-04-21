@@ -8,6 +8,7 @@ import { AboutPage } from "./AboutPage";
 import HomePage from "./HomePage";
 import { ProjectPage } from "./ProjectPage";
 import { SkillPage } from "./SkillPage";
+import { TestimonialPage } from "./TestimonialPage.";
 
 export function MainPortfolio() {
   const [isDark, setIsDark] = useState<boolean>(true);
@@ -96,6 +97,10 @@ export function MainPortfolio() {
 
       {/* --- Project Section --- */}
       <ProjectPage
+        containerVariants={containerVariants}
+        revealVariant={revealVariant}
+      />
+      <TestimonialPage
         containerVariants={containerVariants}
         revealVariant={revealVariant}
       />
