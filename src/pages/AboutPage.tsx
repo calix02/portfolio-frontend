@@ -45,7 +45,7 @@ export function AboutPage({ containerVariants, revealVariant }: HomePageProps) {
       initial="initial"
       whileInView="whileInView"
       viewport={{ once: false, amount: 0.2 }}
-      className="relative z-10 flex flex-col lg:flex-row items-center justify-center min-h-screen w-full px-6 md:px-20 py-24 gap-16 overflow-hidden"
+      className="relative z-10 flex flex-col lg:flex-row  items-center justify-center min-h-screen w-full px-6 md:px-20 py-24 gap-16 overflow-hidden"
     >
       {/* Background Decorative Element */}
       <div className="absolute top-0 left-0 w-full h-full -z-10 opacity-30 pointer-events-none">

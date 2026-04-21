@@ -10,7 +10,7 @@ import { ProjectPage } from "./ProjectPage";
 import { SkillPage } from "./SkillPage";
 
 export function MainPortfolio() {
-  const [isDark, setIsDark] = useState<boolean>(false);
+  const [isDark, setIsDark] = useState<boolean>(true);
 
   const toggleDark = () => {
     setIsDark(!isDark);
@@ -45,7 +45,7 @@ export function MainPortfolio() {
 
   return (
     <div
-      className={`w-full min-h-screen relative transition duration-300 overflow-x-hidden ${isDark ? "background-dark" : "background-light"} xt-black selection:bg-black selection:text-white`}
+      className={`w-full min-h-screen relative transition duration-300 overflow-x-hidden ${isDark? "background-dark" : "background-light"} xt-black selection:bg-black selection:text-white`}
     >
       {/* --- Subtle Background Graphics --- */}
       <div className="fixed inset-0 pointer-events-none z-0">
