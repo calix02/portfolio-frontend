@@ -1,22 +1,20 @@
 import { Header } from "@/component/Header";
-import type { Variants } from "framer-motion";
 import { SplashScreen } from "@/component/SplashScreen";
-import {  useState } from "react";
-import HomePage from "./HomePage";
-import { AboutPage } from "./AboutPage";
-import { SkillPage } from "./SkillPage";
-import { MdOutlineDarkMode } from "react-icons/md";
+import type { Variants } from "framer-motion";
+import { useState } from "react";
 import { FiSun } from "react-icons/fi";
-
-
+import { MdOutlineDarkMode } from "react-icons/md";
+import { AboutPage } from "./AboutPage";
+import HomePage from "./HomePage";
+import { ProjectPage } from "./ProjectPage";
+import { SkillPage } from "./SkillPage";
 
 export function MainPortfolio() {
-
   const [isDark, setIsDark] = useState<boolean>(false);
 
-  const toggleDark = () =>{
+  const toggleDark = () => {
     setIsDark(!isDark);
-  }
+  };
 
   const [loading, setLoading] = useState<boolean>(true);
   // Container variant to stagger children animations
@@ -30,33 +28,38 @@ export function MainPortfolio() {
   };
 
   // Content reveal variant
- 
+
   const revealVariant: Variants = {
-  initial: { opacity: 0, y: 30 },
-  whileInView: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: [0.12, 1, 0.3, 1] as const
-    }
-  }
-};
+    initial: { opacity: 0, y: 30 },
+    whileInView: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.12, 1, 0.3, 1] as const,
+      },
+    },
+  };
 
-
-if(loading) return <SplashScreen onComplete={() => setLoading(false)} />;
+  if (loading) return <SplashScreen onComplete={() => setLoading(false)} />;
 
   return (
-    <div className={`w-full min-h-screen relative transition duration-300 overflow-x-hidden ${isDark ? "background-dark" : "background-light"} xt-black selection:bg-black selection:text-white`}>
+    <div
+      className={`w-full min-h-screen relative transition duration-300 overflow-x-hidden ${isDark ? "background-dark" : "background-light"} xt-black selection:bg-black selection:text-white`}
+    >
       {/* --- Subtle Background Graphics --- */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div
           className="absolute -top-24 -right-24 w-125 h-125 rounded-full opacity-40 blur-[120px] animate-pulse"
-          style={{ background: "radial-gradient(circle, #f1f5f9 0%, transparent 70%)" }}
+          style={{
+            background: "radial-gradient(circle, #f1f5f9 0%, transparent 70%)",
+          }}
         />
         <div
           className="absolute bottom-[-10%] left-[-5%] w-150 h-150 rounded-full opacity-30 blur-[130px]"
-          style={{ background: "radial-gradient(circle, #e2e8f0 0%, transparent 70%)" }}
+          style={{
+            background: "radial-gradient(circle, #e2e8f0 0%, transparent 70%)",
+          }}
         />
         <div
           className="absolute inset-0 opacity-[0.05]"
@@ -66,14 +69,36 @@ if(loading) return <SplashScreen onComplete={() => setLoading(false)} />;
         />
       </div>
 
-      <Header textColor={isDark ? "text-gray-300" : "text-gray-500"} toggleDark={toggleDark} Icon= { isDark ? FiSun : MdOutlineDarkMode} />
+      <Header
+        textColor={isDark ? "text-gray-300" : "text-gray-500"}
+        toggleDark={toggleDark}
+        Icon={isDark ? FiSun : MdOutlineDarkMode}
+      />
 
       {/* --- Home Section --- */}
-      <HomePage textColor={isDark? "text-gray-300" : "text-gray-600"} containerVariants={containerVariants} revealVariant={revealVariant}/>
+      <HomePage
+        textColor={isDark ? "text-gray-300" : "text-gray-600"}
+        containerVariants={containerVariants}
+        revealVariant={revealVariant}
+      />
 
       {/* --- About Section --- */}
-      <AboutPage containerVariants={containerVariants} revealVariant={revealVariant} />
-      <SkillPage containerVariants={containerVariants} revealVariant={revealVariant} />
+      <AboutPage
+        containerVariants={containerVariants}
+        revealVariant={revealVariant}
+      />
+      {/* --- Skill Section --- */}
+
+      <SkillPage
+        containerVariants={containerVariants}
+        revealVariant={revealVariant}
+      />
+
+      {/* --- Project Section --- */}
+      <ProjectPage
+        containerVariants={containerVariants}
+        revealVariant={revealVariant}
+      />
     </div>
   );
 }
