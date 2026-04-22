@@ -1,6 +1,5 @@
-import { motion, type Variants, AnimatePresence } from "framer-motion";
-import { Code2, Terminal, Database, Cloud, Cpu, ShieldCheck } from "lucide-react";
-import { useState } from "react";
+import { motion } from "framer-motion";
+import { Cloud, Code2, Database, Terminal } from "lucide-react";
 
 const SKILL_CATEGORIES = [
   {
@@ -8,7 +7,8 @@ const SKILL_CATEGORIES = [
     icon: <Code2 className="w-5 h-5" />,
     color: "from-blue-500 to-cyan-400",
     glow: "rgba(59, 130, 246, 0.15)",
-    description: "Developing responsive, pixel-perfect interfaces with a focus on UX.",
+    description:
+      "Developing responsive, pixel-perfect interfaces with a focus on UX.",
     skills: [
       { name: "React", level: "Advanced" },
       { name: "TypeScript", level: "Advanced" },
@@ -22,7 +22,8 @@ const SKILL_CATEGORIES = [
     icon: <Terminal className="w-5 h-5" />,
     color: "from-emerald-500 to-teal-400",
     glow: "rgba(16, 185, 129, 0.15)",
-    description: "Architecting scalable server-side logic and secure API endpoints.",
+    description:
+      "Architecting scalable server-side logic and secure API endpoints.",
     skills: [
       { name: "Node.js", level: "Advanced" },
       { name: "Express", level: "Advanced" },
@@ -35,7 +36,8 @@ const SKILL_CATEGORIES = [
     icon: <Database className="w-5 h-5" />,
     color: "from-amber-500 to-orange-400",
     glow: "rgba(245, 158, 11, 0.15)",
-    description: "Data modeling and optimization for high-performance retrieval.",
+    description:
+      "Data modeling and optimization for high-performance retrieval.",
     skills: [
       { name: "MongoDB", level: "Advanced" },
       { name: "PostgreSQL", level: "Advanced" },
@@ -47,7 +49,8 @@ const SKILL_CATEGORIES = [
     icon: <Cloud className="w-5 h-5" />,
     color: "from-purple-500 to-pink-400",
     glow: "rgba(168, 85, 247, 0.15)",
-    description: "Automating deployments and managing cloud-native infrastructure.",
+    description:
+      "Automating deployments and managing cloud-native infrastructure.",
     skills: [
       { name: "Vercel", level: "Expert" },
       { name: "AWS", level: "Intermediate" },
@@ -57,32 +60,30 @@ const SKILL_CATEGORIES = [
   },
 ];
 
-export function SkillPage({ containerVariants, revealVariant }: SkillPageProps) {
+export function SkillPage() {
   return (
     <motion.section
       id="skills"
-      variants={containerVariants}
       initial="initial"
       whileInView="whileInView"
       viewport={{ once: true, amount: 0.1 }}
       className="relative min-h-screen w-full  text-white flex flex-col items-center justify-center px-6 md:px-12 py-32 overflow-hidden"
     >
-     
-
       <div className="max-w-7xl w-full relative z-10">
         {/* Header with Glass Detail */}
         <div className="mb-20 space-y-6">
-          <motion.div variants={revealVariant} className="flex items-center gap-3">
-             <div className="h-[1px] w-12 bg-white/20" />
-             <span className="text-xs font-mono tracking-[0.4em] uppercase text-blue-500">Stack & Capabilities</span>
+          <motion.div className="flex items-center gap-3">
+            <div className="h-px w-12 bg-white/20" />
+            <span className="text-xs font-mono tracking-[0.4em] uppercase text-blue-500">
+              Stack & Capabilities
+            </span>
           </motion.div>
-          
-          <motion.h2
-            variants={revealVariant}
-            className="text-5xl md:text-7xl font-black tracking-tighter leading-tight"
-          >
+
+          <motion.h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-tight">
             Powering the <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white/80 to-white/20">Next Generation</span>
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-white via-white/80 to-white/20">
+              Next Generation
+            </span>
           </motion.h2>
         </div>
 
@@ -90,30 +91,33 @@ export function SkillPage({ containerVariants, revealVariant }: SkillPageProps) 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {SKILL_CATEGORIES.map((category, idx) => (
             <motion.div
-              key={category.title}
-              variants={revealVariant}
+              key={idx}
               whileHover={{ y: -5 }}
               transition={{ type: "spring", stiffness: 300 }}
               className="group relative"
             >
               {/* Card Background Glow */}
-              <div 
-                className="absolute inset-0 rounded-[2.5rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
+              <div
+                className="absolute inset-0 rounded-[2.5rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 style={{ backgroundColor: category.glow }}
               />
 
               <div className="relative h-full p-8 md:p-10 rounded-[2.5rem] border border-white/10 bg-white/5 backdrop-blur-3xl overflow-hidden">
                 {/* Decorative Icon Background */}
-                <div className="absolute -top-12 -right-12 text-white/[0.03] scale-[4] rotate-12 group-hover:rotate-0 transition-transform duration-700">
-                   {category.icon}
+                <div className="absolute -top-12 -right-12 text-white/3scale-[4] rotate-12 group-hover:rotate-0 transition-transform duration-700">
+                  {category.icon}
                 </div>
 
                 <div className="flex items-start justify-between mb-8">
-                  <div className={`p-4 rounded-2xl bg-gradient-to-br ${category.color} shadow-lg shadow-black/20`}>
+                  <div
+                    className={`p-4 rounded-2xl bg-linear-to-br ${category.color} shadow-lg shadow-black/20`}
+                  >
                     {category.icon}
                   </div>
                   <div className="flex flex-col items-end">
-                    <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">Efficiency</span>
+                    <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
+                      Efficiency
+                    </span>
                     <span className="text-sm font-bold text-white">95%</span>
                   </div>
                 </div>
@@ -126,13 +130,17 @@ export function SkillPage({ containerVariants, revealVariant }: SkillPageProps) 
                 {/* Skill Chips */}
                 <div className="flex flex-wrap gap-3">
                   {category.skills.map((skill) => (
-                    <div 
+                    <div
                       key={skill.name}
                       className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:border-white/30 transition-all cursor-default group/skill"
                     >
                       <div className="flex items-center gap-2">
-                        <span className="text-sm font-medium text-neutral-300 group-hover/skill:text-white">{skill.name}</span>
-                        <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${category.color} opacity-40 group-hover/skill:opacity-100 group-hover/skill:scale-125 transition-all`} />
+                        <span className="text-sm font-medium text-neutral-300 group-hover/skill:text-white">
+                          {skill.name}
+                        </span>
+                        <div
+                          className={`w-1.5 h-1.5 rounded-full bg-linear-to-r ${category.color} opacity-40 group-hover/skill:opacity-100 group-hover/skill:scale-125 transition-all`}
+                        />
                       </div>
                     </div>
                   ))}

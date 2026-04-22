@@ -1,27 +1,31 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
-import { FiGithub, FiExternalLink, FiLayers, FiZap, FiChevronRight, FiChevronLeft } from "react-icons/fi";
-import Gis from "@/assets/projects/gis.png";
 import Cit from "@/assets/projects/Cit.png";
-import Rkia from "@/assets/projects/rkia.png";
 import Efeesync from "@/assets/projects/efeesync.png";
-
-
-
+import Gis from "@/assets/projects/gis.png";
+import Rkia from "@/assets/projects/rkia.png";
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
+import {
+  FiChevronLeft,
+  FiChevronRight,
+  FiExternalLink,
+  FiGithub,
+} from "react-icons/fi";
 
 const projects = [
   {
     title: "EfeeSync",
     category: "Financial System",
-    description: "A centralized digital ledger engineered to eliminate manual accounting errors. It features real-time synchronization across institutional modules.",
+    description:
+      "A centralized digital ledger engineered to eliminate manual accounting errors. It features real-time synchronization across institutional modules.",
     techs: ["React", "Tailwind", "PHP"],
-    image: Efeesync, 
+    image: Efeesync,
     accent: "#3b82f6",
   },
   {
     title: "Warehouse GIS",
     category: "Logistics / AI",
-    description: "Enterprise-grade General Inventory System with glassmorphic dashboards, predictive stock tracking, and automated warehouse reporting.",
+    description:
+      "Enterprise-grade General Inventory System with glassmorphic dashboards, predictive stock tracking, and automated warehouse reporting.",
     techs: ["Firebase", "TypeScript", "React"],
     image: Gis,
     accent: "#8b5cf6",
@@ -29,9 +33,19 @@ const projects = [
   {
     title: "RKIA Portal",
     category: "IoT / Hardware",
-    description: "Physical computing interface connecting ESP32 sensors to a high-performance web dashboard for real-time environmental monitoring.",
+    description:
+      "Physical computing interface connecting ESP32 sensors to a high-performance web dashboard for real-time environmental monitoring.",
     techs: ["IoT", "ESP32", "Three.js"],
     image: Rkia,
+    accent: "#10b981",
+  },
+  {
+    title: "CIT Repository",
+    category: "IoT / Hardware",
+    description:
+      "Physical computing interface connecting ESP32 sensors to a high-performance web dashboard for real-time environmental monitoring.",
+    techs: ["IoT", "ESP32", "Three.js"],
+    image: Cit,
     accent: "#10b981",
   },
 ];
@@ -40,11 +54,14 @@ export function ProjectPage() {
   const [index, setIndex] = useState(0);
 
   const next = () => setIndex((prev) => (prev + 1) % projects.length);
-  const prev = () => setIndex((prev) => (prev - 1 + projects.length) % projects.length);
+  const prev = () =>
+    setIndex((prev) => (prev - 1 + projects.length) % projects.length);
 
   return (
-    <section className="relative h-screen w-full  text-white overflow-hidden flex items-center justify-center font-sans">
-      
+    <section
+      id="projects"
+      className="relative h-screen w-full  text-white overflow-hidden flex items-center justify-center font-sans"
+    >
       {/* IMMERSIVE BACKGROUND LAYER */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -55,14 +72,17 @@ export function ProjectPage() {
           transition={{ duration: 1.2 }}
           className="absolute inset-0 z-0"
         >
-          <img src={projects[index].image} className="w-full h-full object-cover blur-3xl opacity-40" alt="" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050505]/80 to-[#050505]" />
+          <img
+            src={projects[index].image}
+            className="w-full h-full object-cover blur-3xl opacity-40"
+            alt=""
+          />
+          <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#050505]/80 to-[#050505]" />
         </motion.div>
       </AnimatePresence>
 
       {/* CONTENT GRID */}
-      <div className="relative z-10 w-full max-w-[1400px] px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        
+      <div className="relative z-10 w-full max-w-350 px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         {/* LEFT SIDE: PROJECT INFO */}
         <div className="lg:col-span-5 space-y-8">
           <AnimatePresence mode="wait">
@@ -74,7 +94,7 @@ export function ProjectPage() {
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-[1px] bg-white/20" />
+                <div className="w-12 h-px bg-white/20" />
                 <span className="text-xs font-mono tracking-[0.4em] uppercase text-neutral-400">
                   Project {index + 1}
                 </span>
@@ -82,7 +102,7 @@ export function ProjectPage() {
 
               <h2 className="text-6xl lg:text-8xl font-black tracking-tighter mb-4 leading-none">
                 {projects[index].title.split(" ")[0]}
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-white to-white/20">
+                <span className="block text-transparent bg-clip-text bg-linear-to-r from-white to-white/20">
                   {projects[index].title.split(" ")[1] || "Project"}
                 </span>
               </h2>
@@ -93,7 +113,10 @@ export function ProjectPage() {
 
               <div className="flex flex-wrap gap-2 mb-10">
                 {projects[index].techs.map((tech) => (
-                  <span key={tech} className="px-4 py-1.5 bg-white/5 border border-white/10 backdrop-blur-md rounded-full text-[11px] font-bold tracking-widest uppercase text-neutral-300">
+                  <span
+                    key={tech}
+                    className="px-4 py-1.5 bg-white/5 border border-white/10 backdrop-blur-md rounded-full text-[11px] font-bold tracking-widest uppercase text-neutral-300"
+                  >
                     {tech}
                   </span>
                 ))}
@@ -109,9 +132,9 @@ export function ProjectPage() {
                   Explore <FiExternalLink />
                 </motion.a>
                 <motion.a
-                   whileHover={{ backgroundColor: "rgba(255,255,255,0.1)" }}
-                   href="#"
-                   className="p-4 rounded-full border border-white/10 text-white"
+                  whileHover={{ backgroundColor: "rgba(255,255,255,0.1)" }}
+                  href="#"
+                  className="p-4 rounded-full border border-white/10 text-white"
                 >
                   <FiGithub size={20} />
                 </motion.a>
@@ -133,9 +156,9 @@ export function ProjectPage() {
               style={{ perspective: "1000px" }}
             >
               {/* Glass Frame */}
-              <div className="absolute inset-0 bg-white/5 backdrop-blur-2xl border border-white/20 rounded-[2rem] p-3 shadow-2xl shadow-black">
-                <div className="w-full h-full rounded-[1.5rem] overflow-hidden bg-[#0a0a0a]">
-                  <motion.img 
+              <div className="absolute inset-0 bg-white/5 backdrop-blur-2xl border border-white/20 rounded-4xl p-3 shadow-2xl shadow-black">
+                <div className="w-full h-full rounded-3xl overflow-hidden bg-[#0a0a0a]">
+                  <motion.img
                     src={projects[index].image}
                     className="w-full h-full object-cover"
                     alt=""
@@ -144,13 +167,19 @@ export function ProjectPage() {
               </div>
 
               {/* Floaties */}
-              <motion.div 
+              <motion.div
                 animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
                 className="absolute -top-6 -right-6 px-6 py-4 bg-white/10 backdrop-blur-3xl border border-white/20 rounded-2xl hidden md:flex items-center gap-3"
               >
                 <div className="w-3 h-3 rounded-full bg-blue-500 animate-pulse" />
-                <span className="text-xs font-bold tracking-widest uppercase">Live Status: Active</span>
+                <span className="text-xs font-bold tracking-widest uppercase">
+                  Live Status: Active
+                </span>
               </motion.div>
             </motion.div>
           </AnimatePresence>
@@ -159,20 +188,26 @@ export function ProjectPage() {
 
       {/* FOOTER CONTROLS */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-12 z-20">
-        <button onClick={prev} className="p-4 rounded-full border border-white/10 hover:bg-white hover:text-black transition-all group">
+        <button
+          onClick={prev}
+          className="p-4 rounded-full border border-white/10 hover:bg-white hover:text-black transition-all group"
+        >
           <FiChevronLeft size={24} className="group-hover:scale-110" />
         </button>
 
         <div className="flex gap-3">
           {projects.map((_, i) => (
-            <div 
+            <div
               key={i}
               className={`h-1.5 rounded-full transition-all duration-500 ${index === i ? "w-10 bg-white" : "w-2 bg-white/20"}`}
             />
           ))}
         </div>
 
-        <button onClick={next} className="p-4 rounded-full border border-white/10 hover:bg-white hover:text-black transition-all group">
+        <button
+          onClick={next}
+          className="p-4 rounded-full border border-white/10 hover:bg-white hover:text-black transition-all group"
+        >
           <FiChevronRight size={24} className="group-hover:scale-110" />
         </button>
       </div>

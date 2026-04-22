@@ -46,7 +46,7 @@ export function MainPortfolio() {
 
   return (
     <div
-      className={`w-full min-h-screen relative transition duration-300 overflow-x-hidden ${isDark? "background-dark" : "background-light"} xt-black selection:bg-black selection:text-white`}
+      className={`w-full min-h-screen relative transition duration-300 overflow-x-hidden ${isDark ? "background-dark" : "background-light"} xt-black selection:bg-black selection:text-white`}
     >
       {/* --- Subtle Background Graphics --- */}
       <div className="fixed inset-0 pointer-events-none z-0">
@@ -90,20 +90,11 @@ export function MainPortfolio() {
       />
       {/* --- Skill Section --- */}
 
-      <SkillPage
-        containerVariants={containerVariants}
-        revealVariant={revealVariant}
-      />
+      <SkillPage />
 
       {/* --- Project Section --- */}
-      <ProjectPage
-        containerVariants={containerVariants}
-        revealVariant={revealVariant}
-      />
-      <TestimonialPage
-        containerVariants={containerVariants}
-        revealVariant={revealVariant}
-      />
+      <ProjectPage />
+      <TestimonialPage />
     </div>
   );
 }
