@@ -167,13 +167,7 @@ export default function Footer({ revealVariant }: FooterProps) {
           )}
         </AnimatePresence>
 
-        {/* Avatar Bubble */}
-        <div className="relative w-14 h-14 rounded-full p-0.5 bg-linear-to-r from-gray-200 to-gray-400 shadow-2xl">
-          <div className="w-full h-full rounded-full bg-[#0a0a0a] border border-zinc-900 flex items-center justify-center overflow-hidden">
-            <div className="font-bold text-white text-xl">M</div>
-          </div>
-          <span className="absolute top-1 right-1 w-3 h-3 bg-emerald-500 rounded-full border-2 border-zinc-900"></span>
-        </div>
+       
       </div>
     </footer>
   );

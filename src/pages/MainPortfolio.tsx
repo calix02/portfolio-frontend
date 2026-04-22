@@ -1,7 +1,7 @@
 import { Header } from "@/component/Header";
 import { SplashScreen } from "@/component/SplashScreen";
 import type { Variants } from "framer-motion";
-import { useState } from "react";
+import {  useState } from "react";
 import { FiSun } from "react-icons/fi";
 import { MdOutlineDarkMode } from "react-icons/md";
 import { AboutPage } from "./AboutPage";
