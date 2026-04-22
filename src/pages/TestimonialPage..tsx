@@ -58,7 +58,7 @@ const MarqueeRow = ({
 
   return (
     <div
-      className="flex overflow-hidden group relative py-4"
+      className="flex overflow-hidden group relative py-4  mx-30"
       /* This mask creates a smooth fade at the edges (15% in from each side).
          It makes the "container" invisible while the cards slide through it.
       */
