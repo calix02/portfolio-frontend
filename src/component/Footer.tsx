@@ -1,14 +1,14 @@
-import { AnimatePresence, motion, type Variants } from "framer-motion";
 import Logo from "@/assets/logo.svg";
-import { 
-  FaGithub, 
-  FaLinkedinIn, 
-  FaFacebookF, 
-  FaInstagram,
-  FaRegEnvelope,
-  FaArrowUp
-} from "react-icons/fa6";
+import { AnimatePresence, motion, type Variants } from "framer-motion";
 import { useEffect, useState } from "react";
+import {
+  FaArrowUp,
+  FaFacebookF,
+  FaGithub,
+  FaInstagram,
+  FaLinkedinIn,
+  FaRegEnvelope,
+} from "react-icons/fa6";
 
 interface FooterProps {
   revealVariant: Variants;
@@ -44,29 +44,31 @@ export default function Footer({ revealVariant }: FooterProps) {
 
       {/* Main Footer Content */}
       <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-gray-400">
-        
         {/* Column 1: Logo, Description, and Socials */}
         <motion.div variants={revealVariant} className="space-y-6">
           <div className="flex items-center gap-2">
             <img src={Logo} className="h-20" alt="" />
             <h2 className="text-2xl font-bold text-white tracking-tight">
-                MARK ALVARADO
+              MARK ALVARADO
             </h2>
           </div>
           <p className="max-w-xs text-sm leading-relaxed text-zinc-500">
-            Where Design, Art, and Technology Connect. We build digital products that leave a lasting impression.
+            Where Design, Art, and Technology Connect. We build digital products
+            that leave a lasting impression.
           </p>
           <div className="flex gap-4">
-            {[FaGithub, FaLinkedinIn, FaFacebookF, FaInstagram].map((Icon, index) => (
-              <motion.a
-                key={index}
-                href="#"
-                whileHover={{ y: -3 }}
-                className="w-10 h-10 flex items-center justify-center rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-600 hover:text-white hover:border-zinc-700 transition-all"
-              >
-                <Icon size={16} />
-              </motion.a>
-            ))}
+            {[FaGithub, FaLinkedinIn, FaFacebookF, FaInstagram].map(
+              (Icon, index) => (
+                <motion.a
+                  key={index}
+                  href="#"
+                  whileHover={{ y: -3 }}
+                  className="w-10 h-10 flex items-center justify-center rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-600 hover:text-white hover:border-zinc-700 transition-all"
+                >
+                  <Icon size={16} />
+                </motion.a>
+              ),
+            )}
           </div>
         </motion.div>
 
@@ -77,9 +79,19 @@ export default function Footer({ revealVariant }: FooterProps) {
             <span className="absolute -bottom-1 left-0 w-8 h-0.5 bg-gray-500 rounded-full"></span>
           </h4>
           <ul className="space-y-3 text-sm">
-            {['Home', 'About', 'Skills', 'Projects', 'Testimonial', 'Contact'].map(link => (
+            {[
+              "Home",
+              "About",
+              "Skills",
+              "Projects",
+              "Testimonial",
+              "Contact",
+            ].map((link) => (
               <li key={link}>
-                <a href="#" className="hover:text-white transition-colors">
+                <a
+                  href={`#${link.toLowerCase()}`}
+                  className="hover:text-white transition-colors"
+                >
                   {link}
                 </a>
               </li>
@@ -95,12 +107,12 @@ export default function Footer({ revealVariant }: FooterProps) {
           </h4>
           <ul className="space-y-3 text-sm">
             {[
-              'Modern UI/UX Design',
-              'Modern Web Experiences',
-              'Brand Identity Design',
-              'Full-stack Development',
-              'Creative Technology'
-            ].map(expertise => (
+              "Modern UI/UX Design",
+              "Modern Web Experiences",
+              "Brand Identity Design",
+              "Full-stack Development",
+              "Creative Technology",
+            ].map((expertise) => (
               <li key={expertise} className="flex items-center gap-2">
                 <span className="text-zinc-700">•</span>
                 <span>{expertise}</span>
@@ -116,18 +128,21 @@ export default function Footer({ revealVariant }: FooterProps) {
             <span className="absolute -bottom-1 left-0 w-8 h-0.5 bg-gray-500 rounded-full"></span>
           </h4>
           <p className="max-w-xs text-sm leading-relaxed text-zinc-500">
-            Got a project? Drop us a line and let's create something extraordinary together.
+            Got a project? Drop us a line and let's create something
+            extraordinary together.
           </p>
-          
+
           {/* Contact Card (Silver Gray Theme) */}
           <div className="flex items-center gap-5 p-5 bg-zinc-900 rounded-2xl border border-zinc-800 transition-colors hover:border-gray-700">
             <div className="p-3.5 rounded-xl bg-zinc-800 border border-zinc-700 text-gray-400">
               <FaRegEnvelope size={18} />
             </div>
             <div>
-              <p className="text-xs uppercase tracking-widest text-gray-500 font-bold">Contact Us</p>
+              <p className="text-xs uppercase tracking-widest text-gray-500 font-bold">
+                Contact Us
+              </p>
               <p className="text-white font-semibold text-sm truncate max-w-37.5">
-                mcvincentparedes...
+                markalvarado...
               </p>
             </div>
           </div>
@@ -135,13 +150,22 @@ export default function Footer({ revealVariant }: FooterProps) {
       </div>
 
       {/* --- Bottom Footer Row --- */}
-      <motion.div variants={revealVariant} className="relative z-10 mt-16 pt-6 border-t border-zinc-900 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-zinc-600">
+      <motion.div
+        variants={revealVariant}
+        className="relative z-10 mt-16 pt-6 border-t border-zinc-900 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-zinc-600"
+      >
         <p>
-          &copy; {currentYear} <span className="font-semibold text-zinc-400">MVP VISUALS</span> Designed with ♥ by me.
+          &copy; {currentYear}{" "}
+          <span className="font-semibold text-zinc-400">MARK ALVARADO</span>{" "}
+          Developed with ♥ by me.
         </p>
         <div className="flex items-center gap-6 uppercase tracking-[0.2em] font-medium">
-          {['Privacy', 'Terms', 'Cookie Policy'].map(item => (
-            <a key={item} href="#" className="hover:text-white transition-colors">
+          {["Privacy", "Terms", "Cookie Policy"].map((item) => (
+            <a
+              key={item}
+              href="#"
+              className="hover:text-white transition-colors"
+            >
               {item}
             </a>
           ))}
@@ -149,7 +173,7 @@ export default function Footer({ revealVariant }: FooterProps) {
       </motion.div>
 
       {/* --- Right Side Floating Elements from Image --- */}
-     <div className="fixed bottom-10 right-10 z-50 flex flex-col items-center gap-4">
+      <div className="fixed bottom-23 right-8 z-50 flex flex-col items-center gap-4">
         {/* Scroll To Top Button */}
         <AnimatePresence>
           {isVisible && (
@@ -166,8 +190,6 @@ export default function Footer({ revealVariant }: FooterProps) {
             </motion.button>
           )}
         </AnimatePresence>
-
-       
       </div>
     </footer>
   );

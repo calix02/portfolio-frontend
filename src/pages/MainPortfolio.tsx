@@ -1,16 +1,16 @@
+import Footer from "@/component/Footer";
 import { Header } from "@/component/Header";
 import { SplashScreen } from "@/component/SplashScreen";
 import type { Variants } from "framer-motion";
-import {  useState } from "react";
+import { useState } from "react";
 import { FiSun } from "react-icons/fi";
 import { MdOutlineDarkMode } from "react-icons/md";
 import { AboutPage } from "./AboutPage";
+import ContactPage from "./ContactPage";
 import HomePage from "./HomePage";
 import { ProjectPage } from "./ProjectPage";
 import { SkillPage } from "./SkillPage";
 import { TestimonialPage } from "./TestimonialPage.";
-import ContactPage from "./ContactPage";
-import Footer from "@/component/Footer";
 
 export function MainPortfolio() {
   const [isDark, setIsDark] = useState<boolean>(true);
@@ -48,7 +48,7 @@ export function MainPortfolio() {
 
   return (
     <div
-      className={`w-full min-h-screen relative transition duration-300 overflow-x-hidden ${isDark ? "background-dark" : "background-light"} xt-black selection:bg-black selection:text-white`}
+      className={`w-full min-h-screen relative transition duration-300 overflow-x-hidden ${isDark ? "bg-[#050505]" : "background-light"} xt-black selection:bg-black selection:text-white`}
     >
       {/* --- Subtle Background Graphics --- */}
       <div className="fixed inset-0 pointer-events-none z-0">
@@ -73,7 +73,6 @@ export function MainPortfolio() {
       </div>
 
       <Header
-      
         textColor={isDark ? "text-gray-300" : "text-gray-500"}
         toggleDark={toggleDark}
         Icon={isDark ? FiSun : MdOutlineDarkMode}
@@ -88,6 +87,8 @@ export function MainPortfolio() {
 
       {/* --- About Section --- */}
       <AboutPage
+        highlightColor={isDark ? "text-white" : "text-gray-900"}
+        textColor={isDark ? "text-gray-400" : "text-gray-700"}
         containerVariants={containerVariants}
         revealVariant={revealVariant}
       />
@@ -98,8 +99,12 @@ export function MainPortfolio() {
       {/* --- Project Section --- */}
       <ProjectPage />
       <TestimonialPage />
-      <ContactPage revealVariant={revealVariant} containerVariants={containerVariants} textColor="text-gray-700"/>
-      <Footer revealVariant={revealVariant}/>
+      <ContactPage
+        revealVariant={revealVariant}
+        containerVariants={containerVariants}
+        textColor={isDark ? "text-gray-300" : "text-gray-700"}
+      />
+      <Footer revealVariant={revealVariant} />
     </div>
   );
 }

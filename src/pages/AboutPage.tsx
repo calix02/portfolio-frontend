@@ -1,21 +1,28 @@
-import { motion, type Variants } from "framer-motion";
 import Me from "@/assets/me.svg";
-import { RiVerifiedBadgeFill } from "react-icons/ri";
-import {
-  FaUserCircle,
-  FaMapMarkerAlt,
-  FaCode,
-  FaBriefcase,
-} from "react-icons/fa";
-import { IoRibbonSharp } from "react-icons/io5";
 import CircularGallery from "@/component/CircularGallery";
 import StarBorder from "@/component/StarBorder";
+import { motion, type Variants } from "framer-motion";
+import {
+  FaBriefcase,
+  FaCode,
+  FaMapMarkerAlt,
+  FaUserCircle,
+} from "react-icons/fa";
+import { IoRibbonSharp } from "react-icons/io5";
+import { RiVerifiedBadgeFill } from "react-icons/ri";
 
 interface HomePageProps {
   containerVariants: Variants;
   revealVariant: Variants;
+  textColor: string;
+  highlightColor: string;
 }
-export function AboutPage({ containerVariants, revealVariant }: HomePageProps) {
+export function AboutPage({
+  containerVariants,
+  revealVariant,
+  textColor,
+  highlightColor,
+}: HomePageProps) {
   // Mock Experience Data
   const experiences = [
     {
@@ -157,10 +164,12 @@ export function AboutPage({ containerVariants, revealVariant }: HomePageProps) {
           </motion.h2>
           <motion.p
             variants={revealVariant}
-            className="text-gray-700 leading-relaxed text-xl font-light"
+            className={`${textColor} leading-relaxed text-xl font-light`}
           >
             I am a passionate{" "}
-            <span className="text-black font-semibold underline decoration-blue-500/30 underline-offset-4">
+            <span
+              className={`${highlightColor} font-semibold underline decoration-blue-500/30 underline-offset-4`}
+            >
               Full Stack Developer
             </span>{" "}
             dedicated to building digital experiences that are both functional
@@ -168,10 +177,10 @@ export function AboutPage({ containerVariants, revealVariant }: HomePageProps) {
           </motion.p>
           <motion.p
             variants={revealVariant}
-            className="text-gray-600 leading-relaxed text-lg"
+            className={`${textColor} leading-relaxed text-lg`}
           >
             With a focus on modern web technologies like{" "}
-            <span className="font-medium text-gray-900">
+            <span className={`${highlightColor} font-medium `}>
               React, TypeScript, and Framer Motion
             </span>
             , I bridge the gap between complex logic and intuitive UI.
