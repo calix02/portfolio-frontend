@@ -38,7 +38,7 @@ export default function Footer({ revealVariant }: FooterProps) {
       {/* Background Watermark Text from Image (MVP VISUALS) */}
       <div className="absolute inset-0 z-0 overflow-hidden select-none pointer-events-none opacity-[0.03]">
         <span className="absolute left-[-5%] top-[10%] text-[25vw] font-black leading-none text-white whitespace-nowrap">
-          MVP VISUALS
+          MARK ALVARADO
         </span>
       </div>
 

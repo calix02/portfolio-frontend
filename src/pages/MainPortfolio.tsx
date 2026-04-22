@@ -73,6 +73,7 @@ export function MainPortfolio() {
       </div>
 
       <Header
+      
         textColor={isDark ? "text-gray-300" : "text-gray-500"}
         toggleDark={toggleDark}
         Icon={isDark ? FiSun : MdOutlineDarkMode}
