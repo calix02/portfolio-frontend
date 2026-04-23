@@ -61,7 +61,7 @@ export function SplashScreen({ onComplete }: { onComplete: () => void }) {
             y: [0, -20, 0],
           }}
           transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-emerald-600/10 blur-[150px]"
+          className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-blue-600/10 blur-[150px]"
         />
         <motion.div
           animate={{
@@ -92,7 +92,7 @@ export function SplashScreen({ onComplete }: { onComplete: () => void }) {
           <motion.div
             animate={{ rotate: -360 }}
             transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-            className="absolute -inset-10 border border-emerald-500/10 rounded-full border-dashed"
+            className="absolute -inset-10 border border-blue-500/10 rounded-full border-dashed"
           />
 
           <img
@@ -116,7 +116,7 @@ export function SplashScreen({ onComplete }: { onComplete: () => void }) {
           initial={{ width: 0 }}
           animate={{ width: "40px" }}
           transition={{ duration: 1, delay: 1 }}
-          className="h-[1px] bg-emerald-500/60 mt-4"
+          className="h-px bg-blue-500 mt-4"
         />
       </div>
 
@@ -129,7 +129,7 @@ export function SplashScreen({ onComplete }: { onComplete: () => void }) {
               initial={{ opacity: 0, y: 5 }}
               animate={{ opacity: 0.5, y: 0 }}
               exit={{ opacity: 0, y: -5 }}
-              className="text-[9px] uppercase tracking-widest font-medium text-emerald-400"
+              className="text-[9px] uppercase tracking-widest font-medium text-blue-400"
             >
               {status}
             </motion.span>
@@ -139,9 +139,9 @@ export function SplashScreen({ onComplete }: { onComplete: () => void }) {
           </span>
         </div>
 
-        <div className="h-[2px] w-full bg-white/5 rounded-full overflow-hidden">
+        <div className="h-0.5 w-full bg-white/5 rounded-full overflow-hidden">
           <motion.div
-            className="h-full bg-emerald-500"
+            className="h-full bg-blue-500"
             initial={{ width: "0%" }}
             animate={{ width: `${loadingProgress}%` }}
             transition={{ ease: "circOut" }}
@@ -152,15 +152,15 @@ export function SplashScreen({ onComplete }: { onComplete: () => void }) {
       {/* 4. Decorative Technical HUD Elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-8 left-8 flex flex-col gap-2">
-          <div className="w-8 h-[1px] bg-white/20" />
-          <div className="w-1 h-1 bg-emerald-500 rounded-full" />
+          <div className="w-8 h-px bg-white/20" />
+          <div className="w-1 h-1 bg-blue-500 rounded-full" />
         </div>
         <div className="absolute bottom-8 right-8 flex flex-col items-end gap-2">
-          <div className="w-1 h-1 bg-emerald-500 rounded-full" />
-          <div className="w-8 h-[1px] bg-white/20" />
+          <div className="w-1 h-1 bg-blue-500 rounded-full" />
+          <div className="w-8 h-px bg-white/20" />
         </div>
         {/* Subtle Scanline Effect */}
-        <div className="absolute inset-0 bg-linear-to-b from-transparent via-white/[0.02] to-transparent h-[2px] w-full top-0 animate-scanline" />
+        <div className="absolute inset-0 bg-linear-to-b from-transparent via-white/2 to-transparent h-0.5 w-full top-0 animate-scanline" />
       </div>
     </motion.div>
   );

@@ -74,7 +74,7 @@ export function MainPortfolio() {
       {/* The Login Modal Overlay */}
       <AnimatePresence>
         {showLogin && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm">
+          <div className="fixed inset-0 z-100 flex items-center justify-center bg-black/80 backdrop-blur-sm">
             {/* Close button for mouse users */}
             <button
               onClick={() => setShowLogin(false)}
@@ -120,6 +120,7 @@ export function MainPortfolio() {
 
       {/* --- Home Section --- */}
       <HomePage
+      highlightColor={isDark ? "text-gray-600" : "text-black"}
         textColor={isDark ? "text-gray-300" : "text-gray-600"}
         containerVariants={containerVariants}
         revealVariant={revealVariant}

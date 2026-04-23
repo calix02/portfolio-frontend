@@ -1,4 +1,4 @@
-import Me from "@/assets/me.svg";
+import Me from "@/assets/cartoon_me.svg";
 import CircularGallery from "@/component/CircularGallery";
 import StarBorder from "@/component/StarBorder";
 import { motion, type Variants } from "framer-motion";

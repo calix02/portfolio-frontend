@@ -1,16 +1,18 @@
-import Me from "@/assets/me.svg";
+import Me from "@/assets/cartoon_me.svg";
 import { motion, type Variants } from "framer-motion";
 import { FaDownload, FaRegEnvelope } from "react-icons/fa6";
 interface HomePageProps {
   containerVariants: Variants;
   revealVariant: Variants;
   textColor: string;
+  highlightColor: string;
 }
 
 export default function HomePage({
   containerVariants,
   revealVariant,
   textColor,
+  highlightColor
 }: HomePageProps) {
   return (
     <motion.section
@@ -40,11 +42,11 @@ export default function HomePage({
         >
           Crafting high-performance web applications and IoT solutions with a
           focus on{" "}
-          <span className="text-black font-semibold underline underline-offset-4 decoration-black/10">
+          <span className={` ${highlightColor} font-semibold underline underline-offset-4 decoration-black/10`}>
             clean aesthetics
           </span>{" "}
           and{" "}
-          <span className="text-black font-semibold underline underline-offset-4 decoration-black/10">
+          <span className={`${highlightColor} font-semibold underline underline-offset-4 decoration-black/10`}>
             seamless user experience.
           </span>
         </motion.p>
