@@ -5,6 +5,7 @@ import {
   FaUser,
 } from "react-icons/fa6";
 import Logo from "@/assets/logo.svg";
+import {useNavigate} from "react-router-dom"
 
 interface LoginPageProps {
   containerVariants: Variants;
@@ -23,6 +24,12 @@ export default function LoginPage({
     transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } 
   }
 };
+
+const navigate = useNavigate();
+
+const handleLogIn = () => {
+  navigate("/dashboard");
+}
 
   return (
     <motion.section
@@ -111,6 +118,7 @@ export default function LoginPage({
             {/* Main Action */}
             <motion.div variants={formItemVariants}>
               <motion.button
+              onClick={handleLogIn}
                 whileHover={{ scale: 1.01, translateY: -2 }}
                 whileTap={{ scale: 0.99 }}
                 className="w-full py-4 mt-2 bg-white text-black font-bold rounded-2xl flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(255,255,255,0.1)] hover:shadow-emerald-500/20 transition-all"
