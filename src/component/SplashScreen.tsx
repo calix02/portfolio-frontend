@@ -1,42 +1,49 @@
-import { motion} from "framer-motion";
-import { useEffect, useState } from "react";
+import Logo from "@/assets/logo.svg";
 import type { Variants } from "framer-motion";
-import Logo from "@/assets/logo.svg"; 
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
+const getStatus = (progress: number) => {
+  if (progress > 80) return "Finalizing Assets...";
+  if (progress > 40) return "Configuring Systems...";
+  if (progress > 10) return "Loading Core Modules...";
+  return "Initializing...";
+};
 
 export function SplashScreen({ onComplete }: { onComplete: () => void }) {
   const [loadingProgress, setLoadingProgress] = useState(0);
+  const status = getStatus(loadingProgress); //
 
   useEffect(() => {
     const timer = setInterval(() => {
       setLoadingProgress((prev) => {
         if (prev >= 100) {
           clearInterval(timer);
-          setTimeout(onComplete, 800); // Slightly longer for the exit animation to breathe
+          setTimeout(onComplete, 1000);
           return 100;
         }
-        // Use a smaller, more frequent increment for "liquid" smoothness
-        const increment = Math.random() * 8; 
+        const increment = Math.random() * 12;
         return Math.min(prev + increment, 100);
       });
-    }, 150); 
+    }, 120);
 
     return () => clearInterval(timer);
   }, [onComplete]);
 
   const containerVariants: Variants = {
     exit: {
-      y: "-100%",
-      transition: { duration: 0.9, ease: [0.85, 0, 0.15, 1] }
-    }
+      clipPath: "inset(0% 0% 100% 0%)",
+      transition: { duration: 1.1, ease: [0.77, 0, 0.175, 1] },
+    },
   };
 
-  const childVariants: Variants = {
-    initial: { opacity: 0, y: 20 },
-    animate: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
-    }
+  const logoVariants: Variants = {
+    initial: { scale: 0.8, opacity: 0, filter: "blur(10px)" },
+    animate: {
+      scale: 1,
+      opacity: 1,
+      filter: "blur(0px)",
+      transition: { duration: 1.2, ease: "easeOut" },
+    },
   };
 
   return (
@@ -44,96 +51,117 @@ export function SplashScreen({ onComplete }: { onComplete: () => void }) {
       variants={containerVariants}
       initial="initial"
       exit="exit"
-      className="fixed inset-0 z-100 flex flex-col items-center justify-center background-dark text-white overflow-hidden"
+      className="fixed inset-0 z-9999 flex flex-col items-center justify-center bg-[#050505] text-white overflow-hidden"
     >
-      {/* 1. Dynamic Background: Glassmorphic Glows */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div 
-          animate={{ 
-            scale: [1, 1.2, 1],
-            opacity: [0.05, 0.1, 0.05] 
+      {/* 1. Enhanced Background: Animated Mesh + Grain */}
+      <div className="absolute inset-0 z-0">
+        <motion.div
+          animate={{
+            x: [0, 20, 0],
+            y: [0, -20, 0],
           }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] rounded-full bg-emerald-500/20 blur-[120px]" 
+          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-emerald-600/10 blur-[150px]"
         />
-        <motion.div 
-          animate={{ 
-            scale: [1.2, 1, 1.2],
-            opacity: [0.03, 0.08, 0.03] 
+        <motion.div
+          animate={{
+            x: [0, -30, 0],
+            y: [0, 30, 0],
           }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -bottom-[10%] -right-[10%] w-[50%] h-[50%] rounded-full bg-blue-600/10 blur-[120px]" 
+          transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+          className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-blue-500/10 blur-[150px]"
         />
+        {/* Grain Overlay */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
       </div>
 
       {/* 2. Branding Section */}
-      <motion.div 
-        className="relative z-10 flex flex-col items-center mb-12"
-        variants={childVariants}
-        animate="animate"
-        initial="initial"
-      >
-        <div className="relative group">
-          {/* Subtle glow behind logo */}
-          <div className="absolute inset-0 bg-white/5 blur-2xl rounded-full scale-150 transition-transform duration-700 group-hover:scale-110" />
-          <motion.img
+      <div className="relative z-10 flex flex-col items-center mb-16">
+        <motion.div
+          variants={logoVariants}
+          initial="initial"
+          animate="animate"
+          className="relative mb-8"
+        >
+          {/* Outer Ring Animation */}
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+            className="absolute -inset-6 border border-white/5 rounded-full"
+          />
+          <motion.div
+            animate={{ rotate: -360 }}
+            transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+            className="absolute -inset-10 border border-emerald-500/10 rounded-full border-dashed"
+          />
+
+          <img
             src={Logo}
             alt="Logo"
-            className="h-24 md:h-28 w-auto mb-8 relative z-10 object-contain brightness-125 transition-all duration-500"
-            style={{ filter: "drop-shadow(0 0 20px rgba(255,255,255,0.1))" }}
+            className="h-20 md:h-24 w-auto relative z-10 brightness-150 drop-shadow-[0_0_30px_rgba(16,185,129,0.3)]"
           />
-        </div>
-        
-        <motion.h2 
-          className="text-white tracking-[0.8em] uppercase text-[12px] md:text-[14px] font-extralight mb-2"
-          initial={{ letterSpacing: "0.2em", opacity: 0 }}
-          animate={{ letterSpacing: "0.8em", opacity: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-        >
-          Mark Alvarado
-        </motion.h2>
-        <span className="h-px w-8 bg-emerald-500/50" />
-      </motion.div>
+        </motion.div>
 
-      {/* 3. The Modern Loading Engine */}
-      <div className="relative z-10 w-72 md:w-96 flex flex-col items-center">
-        {/* Loading Track */}
-        <div className="w-full h-0.75 bg-white/5 rounded-full overflow-hidden backdrop-blur-sm border border-white/5 relative">
-          {/* Liquid Progress Fill */}
-          <motion.div
-            className="absolute inset-y-0 left-0 bg-linear-to-r from-emerald-500 via-emerald-200 to-white shadow-[0_0_15px_rgba(16,185,129,0.5)]"
-            initial={{ width: "0%" }}
-            animate={{ width: `${loadingProgress}%` }}
-            transition={{ ease: [0.22, 1, 0.36, 1] }}
-          />
-          
-          {/* Shimmer Effect */}
-          <motion.div 
-            className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent"
-            animate={{ x: ['-100%', '200%'] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-          />
-        </div>
-
-        {/* Status Info */}
-        <div className="w-full flex justify-between mt-4 px-1">
-          <motion.span 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.4 }}
-            className="text-[10px] uppercase tracking-[0.2em] font-medium"
+        <div className="overflow-hidden">
+          <motion.h2
+            className="text-white tracking-[1em] uppercase text-[10px] md:text-[12px] font-light"
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
           >
-            System Init
-          </motion.span>
-          
-          <span className="text-[10px] font-mono opacity-60 tabular-nums">
+            Mark Alvarado
+          </motion.h2>
+        </div>
+        <motion.div
+          initial={{ width: 0 }}
+          animate={{ width: "40px" }}
+          transition={{ duration: 1, delay: 1 }}
+          className="h-[1px] bg-emerald-500/60 mt-4"
+        />
+      </div>
+
+      {/* 3. The Minimalist Loading Engine */}
+      <div className="relative z-10 w-64 md:w-80">
+        <div className="flex justify-between items-end mb-2 px-1">
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={status}
+              initial={{ opacity: 0, y: 5 }}
+              animate={{ opacity: 0.5, y: 0 }}
+              exit={{ opacity: 0, y: -5 }}
+              className="text-[9px] uppercase tracking-widest font-medium text-emerald-400"
+            >
+              {status}
+            </motion.span>
+          </AnimatePresence>
+          <span className="text-[10px] font-mono opacity-40 tabular-nums">
             {Math.round(loadingProgress)}%
           </span>
         </div>
+
+        <div className="h-[2px] w-full bg-white/5 rounded-full overflow-hidden">
+          <motion.div
+            className="h-full bg-emerald-500"
+            initial={{ width: "0%" }}
+            animate={{ width: `${loadingProgress}%` }}
+            transition={{ ease: "circOut" }}
+          />
+        </div>
       </div>
-      
-      {/* Decorative Corners */}
-      <div className="absolute top-10 left-10 w-4 h-4 border-t border-l border-white/10" />
-      <div className="absolute bottom-10 right-10 w-4 h-4 border-b border-r border-white/10" />
+
+      {/* 4. Decorative Technical HUD Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-8 left-8 flex flex-col gap-2">
+          <div className="w-8 h-[1px] bg-white/20" />
+          <div className="w-1 h-1 bg-emerald-500 rounded-full" />
+        </div>
+        <div className="absolute bottom-8 right-8 flex flex-col items-end gap-2">
+          <div className="w-1 h-1 bg-emerald-500 rounded-full" />
+          <div className="w-8 h-[1px] bg-white/20" />
+        </div>
+        {/* Subtle Scanline Effect */}
+        <div className="absolute inset-0 bg-linear-to-b from-transparent via-white/[0.02] to-transparent h-[2px] w-full top-0 animate-scanline" />
+      </div>
     </motion.div>
   );
 }

@@ -1,19 +1,40 @@
 import Footer from "@/component/Footer";
 import { Header } from "@/component/Header";
 import { SplashScreen } from "@/component/SplashScreen";
-import type { Variants } from "framer-motion";
-import { useState } from "react";
+import { AnimatePresence, type Variants } from "framer-motion";
+import { useEffect, useState } from "react";
 import { FiSun } from "react-icons/fi";
 import { MdOutlineDarkMode } from "react-icons/md";
 import { AboutPage } from "./AboutPage";
 import ContactPage from "./ContactPage";
 import HomePage from "./HomePage";
+import LoginPage from "./LogInPage";
 import { ProjectPage } from "./ProjectPage";
 import { SkillPage } from "./SkillPage";
 import { TestimonialPage } from "./TestimonialPage.";
 
 export function MainPortfolio() {
   const [isDark, setIsDark] = useState<boolean>(true);
+  const [showLogin, setShowLogin] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      // Check if Ctrl is pressed AND the key is 'a'
+      // Note: use event.preventDefault() to stop the default "Select All" behavior
+      if (event.ctrlKey && event.key.toLowerCase() === "a") {
+        event.preventDefault();
+        setShowLogin((prev) => !prev);
+      }
+
+      // Close on Escape key
+      if (event.key === "Escape") {
+        setShowLogin(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   const toggleDark = () => {
     setIsDark(!isDark);
@@ -50,6 +71,25 @@ export function MainPortfolio() {
     <div
       className={`w-full min-h-screen relative transition duration-300 overflow-x-hidden ${isDark ? "bg-[#050505]" : "background-light"} xt-black selection:bg-black selection:text-white`}
     >
+      {/* The Login Modal Overlay */}
+      <AnimatePresence>
+        {showLogin && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm">
+            {/* Close button for mouse users */}
+            <button
+              onClick={() => setShowLogin(false)}
+              className="absolute top-10 right-10 text-zinc-500 hover:text-white transition-colors"
+            >
+              Esc to close
+            </button>
+
+            <LoginPage
+              containerVariants={containerVariants}
+              revealVariant={revealVariant}
+            />
+          </div>
+        )}
+      </AnimatePresence>
       {/* --- Subtle Background Graphics --- */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div
