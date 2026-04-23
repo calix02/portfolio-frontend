@@ -2,6 +2,8 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import { MainPortfolio } from "./pages/MainPortfolio";
 import { useEffect } from "react"
 import { Dashboard } from "./pages/admin-pages/Dashboard";
+import { Home } from "./pages/admin-pages/Home";
+
 
 // ✅ Moved outside the component — created only once
 const router = createBrowserRouter([ 
@@ -12,7 +14,11 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     Component: Dashboard
-  }
+  },
+   {
+    path: "/home",
+    Component: Home
+  },
 ]); 
 
 function App() { 
