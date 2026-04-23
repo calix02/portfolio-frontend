@@ -27,7 +27,7 @@ export default function ContactPage({
       whileInView="whileInView"
       viewport={{ once: false, amount: 0.2 }}
       variants={containerVariants}
-      className="relative z-10 min-h-screen w-full flex flex-col lg:flex-row items-center justify-between px-6 md:px-12 lg:px-24 py-32 bg-[#0a0a0a]"
+      className="relative z-10 min-h-screen w-full flex flex-col lg:flex-row items-center justify-between px-6 md:px-12 lg:px-24 py-32 "
     >
       {/* --- Left Side: Information --- */}
       <div className="w-full lg:w-1/2 flex flex-col justify-center space-y-10 text-left">

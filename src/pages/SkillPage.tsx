@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import GlareHover from "@/component/GlareHover";
+import { motion, type Variants } from "framer-motion";
 import { Cloud, Code2, Database, Terminal } from "lucide-react";
 
 const SKILL_CATEGORIES = [
@@ -59,12 +60,27 @@ const SKILL_CATEGORIES = [
     ],
   },
 ];
-
-export function SkillPage() {
+interface AboutPageProps {
+  containerVariants: Variants;
+  revealVariant: Variants;
+  textColor: string;
+  highlightColor: string;
+  bgColor: string;
+  borderColor: string;
+}
+export function SkillPage({
+  textColor,
+  highlightColor,
+  bgColor,
+  borderColor,
+  containerVariants,
+  revealVariant,
+}: AboutPageProps) {
   return (
     <motion.section
       id="skills"
       initial="initial"
+      variants={containerVariants}
       whileInView="whileInView"
       viewport={{ once: true, amount: 0.1 }}
       className="relative min-h-screen w-full  text-white flex flex-col items-center justify-center px-6 md:px-12 py-32 overflow-hidden"
@@ -72,16 +88,21 @@ export function SkillPage() {
       <div className="max-w-7xl w-full relative z-10">
         {/* Header with Glass Detail */}
         <div className="mb-20 space-y-6">
-          <motion.div className="flex items-center gap-3">
+          <motion.div
+            variants={revealVariant}
+            className="flex items-center gap-3"
+          >
             <div className="h-px w-12 bg-white/20" />
             <span className="text-xs font-mono tracking-[0.4em] uppercase text-blue-500">
               Stack & Capabilities
             </span>
           </motion.div>
 
-          <motion.h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-tight">
+          <motion.h2
+            className={`text-5xl bg-linear-to-b from-gray-200 to-gray-800 bg-clip-text text-transparent md:text-7xl font-black tracking-tighter leading-tight`}
+          >
             Powering the <br />
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-white via-white/80 to-white/20">
+            <span className="bg-linear-to-b from-gray-200 to-black bg-clip-text text-transparent">
               Next Generation
             </span>
           </motion.h2>
@@ -98,11 +119,20 @@ export function SkillPage() {
             >
               {/* Card Background Glow */}
               <div
-                className="absolute inset-0 rounded-[2.5rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                className={` absolute inset-0 rounded-[2.5rem] blur-2xl opacity-0  group-hover:opacity-100 transition-opacity duration-500`}
                 style={{ backgroundColor: category.glow }}
               />
-
-              <div className="relative h-full p-8 md:p-10 rounded-[2.5rem] border border-white/10 bg-white/5 backdrop-blur-3xl overflow-hidden">
+              <GlareHover
+                glareColor="#ffffff"
+                glareOpacity={0.3}
+                glareAngle={-30}
+                glareSize={300}
+                transitionDuration={800}
+                playOnce={false}
+                className="relative flex justify-center flex-col px-10"
+                background={bgColor}
+                borderColor={borderColor}
+              >
                 {/* Decorative Icon Background */}
                 <div className="absolute -top-12 -right-12 text-white/3scale-[4] rotate-12 group-hover:rotate-0 transition-transform duration-700">
                   {category.icon}
@@ -118,24 +148,30 @@ export function SkillPage() {
                     <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
                       Efficiency
                     </span>
-                    <span className="text-sm font-bold text-white">95%</span>
+                    <span className="text-sm font-bold text-blue-500">95%</span>
                   </div>
                 </div>
 
-                <h3 className="text-3xl font-bold mb-4">{category.title}</h3>
-                <p className="text-neutral-400 text-sm leading-relaxed mb-8 max-w-xs">
+                <h3 className={`${highlightColor} text-3xl font-bold mb-4`}>
+                  {category.title}
+                </h3>
+                <p
+                  className={`${textColor} text-sm leading-relaxed mb-8 max-w-xs`}
+                >
                   {category.description}
                 </p>
 
                 {/* Skill Chips */}
-                <div className="flex flex-wrap gap-3">
+                <div className={`flex flex-wrap gap-3`}>
                   {category.skills.map((skill) => (
                     <div
                       key={skill.name}
                       className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:border-white/30 transition-all cursor-default group/skill"
                     >
                       <div className="flex items-center gap-2">
-                        <span className="text-sm font-medium text-neutral-300 group-hover/skill:text-white">
+                        <span
+                          className={` ${textColor}  text-sm font-medium group-hover/skill:text-white]`}
+                        >
                           {skill.name}
                         </span>
                         <div
@@ -145,7 +181,7 @@ export function SkillPage() {
                     </div>
                   ))}
                 </div>
-              </div>
+              </GlareHover>
             </motion.div>
           ))}
         </div>

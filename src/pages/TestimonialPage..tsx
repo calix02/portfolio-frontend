@@ -144,7 +144,7 @@ export function TestimonialPage() {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
-      className="relative z-10 flex flex-col items-center justify-center min-h-screen w-full py-32 overflow-hidden bg-[#0a0a0a] text-white"
+      className="relative z-10 flex flex-col items-center justify-center min-h-screen w-full py-32 overflow-hidden  text-white"
     >
       {/* Background Atmosphere */}
       <div className="absolute inset-0 pointer-events-none">
@@ -156,7 +156,7 @@ export function TestimonialPage() {
         <div className="text-center mb-24 px-6 space-y-6">
           <div className="flex items-center gap-3 justify-center">
             <div className="h-px w-12 bg-white/10" />
-            <span className="text-[10px] font-mono tracking-[0.5em] uppercase text-yellow-600">
+            <span className="text-[10px] font-mono tracking-[0.5em] uppercase text-blue-500">
               Client Feedback
             </span>
             <div className="h-px w-12 bg-white/10" />
@@ -164,7 +164,9 @@ export function TestimonialPage() {
 
           <h2 className="text-5xl md:text-7xl font-bold tracking-tighter">
             Kind{" "}
-            <span className="text-neutral-600 italic font-serif">Words</span>
+            <span className="bg-linear-to-b from-gray-200 to-black bg-clip-text text-transparent italic font-serif">
+              Words
+            </span>
           </h2>
         </div>
 

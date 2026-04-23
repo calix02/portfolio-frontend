@@ -1,10 +1,11 @@
-import React, { useRef } from 'react';
+import React, { useRef } from "react";
 
 interface GlareHoverProps {
   width?: string;
   height?: string;
   background?: string;
   borderRadius?: string;
+  borderColor?: string;
   children?: React.ReactNode;
   glareColor?: string;
   glareOpacity?: number;
@@ -17,21 +18,22 @@ interface GlareHoverProps {
 }
 
 const GlareHover: React.FC<GlareHoverProps> = ({
-  width = 'w-200',
-  height = '680px',
-  
-  borderRadius = '10px',
+  width = "600px",
+  height = "350px",
+  background = "#000",
+  borderRadius = "20px",
+  borderColor = "#333",
   children,
-  glareColor = '#ffffff',
+  glareColor = "#ffffff",
   glareOpacity = 0.5,
   glareAngle = -45,
   glareSize = 250,
   transitionDuration = 650,
   playOnce = false,
-  className = '',
-  style = {}
+  className = "",
+  style = {},
 }) => {
-  const hex = glareColor.replace('#', '');
+  const hex = glareColor.replace("#", "");
   let rgba = glareColor;
   if (/^[\dA-Fa-f]{6}$/.test(hex)) {
     const r = parseInt(hex.slice(0, 2), 16);
@@ -51,10 +53,10 @@ const GlareHover: React.FC<GlareHoverProps> = ({
     const el = overlayRef.current;
     if (!el) return;
 
-    el.style.transition = 'none';
-    el.style.backgroundPosition = '-100% -100%, 0 0';
+    el.style.transition = "none";
+    el.style.backgroundPosition = "-100% -100%, 0 0";
     el.style.transition = `${transitionDuration}ms ease`;
-    el.style.backgroundPosition = '100% 100%, 0 0';
+    el.style.backgroundPosition = "100% 100%, 0 0";
   };
 
   const animateOut = () => {
@@ -62,35 +64,37 @@ const GlareHover: React.FC<GlareHoverProps> = ({
     if (!el) return;
 
     if (playOnce) {
-      el.style.transition = 'none';
-      el.style.backgroundPosition = '-100% -100%, 0 0';
+      el.style.transition = "none";
+      el.style.backgroundPosition = "-100% -100%, 0 0";
     } else {
       el.style.transition = `${transitionDuration}ms ease`;
-      el.style.backgroundPosition = '-100% -100%, 0 0';
+      el.style.backgroundPosition = "-100% -100%, 0 0";
     }
   };
 
   const overlayStyle: React.CSSProperties = {
-    position: 'absolute',
+    position: "absolute",
     inset: 0,
     background: `linear-gradient(${glareAngle}deg,
         hsla(0,0%,0%,0) 60%,
         ${rgba} 70%,
         hsla(0,0%,0%,0) 100%)`,
     backgroundSize: `${glareSize}% ${glareSize}%, 100% 100%`,
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: '-100% -100%, 0 0',
-    pointerEvents: 'none'
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "-100% -100%, 0 0",
+    pointerEvents: "none",
   };
 
   return (
     <div
-      className={`relative ${width} p-5 overflow-hidden  bg-white/10 backdrop-blur-xl  border cursor-pointer ${className}`}
+      className={`relative  overflow-hidden border cursor-pointer ${className}`}
       style={{
+        width,
         height,
-      
+        background,
         borderRadius,
-        ...style
+        borderColor,
+        ...style,
       }}
       onMouseEnter={animateIn}
       onMouseLeave={animateOut}

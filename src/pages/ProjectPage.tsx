@@ -62,25 +62,6 @@ export function ProjectPage() {
       id="projects"
       className="relative h-screen w-full  text-white overflow-hidden flex items-center justify-center font-sans"
     >
-      {/* IMMERSIVE BACKGROUND LAYER */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, scale: 1.1 }}
-          animate={{ opacity: 0.4, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.95 }}
-          transition={{ duration: 1.2 }}
-          className="absolute inset-0 z-0"
-        >
-          <img
-            src={projects[index].image}
-            className="w-full h-full object-cover blur-3xl opacity-40"
-            alt=""
-          />
-          <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#050505]/80 to-[#050505]" />
-        </motion.div>
-      </AnimatePresence>
-
       {/* CONTENT GRID */}
       <div className="relative z-10 w-full max-w-350 px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         {/* LEFT SIDE: PROJECT INFO */}
@@ -94,15 +75,15 @@ export function ProjectPage() {
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-px bg-white/20" />
-                <span className="text-xs font-mono tracking-[0.4em] uppercase text-neutral-400">
+                <div className="w-12 h-px " />
+                <span className="text-xs font-mono tracking-[0.4em] uppercase text-blue-500">
                   Project {index + 1}
                 </span>
               </div>
 
-              <h2 className="text-6xl lg:text-8xl font-black tracking-tighter mb-4 leading-none">
+              <h2 className="text-6xl lg:text-8xl font-black tracking-tighter bg-linear-to-r from-gray-200 to-gray-800 bg-clip-text text-transparent mb-4 leading-none">
                 {projects[index].title.split(" ")[0]}
-                <span className="block text-transparent bg-clip-text bg-linear-to-r from-white to-white/20">
+                <span className="block text-transparent bg-clip-text bg-linear-to-r from-gray-200 to-gray-500">
                   {projects[index].title.split(" ")[1] || "Project"}
                 </span>
               </h2>

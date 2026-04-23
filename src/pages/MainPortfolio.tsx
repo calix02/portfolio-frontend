@@ -94,7 +94,14 @@ export function MainPortfolio() {
       />
       {/* --- Skill Section --- */}
 
-      <SkillPage />
+      <SkillPage
+        containerVariants={containerVariants}
+        revealVariant={revealVariant}
+        highlightColor={isDark ? "text-white" : "text-gray-900"}
+        textColor={isDark ? "text-gray-400" : "text-gray-700"}
+        bgColor={isDark ? "#050505" : "#fff"}
+        borderColor={isDark ? "#333" : "#ddd"}
+      />
 
       {/* --- Project Section --- */}
       <ProjectPage />
