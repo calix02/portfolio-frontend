@@ -1,24 +1,21 @@
-import { useState } from "react";
-import { Link, useLocation } from "react-router-dom"; // Use "next/link" if using Next.js
-import { motion, AnimatePresence } from "framer-motion";
-import { 
-  FaHouse, 
-  FaCode, 
-  FaFolderOpen, 
-  FaChevronRight, 
-  FaUser
-} from "react-icons/fa6";
-import { MdOutlineDashboard } from "react-icons/md";
 import Logo from "@/assets/logo.svg";
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
+import { FaEdit } from "react-icons/fa";
+import { FaChevronRight, FaFolderOpen, FaUser } from "react-icons/fa6";
+import { Link, useLocation } from "react-router-dom"; // Use "next/link" if using Next.js
 
 // 1. Added 'path' to the menu items
 const menuItems = [
-  { id: "dashboard", label: "Dashboard", icon: <MdOutlineDashboard/>, path: "/dashboard" },
-  { id: "home", label: "Home", icon: <FaHouse />, path: "/home" },
-  { id: "about", label: "About", icon: <FaUser />, path: "/about" },
+  { id: "dashboard", label: "Editor", icon: <FaEdit />, path: "/editor" },
+  { id: "profile", label: "Profile", icon: <FaUser />, path: "/profile" },
 
-  { id: "skills", label: "Skills", icon: <FaCode />, path: "/skills" },
-  { id: "projects", label: "Projects", icon: <FaFolderOpen />, path: "/projects" },
+  {
+    id: "projects",
+    label: "Projects",
+    icon: <FaFolderOpen />,
+    path: "/projects",
+  },
 ];
 
 export default function Sidebar() {
@@ -85,7 +82,9 @@ export default function Sidebar() {
               )}
 
               {/* Icon */}
-              <div className={`relative z-10 text-lg transition-transform duration-300 ${isActive ? "scale-110" : "group-hover:scale-110"}`}>
+              <div
+                className={`relative z-10 text-lg transition-transform duration-300 ${isActive ? "scale-110" : "group-hover:scale-110"}`}
+              >
                 {item.icon}
               </div>
 
@@ -116,22 +115,28 @@ export default function Sidebar() {
 
       {/* --- 3. Footer / User Section --- */}
       <div className="p-4 mt-auto border-t border-white/5 bg-white/2">
-        <div className={`flex items-center ${isExpanded ? "px-2" : "justify-center"}`}>
+        <div
+          className={`flex items-center ${isExpanded ? "px-2" : "justify-center"}`}
+        >
           <div className="w-8 h-8 rounded-full bg-zinc-800 border border-white/10 overflow-hidden shrink-0 shadow-[0_0_10px_rgba(0,0,0,0.5)]">
-            <img 
-              src="https://api.dicebear.com/7.x/avataaars/svg?seed=Mark" 
-              alt="Avatar" 
+            <img
+              src="https://api.dicebear.com/7.x/avataaars/svg?seed=Mark"
+              alt="Avatar"
               className="w-full h-full object-cover"
             />
           </div>
           {isExpanded && (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               className="ml-3 overflow-hidden"
             >
-              <p className="text-xs font-bold text-white truncate">Mark Alvarado</p>
-              <p className="text-[10px] text-zinc-500 truncate uppercase tracking-tighter">Pro Developer</p>
+              <p className="text-xs font-bold text-white truncate">
+                Mark Alvarado
+              </p>
+              <p className="text-[10px] text-zinc-500 truncate uppercase tracking-tighter">
+                Pro Developer
+              </p>
             </motion.div>
           )}
         </div>

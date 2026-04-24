@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FaMagnifyingGlass, FaBell, FaGear, FaTerminal } from "react-icons/fa6";
+import { FaBell, FaGear, FaMagnifyingGlass, FaTerminal } from "react-icons/fa6";
 
 export default function DashboardHeader() {
   return (
@@ -8,23 +8,25 @@ export default function DashboardHeader() {
       <div className="flex items-center gap-4">
         <div className="flex items-center gap-2 text-zinc-500">
           <FaTerminal className="text-emerald-500 text-xs" />
-          <span className="text-[10px] uppercase tracking-[0.2em] font-bold">System</span>
+          <span className="text-[10px] uppercase tracking-[0.2em] font-bold">
+            System
+          </span>
         </div>
         <span className="text-zinc-800">/</span>
-        <motion.span 
+        <motion.span
           initial={{ opacity: 0, x: -5 }}
           animate={{ opacity: 1, x: 0 }}
           className="text-xs font-medium text-white tracking-wide"
         >
-          Dashboard
+          Editor Page
         </motion.span>
       </div>
 
       {/* --- Center: Command Search --- */}
       <div className="hidden md:flex items-center relative group">
         <FaMagnifyingGlass className="absolute left-4 text-zinc-500 group-focus-within:text-emerald-500 transition-colors size-3" />
-        <input 
-          type="text" 
+        <input
+          type="text"
           placeholder="Execute command... (Cmd + K)"
           className="bg-white/3 border border-white/5 rounded-full pl-10 pr-16 py-2 text-xs text-zinc-300 w-80 focus:outline-none focus:border-emerald-500/50 focus:bg-white/5 transition-all"
         />
@@ -38,7 +40,9 @@ export default function DashboardHeader() {
         {/* Status Indicator */}
         <div className="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/5 border border-emerald-500/10">
           <div className="size-1.5 rounded-full bg-emerald-500 animate-pulse" />
-          <span className="text-[9px] uppercase tracking-widest text-emerald-500 font-bold">Live System</span>
+          <span className="text-[9px] uppercase tracking-widest text-emerald-500 font-bold">
+            Live System
+          </span>
         </div>
 
         <div className="flex items-center gap-3">
