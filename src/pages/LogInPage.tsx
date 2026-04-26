@@ -1,5 +1,9 @@
 import Logo from "@/assets/logo.svg";
+import { useAuthStore } from "@/stores/auth/auth.store";
+import type { AccountType } from "@/types/account/account.type";
 import { motion, type Variants } from "framer-motion";
+import { useState, type ChangeEvent, type FormEvent } from "react";
+import toast from "react-hot-toast";
 import { FaArrowRight, FaLock, FaUser } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 
@@ -12,6 +16,11 @@ export default function LoginPage({
   containerVariants,
   revealVariant,
 }: LoginPageProps) {
+  const setLogin = useAuthStore((state) => state.setLogin);
+  const [form, setForm] = useState<Partial<AccountType>>({
+    email: "",
+    password: "",
+  });
   const formItemVariants: Variants = {
     initial: { opacity: 0, y: 20 },
     whileInView: {
@@ -25,9 +34,20 @@ export default function LoginPage({
   };
 
   const navigate = useNavigate();
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
 
-  const handleLogIn = () => {
-    navigate("/editor");
+  const submitForm = async (e: FormEvent) => {
+    e.preventDefault();
+
+    const success = await setLogin(form);
+
+    if (success) {
+      toast.success("Logged In Succefully");
+      navigate("/editor");
+    }
   };
 
   return (
@@ -80,7 +100,7 @@ export default function LoginPage({
           {/* Subtle Card Glare */}
           <div className="absolute -top-[50%] -left-[50%] w-[200%] h-[200%] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03)_0%,transparent_50%)] pointer-events-none" />
 
-          <form className="space-y-6 relative z-10">
+          <form onSubmit={submitForm} className="space-y-6 relative z-10">
             {/* Identity Field */}
             <motion.div variants={formItemVariants} className="space-y-2">
               <label className="text-[10px] uppercase tracking-[0.2em] text-zinc-500 font-bold ml-1">
@@ -92,7 +112,9 @@ export default function LoginPage({
                   size={14}
                 />
                 <input
+                  name="email"
                   type="email"
+                  onChange={handleChange}
                   placeholder="Email or Username"
                   className="w-full bg-black/40 border border-white/5 rounded-2xl pl-12 pr-6 py-4 text-white focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/20 transition-all placeholder:text-zinc-700"
                 />
@@ -118,7 +140,9 @@ export default function LoginPage({
                   size={14}
                 />
                 <input
+                  name="password"
                   type="password"
+                  onChange={handleChange}
                   placeholder="••••••••"
                   className="w-full bg-black/40 border border-white/5 rounded-2xl pl-12 pr-6 py-4 text-white focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/20 transition-all placeholder:text-zinc-700"
                 />
@@ -128,7 +152,7 @@ export default function LoginPage({
             {/* Main Action */}
             <motion.div variants={formItemVariants}>
               <motion.button
-                onClick={handleLogIn}
+                type="submit"
                 whileHover={{ scale: 1.01, translateY: -2 }}
                 whileTap={{ scale: 0.99 }}
                 className="w-full py-4 mt-2 bg-white text-black font-bold rounded-2xl flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(255,255,255,0.1)] hover:shadow-emerald-500/20 transition-all"
