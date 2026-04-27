@@ -1,4 +1,5 @@
 import Me from "@/assets/cartoon_me.svg";
+import { useHomeData } from "@/hooks/useHomeData";
 import { motion, type Variants } from "framer-motion";
 import { FaDownload, FaRegEnvelope } from "react-icons/fa6";
 
@@ -15,6 +16,8 @@ export default function HomePage({
   textColor,
   highlightColor,
 }: HomePageProps) {
+
+  const { homeData } = useHomeData();
   return (
     <motion.section
       id="home"
@@ -27,12 +30,12 @@ export default function HomePage({
       <div className="w-full lg:w-3/5 flex flex-col justify-center space-y-6 text-center lg:text-left">
         <motion.div variants={revealVariant} className="space-y-2">
           <p className="text-gray-400 font-medium tracking-[0.4em] uppercase text-[10px] md:text-xs">
-            Full Stack Developer & Freelancer
+            {homeData?.role ? homeData?.role : "Software Developer & Freelancer"}
           </p>
           <h1 className="bg-linear-to-b from-gray-200 to-black bg-clip-text text-transparent text-5xl md:text-7xl font-bold  leading-[1.1]">
-            From concept to deployment <br />
+           {homeData?.quotes1 ? homeData.quotes1 : "From concept to deployment"}  <br />
             <span className="italic font-light text-gray-400">
-              I build it all.
+              {homeData?.quotes2 ? homeData.quotes2 : "I build it all."}  
             </span>
           </h1>
         </motion.div>
@@ -108,7 +111,7 @@ export default function HomePage({
 
             {/* Creative Tag - Glass Style */}
             <div className="absolute -bottom-2 -right-2 bg-white/20 backdrop-blur-xl border border-white/30 text-white px-5 py-2.5 rounded-xl shadow-2xl text-[10px] font-black tracking-widest uppercase transition-all hover:bg-white/30">
-              Mark Alvarado
+              {homeData?.nickname ? homeData?.nickname : "Mark"}
             </div>
           </div>
         </div>
