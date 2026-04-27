@@ -2,6 +2,7 @@ import Me from "@/assets/cartoon_me.svg";
 import CircularGallery from "@/component/CircularGallery";
 import StarBorder from "@/component/StarBorder";
 import { motion, type Variants } from "framer-motion";
+import { useState } from "react";
 import {
   FaBriefcase,
   FaCode,
@@ -26,7 +27,7 @@ export function AboutPage({
   // Mock Experience Data
   const experiences = [
     {
-      title: "Full Stack Developer - Intern",
+      title: "Software Developer - Intern",
       company: "Wayne Enterprise Solution Corporation",
       date: "2026 - Present",
       desc: "Developing full-stack web applications using React + Vite, Typescript and Tailwind for the frontend, and for the backend is Node js / Express and MongoDB.",
@@ -38,12 +39,13 @@ export function AboutPage({
       desc: "Built the user interface of our capstone project EfeeSync and contribute to the 4th year's final project Capstone Repository System using React + Vite, Vanilla Javascript and Tailwind",
     },
     {
-      title: "Full Stack Developer - Freelance",
+      title: "Software Developer - Freelance",
       company: "CBSUA",
       date: "2022 - 2023",
       desc: "Built systems for student for their final project using Java and MySQL",
     },
   ];
+  const [selectedCert, setSelectedCert] = useState<string | null>(null);
 
   return (
     <motion.section
@@ -54,6 +56,14 @@ export function AboutPage({
       viewport={{ once: false, amount: 0.2 }}
       className="relative z-10 flex flex-col lg:flex-row  items-center justify-center min-h-screen w-full px-6 md:px-20 py-24 gap-16 overflow-hidden"
     >
+      {selectedCert && (
+        <div
+          className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
+          onClick={() => setSelectedCert(null)}
+        >
+          <img src={selectedCert} className="max-w-[90%] max-h-[90%]" />
+        </div>
+      )}
       {/* Background Decorative Element */}
       <div className="absolute top-0 left-0 w-full h-full -z-10 opacity-30 pointer-events-none">
         <div className="absolute top-1/4 left-10 w-72 h-72 bg-blue-200 rounded-full blur-[120px]" />

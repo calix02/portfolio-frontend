@@ -3,7 +3,6 @@ import { FaPlus, FaTrash, FaUserAlt } from "react-icons/fa";
 import { FaBookOpen, FaDownload, FaUserTie } from "react-icons/fa6";
 import { IoHome } from "react-icons/io5";
 import { MdOutlineDescription } from "react-icons/md";
-import BorderGlow from "../BorderGlow";
 
 export function HomeContent() {
   // Fix: Use a function to initialize state so Date.now() isn't called directly during render logic
@@ -20,17 +19,7 @@ export function HomeContent() {
   };
 
   return (
-    <BorderGlow
-      className="w-150 pb-10 px-10 pt-5"
-      edgeSensitivity={30}
-      glowColor={"16 185 129"}
-      backgroundColor="#120F17"
-      borderRadius={28}
-      glowRadius={50}
-      glowIntensity={0.8}
-      animated={true}
-      colors={["#10b981", "#3b82f6", "#06b6d4"]}
-    >
+    <div className="w-150 pb-10 border border-gray-200 rounded-2xl px-10 pt-5">
       <div className="flex items-center gap-2">
         <IoHome />
         <h1 className="font-medium tracking-widest">Home Content</h1>
@@ -93,6 +82,10 @@ export function HomeContent() {
           </label>
         </div>
         {/* Image Upload */}
+        <div className="flex items-center gap-2 mt-5">
+          <IoHome />
+          <h1 className="font-medium tracking-widest">Upload Profile</h1>
+        </div>
         <div className="relative mt-5 border border-gray-100 p-5 h-40 rounded-2xl flex flex-col gap-2 items-center justify-center">
           <FaDownload className="text-7xl" />
           <p>Upload your image</p>
@@ -195,6 +188,6 @@ export function HomeContent() {
           ))}
         </div>
       </form>
-    </BorderGlow>
+    </div>
   );
 }

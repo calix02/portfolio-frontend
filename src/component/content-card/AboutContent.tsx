@@ -1,21 +1,10 @@
 import { FaBookOpen, FaDownload } from "react-icons/fa6";
 import { IoHome } from "react-icons/io5";
 import { MdOutlineDescription } from "react-icons/md";
-import BorderGlow from "../BorderGlow";
 
 export function AboutContent() {
   return (
-    <BorderGlow
-      className="w-full  pb-10 px-10 pt-5"
-      edgeSensitivity={30}
-      glowColor={"16 185 129"}
-      backgroundColor="#120F17"
-      borderRadius={28}
-      glowRadius={50}
-      glowIntensity={0.8}
-      animated={true}
-      colors={["#10b981", "#3b82f6", "#06b6d4"]}
-    >
+    <div className="w-full border border-gray-200 rounded-2xl  pb-10 px-10 pt-5">
       <div className="flex items-center gap-2">
         <IoHome />
         <h1 className="font-medium tracking-widest">About Content</h1>
@@ -193,6 +182,6 @@ export function AboutContent() {
           </div>
         </div>
       </form>
-    </BorderGlow>
+    </div>
   );
 }

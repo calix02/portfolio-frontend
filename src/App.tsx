@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { Toaster } from "react-hot-toast";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import { EditorPage } from "./pages/admin-pages/EditorPage";
 import { MainPortfolio } from "./pages/MainPortfolio";
@@ -16,21 +16,31 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  useEffect(() => {
-    const el = document.createElement("script");
-    el.src = "https://www.tuqlas.com/chatbot.js";
-    el.setAttribute(
-      "data-key",
-      "tq_live_a5dd44e07066c1c3eff16134839862cc1df92125",
-    );
-    el.setAttribute("data-api", "https://www.tuqlas.com");
-    el.defer = true;
-    document.body.appendChild(el);
-    return () => el.remove();
-  }, []);
-
   return (
     <div>
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          duration: 4000,
+          style: {
+            background: "#18181b",
+            color: "#f4f4f5",
+            border: "1px solid #3f3f46",
+          },
+          success: {
+            iconTheme: {
+              primary: "#10b981",
+              secondary: "#18181b",
+            },
+          },
+          error: {
+            iconTheme: {
+              primary: "#ef4444",
+              secondary: "#18181b",
+            },
+          },
+        }}
+      />
       <RouterProvider router={router} />
     </div>
   );

@@ -45,8 +45,10 @@ export default function LoginPage({
     const success = await setLogin(form);
 
     if (success) {
-      toast.success("Logged In Succefully");
+      toast.success("Logged In Successfully");
       navigate("/editor");
+    } else {
+      toast.error("Invalid email or password");
     }
   };
 
