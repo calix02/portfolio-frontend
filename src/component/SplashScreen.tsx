@@ -1,110 +1,167 @@
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import Logo from "@/assets/logo.svg";
 import type { Variants } from "framer-motion";
-// Import your actual logo file here
-import Logo from "@/assets/logo.svg"; 
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
+const getStatus = (progress: number) => {
+  if (progress > 80) return "Finalizing Assets...";
+  if (progress > 40) return "Configuring Systems...";
+  if (progress > 10) return "Loading Core Modules...";
+  return "Initializing...";
+};
 
 export function SplashScreen({ onComplete }: { onComplete: () => void }) {
   const [loadingProgress, setLoadingProgress] = useState(0);
+  const status = getStatus(loadingProgress); //
 
-  // Simulate loading progress
   useEffect(() => {
     const timer = setInterval(() => {
       setLoadingProgress((prev) => {
         if (prev >= 100) {
           clearInterval(timer);
-          // Buffer time before hiding splash screen
-          setTimeout(onComplete, 300); 
+          setTimeout(onComplete, 1000);
           return 100;
         }
-        // Random increment for realistic feel
-        const increment = Math.random() * 15; 
+        const increment = Math.random() * 12;
         return Math.min(prev + increment, 100);
       });
-    }, 300); // Speed of updates
+    }, 120);
 
     return () => clearInterval(timer);
   }, [onComplete]);
 
-  // Logo Animation Variants (Luxury Scale & Fade)
- const logoVariants: Variants = {
-  initial: { opacity: 0, scale: 0.8, y: 10 },
-  animate: { 
-    opacity: 1, 
-    scale: 1, 
-    y: 0,
-    transition: {
-      duration: 1,
-      ease: [0.16, 1, 0.3, 1] as const
-    }
-  }
-};
+  const containerVariants: Variants = {
+    exit: {
+      clipPath: "inset(0% 0% 100% 0%)",
+      transition: { duration: 1.1, ease: [0.77, 0, 0.175, 1] },
+    },
+  };
 
-  // Static 'Studio' text animation
-  const textVariants = {
-    initial: { opacity: 0 },
-    animate: { 
+  const logoVariants: Variants = {
+    initial: { scale: 0.8, opacity: 0, filter: "blur(10px)" },
+    animate: {
+      scale: 1,
       opacity: 1,
-      transition: { delay: 0.8, duration: 0.8 }
-    }
+      filter: "blur(0px)",
+      transition: { duration: 1.2, ease: "easeOut" },
+    },
   };
 
   return (
     <motion.div
-      className="fixed inset-0 z-100 flex flex-col items-center justify-center background-dark text-white overflow-hidden"
-      initial={{ opacity: 1 }}
-      exit={{ y: "-100%", transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } }}
+      variants={containerVariants}
+      initial="initial"
+      exit="exit"
+      className="fixed inset-0 z-9999 flex flex-col items-center justify-center bg-[#050505] text-white overflow-hidden"
     >
-      {/* Subtle Background Glow (Matching Portfolio) */}
-      <div
-        className="absolute w-150 h-150 rounded-full animate-pulse animation-duration-[12s] opacity-10 blur-[150px]"
-        style={{ background: "radial-gradient(circle, #FFFFFF 0%, transparent 70%)" }} 
-      />
+      {/* 1. Enhanced Background: Animated Mesh + Grain */}
+      <div className="absolute inset-0 z-0">
+        <motion.div
+          animate={{
+            x: [0, 20, 0],
+            y: [0, -20, 0],
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-blue-600/10 blur-[150px]"
+        />
+        <motion.div
+          animate={{
+            x: [0, -30, 0],
+            y: [0, 30, 0],
+          }}
+          transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+          className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-blue-500/10 blur-[150px]"
+        />
+        {/* Grain Overlay */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+      </div>
 
-      {/* --- Logo & Branding Container --- */}
+      {/* 2. Branding Section */}
       <div className="relative z-10 flex flex-col items-center mb-16">
-        <motion.img
-          src={Logo}
-          alt="MA Logo"
-          className="h-28 md:h-32 w-auto mb-6 object-contain grayscale brightness-110"
+        <motion.div
           variants={logoVariants}
           initial="initial"
           animate="animate"
-        />
-        
-        <motion.p 
-          className="text-gray-500 tracking-[0.6em] uppercase text-[15px] font-light"
-          variants={textVariants}
-          initial="initial"
-          animate="animate"
+          className="relative mb-8"
         >
-          Mark Alvarado
-        </motion.p>
-      </div>
+          {/* Outer Ring Animation */}
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+            className="absolute -inset-6 border border-white/5 rounded-full"
+          />
+          <motion.div
+            animate={{ rotate: -360 }}
+            transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+            className="absolute -inset-10 border border-blue-500/10 rounded-full border-dashed"
+          />
 
-      {/* --- Animated Loading Bar (Minimalist) --- */}
-      <div className="relative z-10 w-64 md:w-80 h- bg-white/10 rounded-full overflow-hidden">
-        {/* The active loading fill */}
+          <img
+            src={Logo}
+            alt="Logo"
+            className="h-20 md:h-24 w-auto relative z-10 brightness-150 drop-shadow-[0_0_30px_rgba(16,185,129,0.3)]"
+          />
+        </motion.div>
+
+        <div className="overflow-hidden">
+          <motion.h2
+            className="text-white tracking-[1em] uppercase text-[10px] md:text-[12px] font-light"
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            Mark Alvarado
+          </motion.h2>
+        </div>
         <motion.div
-          className="absolute inset-y-0 left-0 bg-white rounded-full"
-          style={{ width: `${loadingProgress}%` }}
-          transition={{ ease: "easeInOut" }} // Smooth fill
+          initial={{ width: 0 }}
+          animate={{ width: "40px" }}
+          transition={{ duration: 1, delay: 1 }}
+          className="h-px bg-blue-500 mt-4"
         />
-        
-        {/* Optional: Glossy gradient overlay on fill */}
-        <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent animate-shimmer" />
       </div>
 
-      {/* Percentage Counter (Subtle) */}
-      <motion.p 
-        className="relative z-10 text-gray-600 text-xs mt-3 tabular-nums font-mono"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5 }}
-      >
-        {Math.round(loadingProgress)}%
-      </motion.p>
-      
+      {/* 3. The Minimalist Loading Engine */}
+      <div className="relative z-10 w-64 md:w-80">
+        <div className="flex justify-between items-end mb-2 px-1">
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={status}
+              initial={{ opacity: 0, y: 5 }}
+              animate={{ opacity: 0.5, y: 0 }}
+              exit={{ opacity: 0, y: -5 }}
+              className="text-[9px] uppercase tracking-widest font-medium text-blue-400"
+            >
+              {status}
+            </motion.span>
+          </AnimatePresence>
+          <span className="text-[10px] font-mono opacity-40 tabular-nums">
+            {Math.round(loadingProgress)}%
+          </span>
+        </div>
+
+        <div className="h-0.5 w-full bg-white/5 rounded-full overflow-hidden">
+          <motion.div
+            className="h-full bg-blue-500"
+            initial={{ width: "0%" }}
+            animate={{ width: `${loadingProgress}%` }}
+            transition={{ ease: "circOut" }}
+          />
+        </div>
+      </div>
+
+      {/* 4. Decorative Technical HUD Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-8 left-8 flex flex-col gap-2">
+          <div className="w-8 h-px bg-white/20" />
+          <div className="w-1 h-1 bg-blue-500 rounded-full" />
+        </div>
+        <div className="absolute bottom-8 right-8 flex flex-col items-end gap-2">
+          <div className="w-1 h-1 bg-blue-500 rounded-full" />
+          <div className="w-8 h-px bg-white/20" />
+        </div>
+        {/* Subtle Scanline Effect */}
+        <div className="absolute inset-0 bg-linear-to-b from-transparent via-white/2 to-transparent h-0.5 w-full top-0 animate-scanline" />
+      </div>
     </motion.div>
   );
 }

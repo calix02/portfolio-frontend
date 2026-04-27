@@ -1,11 +1,44 @@
+import Footer from "@/component/Footer";
 import { Header } from "@/component/Header";
-import type { Variants } from "framer-motion";
 import { SplashScreen } from "@/component/SplashScreen";
-import {  useState } from "react";
-import HomePage from "./HomePage";
+import { AnimatePresence, type Variants } from "framer-motion";
+import { useEffect, useState } from "react";
+import { FiSun } from "react-icons/fi";
+import { MdOutlineDarkMode } from "react-icons/md";
 import { AboutPage } from "./AboutPage";
+import ContactPage from "./ContactPage";
+import HomePage from "./HomePage";
+import LoginPage from "./LogInPage";
+import { ProjectPage } from "./ProjectPage";
+import { SkillPage } from "./SkillPage";
+import { TestimonialPage } from "./TestimonialPage.";
 
 export function MainPortfolio() {
+  const [isDark, setIsDark] = useState<boolean>(true);
+  const [showLogin, setShowLogin] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      // Check if Ctrl is pressed AND the key is 'a'
+      // Note: use event.preventDefault() to stop the default "Select All" behavior
+      if (event.ctrlKey && event.key.toLowerCase() === "a") {
+        event.preventDefault();
+        setShowLogin((prev) => !prev);
+      }
+
+      // Close on Escape key
+      if (event.key === "Escape") {
+        setShowLogin(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  const toggleDark = () => {
+    setIsDark(!isDark);
+  };
 
   const [loading, setLoading] = useState<boolean>(true);
   // Container variant to stagger children animations
@@ -19,33 +52,57 @@ export function MainPortfolio() {
   };
 
   // Content reveal variant
- 
+
   const revealVariant: Variants = {
-  initial: { opacity: 0, y: 30 },
-  whileInView: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.8,
-      ease: [0.16, 1, 0.3, 1] as const
-    }
-  }
-};
+    initial: { opacity: 0, y: 30 },
+    whileInView: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.12, 1, 0.3, 1] as const,
+      },
+    },
+  };
 
-
-if(loading) return <SplashScreen onComplete={() => setLoading(false)} />;
+  if (loading) return <SplashScreen onComplete={() => setLoading(false)} />;
 
   return (
-    <div className="w-full min-h-screen relative overflow-x-hidden background-light xt-black selection:bg-black selection:text-white">
+    <div
+      className={`w-full min-h-screen relative transition duration-300 overflow-x-hidden ${isDark ? "background-dark2" : "background-light"} xt-black selection:bg-black selection:text-white`}
+    >
+      {/* The Login Modal Overlay */}
+      <AnimatePresence>
+        {showLogin && (
+          <div className="fixed inset-0 z-100 flex items-center justify-center bg-black/80 backdrop-blur-sm">
+            {/* Close button for mouse users */}
+            <button
+              onClick={() => setShowLogin(false)}
+              className="absolute top-10 right-10 text-zinc-500 hover:text-white transition-colors"
+            >
+              Esc to close
+            </button>
+
+            <LoginPage
+              containerVariants={containerVariants}
+              revealVariant={revealVariant}
+            />
+          </div>
+        )}
+      </AnimatePresence>
       {/* --- Subtle Background Graphics --- */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div
           className="absolute -top-24 -right-24 w-125 h-125 rounded-full opacity-40 blur-[120px] animate-pulse"
-          style={{ background: "radial-gradient(circle, #f1f5f9 0%, transparent 70%)" }}
+          style={{
+            background: "radial-gradient(circle, #f1f5f9 0%, transparent 70%)",
+          }}
         />
         <div
           className="absolute bottom-[-10%] left-[-5%] w-150 h-150 rounded-full opacity-30 blur-[130px]"
-          style={{ background: "radial-gradient(circle, #e2e8f0 0%, transparent 70%)" }}
+          style={{
+            background: "radial-gradient(circle, #e2e8f0 0%, transparent 70%)",
+          }}
         />
         <div
           className="absolute inset-0 opacity-[0.05]"
@@ -55,15 +112,47 @@ if(loading) return <SplashScreen onComplete={() => setLoading(false)} />;
         />
       </div>
 
-      <Header />
+      <Header
+        textColor={isDark ? "text-gray-300" : "text-gray-500"}
+        toggleDark={toggleDark}
+        Icon={isDark ? FiSun : MdOutlineDarkMode}
+      />
 
       {/* --- Home Section --- */}
-      <HomePage containerVariants={containerVariants} revealVariant={revealVariant}/>
+      <HomePage
+      highlightColor={isDark ? "text-gray-600" : "text-black"}
+        textColor={isDark ? "text-gray-300" : "text-gray-600"}
+        containerVariants={containerVariants}
+        revealVariant={revealVariant}
+      />
 
       {/* --- About Section --- */}
-      <AboutPage  />
+      <AboutPage
+        highlightColor={isDark ? "text-white" : "text-gray-900"}
+        textColor={isDark ? "text-gray-400" : "text-gray-700"}
+        containerVariants={containerVariants}
+        revealVariant={revealVariant}
+      />
+      {/* --- Skill Section --- */}
 
-     
+      <SkillPage
+        containerVariants={containerVariants}
+        revealVariant={revealVariant}
+        highlightColor={isDark ? "text-white" : "text-gray-900"}
+        textColor={isDark ? "text-gray-400" : "text-gray-700"}
+        bgColor={isDark ? "#050505" : "#fff"}
+        borderColor={isDark ? "#333" : "#ddd"}
+      />
+
+      {/* --- Project Section --- */}
+      <ProjectPage />
+      <TestimonialPage />
+      <ContactPage
+        revealVariant={revealVariant}
+        containerVariants={containerVariants}
+        textColor={isDark ? "text-gray-300" : "text-gray-700"}
+      />
+      <Footer revealVariant={revealVariant} />
     </div>
   );
 }
