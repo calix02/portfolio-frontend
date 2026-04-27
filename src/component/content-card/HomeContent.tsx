@@ -1,6 +1,5 @@
-import { getHomeContentApi } from "@/api/home/home.api";
-import type { HomeType } from "@/types/home/home.type";
-import { useEffect, useState } from "react";
+import { useHomeData } from "@/hooks/useHomeData";
+import {  useState } from "react";
 import { FaPlus, FaTrash, FaUserAlt } from "react-icons/fa";
 import { FaBookOpen, FaDownload, FaUserTie } from "react-icons/fa6";
 import { IoHome } from "react-icons/io5";
@@ -9,7 +8,6 @@ import { MdOutlineDescription } from "react-icons/md";
 export function HomeContent() {
   // Fix: Use a function to initialize state so Date.now() isn't called directly during render logic
   const [skills, setSkills] = useState(() => [{ id: Date.now() }]);
-  const [homeData, setHomeData] = useState<HomeType | null>(null);
 
   const addSkillField = () => {
     setSkills([...skills, { id: Date.now() }]);
@@ -20,16 +18,9 @@ export function HomeContent() {
       setSkills(skills.filter((skill) => skill.id !== id));
     }
   };
+   const { homeData} = useHomeData();
 
-  useEffect(() => {
-    const fetchHomeContent = async () => {
-      const data = await getHomeContentApi();
-      setHomeData(data.content[0]);
-      console.log(data);
-    };
-    fetchHomeContent();
-  }, []);
-
+  
   return (
     <div className="w-150 pb-10 border border-gray-200 rounded-2xl px-10 pt-5">
       <div className="flex items-center gap-2">
