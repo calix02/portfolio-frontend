@@ -38,6 +38,7 @@ export const useAuthStore = create<AuthStoreType>()(
         try {
           const { account, token } = await logInApi(data);
           set({ user: account, token });
+          localStorage.setItem("account_id",account._id );
           return true;
         } catch (error) {
           showError(error);
