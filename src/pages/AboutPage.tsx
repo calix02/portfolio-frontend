@@ -16,11 +16,13 @@ interface HomePageProps {
   containerVariants: Variants;
   revealVariant: Variants;
   textColor: string;
+  bgColor: string;
   highlightColor: string;
 }
 export function AboutPage({
   containerVariants,
   revealVariant,
+  bgColor,
   textColor,
   highlightColor,
 }: HomePageProps) {
@@ -133,7 +135,9 @@ export function AboutPage({
             <FaBriefcase className="text-blue-500" /> Professional Experience
           </h2>
 
-          <div className="h-70 w-full rounded-3xl border border-gray-100 bg-white/50 backdrop-blur-md p-2 shadow-inner overflow-y-auto no-scrollbar hide-scrollbar">
+          <div
+            className={`${bgColor} h-70 w-full rounded-3xl border border-gray-100  backdrop-blur-md p-2 shadow-inner overflow-y-auto no-scrollbar hide-scrollbar`}
+          >
             <div className="space-y-3">
               {experiences.map((exp, index) => (
                 <motion.div

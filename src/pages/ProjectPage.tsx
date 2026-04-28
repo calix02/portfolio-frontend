@@ -81,9 +81,9 @@ export function ProjectPage() {
                 </span>
               </div>
 
-              <h2 className="text-6xl lg:text-8xl font-black tracking-tighter bg-linear-to-r from-gray-200 to-gray-800 bg-clip-text text-transparent mb-4 leading-none">
+              <h2 className="text-6xl lg:text-8xl font-black tracking-tighter bg-linear-to-b from-gray-200 to-black bg-clip-text text-transparent mb-4 leading-none">
                 {projects[index].title.split(" ")[0]}
-                <span className="block text-transparent bg-clip-text bg-linear-to-r from-gray-200 to-gray-500">
+                <span className="block text-transparent bg-clip-text bg-linear-to-b from-gray-200 to-black">
                   {projects[index].title.split(" ")[1] || "Project"}
                 </span>
               </h2>

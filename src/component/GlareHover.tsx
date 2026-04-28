@@ -18,8 +18,6 @@ interface GlareHoverProps {
 }
 
 const GlareHover: React.FC<GlareHoverProps> = ({
-  width = "600px",
-  height = "350px",
   background = "#000",
   borderRadius = "20px",
   borderColor = "#333",
@@ -87,10 +85,8 @@ const GlareHover: React.FC<GlareHoverProps> = ({
 
   return (
     <div
-      className={`relative  overflow-hidden border cursor-pointer ${className}`}
+      className={`relative  overflow-hidden border cursor-pointer lg:p-10 p-5 ${className}`}
       style={{
-        width,
-        height,
         background,
         borderRadius,
         borderColor,

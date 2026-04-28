@@ -14,8 +14,7 @@ const SKILL_CATEGORIES = [
       { name: "React", level: "Advanced" },
       { name: "TypeScript", level: "Advanced" },
       { name: "Tailwind CSS", level: "Expert" },
-      { name: "Zustand", level: "Advanced" },
-      { name: "Framer Motion", level: "Advanced" },
+      { name: "Javascript", level: "Advanced" },
     ],
   },
   {
@@ -29,7 +28,7 @@ const SKILL_CATEGORIES = [
       { name: "Node.js", level: "Advanced" },
       { name: "Express", level: "Advanced" },
       { name: "PHP", level: "Intermediate" },
-      { name: "Firebase", level: "Expert" },
+      { name: "Java", level: "Expert" },
     ],
   },
   {
@@ -60,7 +59,7 @@ const SKILL_CATEGORIES = [
     ],
   },
 ];
-interface AboutPageProps {
+interface SkillPageProps {
   containerVariants: Variants;
   revealVariant: Variants;
   textColor: string;
@@ -75,7 +74,7 @@ export function SkillPage({
   borderColor,
   containerVariants,
   revealVariant,
-}: AboutPageProps) {
+}: SkillPageProps) {
   return (
     <motion.section
       id="skills"
@@ -93,12 +92,16 @@ export function SkillPage({
             className="flex items-center gap-3"
           >
             <div className="h-px w-12 bg-white/20" />
-            <span className="text-xs font-mono tracking-[0.4em] uppercase text-blue-500">
+            <motion.span
+              variants={revealVariant}
+              className="text-xs font-mono tracking-[0.4em] uppercase text-blue-500"
+            >
               Stack & Capabilities
-            </span>
+            </motion.span>
           </motion.div>
 
           <motion.h2
+            variants={revealVariant}
             className={`text-5xl bg-linear-to-b from-gray-200 to-gray-800 bg-clip-text text-transparent md:text-7xl font-black tracking-tighter leading-tight`}
           >
             Powering the <br />
@@ -112,6 +115,7 @@ export function SkillPage({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {SKILL_CATEGORIES.map((category, idx) => (
             <motion.div
+              variants={revealVariant}
               key={idx}
               whileHover={{ y: -5 }}
               transition={{ type: "spring", stiffness: 300 }}
