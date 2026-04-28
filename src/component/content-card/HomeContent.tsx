@@ -6,6 +6,7 @@ import { MdOutlineDescription } from "react-icons/md";
 
 export function HomeContent() {
   const { homeData } = useHomeData();
+  
 
   return (
     <div className="w-150 pb-10 border border-gray-200 rounded-2xl px-10 pt-5">
@@ -39,6 +40,7 @@ export function HomeContent() {
             placeholder=""
             required
             value={homeData?.nickname || ""}
+           
           />
           <label className="absolute left-8 top-1/2 -translate-y-1/2 text-gray-500 transition-all duration-200 font-medium peer-focus:top-1 peer-valid:top-1 peer-valid:text-sm peer-focus:text-sm peer-focus:text-gray-600">
             Nickname
