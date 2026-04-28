@@ -120,7 +120,7 @@ export function MainPortfolio() {
 
       {/* --- Home Section --- */}
       <HomePage
-      highlightColor={isDark ? "text-gray-600" : "text-black"}
+        highlightColor={isDark ? "text-gray-600" : "text-black"}
         textColor={isDark ? "text-gray-300" : "text-gray-600"}
         containerVariants={containerVariants}
         revealVariant={revealVariant}
@@ -128,6 +128,7 @@ export function MainPortfolio() {
 
       {/* --- About Section --- */}
       <AboutPage
+        bgColor={isDark ? "bg-black/50" : "bg-white/50"}
         highlightColor={isDark ? "text-white" : "text-gray-900"}
         textColor={isDark ? "text-gray-400" : "text-gray-700"}
         containerVariants={containerVariants}
