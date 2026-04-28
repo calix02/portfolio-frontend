@@ -1,7 +1,22 @@
+import { logOutApi } from "@/api/auth/auth.api";
 import { motion } from "framer-motion";
-import { FaBell, FaGear, FaMagnifyingGlass, FaTerminal } from "react-icons/fa6";
+import { LogOut } from "lucide-react";
+import { FaBell,  FaMagnifyingGlass, FaTerminal } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
 export default function DashboardHeader() {
+
+const navigate = useNavigate();
+const handleLogout = async () => {
+  try {
+    await logOutApi();
+
+    // force redirect (clean state)
+    navigate("/", { replace: true });
+  } catch (error) {
+    console.error("Logout failed:", error);
+  }
+};
   return (
     <header className="h-20 w-full bg-[#050505] backdrop-blur-xl border-b border-white/5 flex items-center justify-between px-8 sticky top-0 z-40">
       {/* --- Left: Breadcrumbs / System Path --- */}
@@ -50,8 +65,8 @@ export default function DashboardHeader() {
             <FaBell size={16} />
             <span className="absolute top-2 right-2 size-2 bg-emerald-500 rounded-full border-2 border-[#050505]" />
           </button>
-          <button className="p-2.5 rounded-xl bg-white/3 border border-white/5 text-zinc-400 hover:text-white hover:bg-white/8 transition-all">
-            <FaGear size={16} />
+          <button onClick={handleLogout} className="p-2.5 cursor-pointer text-red-600 rounded-xl bg-white/3 border border-white/5 hover:text-white hover:bg-white/8 transition-all">
+            <LogOut size={16} />
           </button>
         </div>
       </div>

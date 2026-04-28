@@ -13,7 +13,5 @@ export const logInApi = async (data: Partial<AccountType>) => {
 };
 export const logOutApi = async () => {
   await axiosInstance.post("/auth/logout");
-
-  // 🔐 remove token
   localStorage.removeItem("token");
 };
