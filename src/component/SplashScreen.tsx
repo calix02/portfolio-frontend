@@ -72,7 +72,7 @@ export function SplashScreen({ onComplete }: { onComplete: () => void }) {
           <motion.div
             animate={{ rotate: -360 }}
             transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-            className="absolute -inset-10 border border-blue-500/10 rounded-full border-dashed"
+            className="absolute -inset-10 border border-emerald-500/10 rounded-full border-dashed"
           />
 
           <img
@@ -96,7 +96,7 @@ export function SplashScreen({ onComplete }: { onComplete: () => void }) {
           initial={{ width: 0 }}
           animate={{ width: "40px" }}
           transition={{ duration: 1, delay: 1 }}
-          className="h-px bg-blue-500 mt-4"
+          className="h-px bg-emerald-500 mt-4"
         />
       </div>
 
@@ -109,7 +109,7 @@ export function SplashScreen({ onComplete }: { onComplete: () => void }) {
               initial={{ opacity: 0, y: 5 }}
               animate={{ opacity: 0.5, y: 0 }}
               exit={{ opacity: 0, y: -5 }}
-              className="text-[9px] uppercase tracking-widest font-medium text-blue-400"
+              className="text-[9px] uppercase tracking-widest font-medium text-emerald-400"
             >
               {status}
             </motion.span>
@@ -121,7 +121,7 @@ export function SplashScreen({ onComplete }: { onComplete: () => void }) {
 
         <div className="h-0.5 w-full bg-white/5 rounded-full overflow-hidden">
           <motion.div
-            className="h-full bg-blue-500"
+            className="h-full bg-emerald-500"
             initial={{ width: "0%" }}
             animate={{ width: `${loadingProgress}%` }}
             transition={{ ease: "circOut" }}
