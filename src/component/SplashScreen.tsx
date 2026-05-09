@@ -51,29 +51,9 @@ export function SplashScreen({ onComplete }: { onComplete: () => void }) {
       variants={containerVariants}
       initial="initial"
       exit="exit"
-      className="fixed inset-0 z-9999 flex flex-col items-center justify-center bg-[#050505] text-white overflow-hidden"
+      className="fixed inset-0 z-9999 flex flex-col items-center justify-center background-dark2 text-white overflow-hidden"
     >
-      {/* 1. Enhanced Background: Animated Mesh + Grain */}
-      <div className="absolute inset-0 z-0">
-        <motion.div
-          animate={{
-            x: [0, 20, 0],
-            y: [0, -20, 0],
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-blue-600/10 blur-[150px]"
-        />
-        <motion.div
-          animate={{
-            x: [0, -30, 0],
-            y: [0, 30, 0],
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-blue-500/10 blur-[150px]"
-        />
-        {/* Grain Overlay */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-      </div>
+     
 
       {/* 2. Branding Section */}
       <div className="relative z-10 flex flex-col items-center mb-16">
