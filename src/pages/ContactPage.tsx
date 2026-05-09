@@ -56,7 +56,7 @@ export default function ContactPage({
               <p className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-bold">
                 Send an Email
               </p>
-              <p className="text-white font-semibold text-lg">
+              <p className={` ${textColor} font-semibold text-lg`}>
                 alvaradomarkangelo28@gmail.com
               </p>
             </div>
@@ -70,7 +70,7 @@ export default function ContactPage({
               <p className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-bold">
                 Based
               </p>
-              <p className="text-white font-semibold text-lg">
+              <p className={` ${textColor} font-semibold text-lg`}>
                 Lupi Camarines Sur{" "}
               </p>
             </div>
@@ -84,7 +84,7 @@ export default function ContactPage({
               <p className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-bold">
                 Contact Number
               </p>
-              <p className="text-white font-semibold text-lg">0920-406-8405</p>
+              <p className={` ${textColor} font-semibold text-lg`}>0920-406-8405</p>
             </div>
           </div>
         </motion.div>
