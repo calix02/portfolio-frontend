@@ -98,7 +98,7 @@ export function SplashScreen({ onComplete }: { onComplete: () => void }) {
           <img
             src={Logo}
             alt="Logo"
-            className="h-20 md:h-24 w-auto relative z-10 brightness-150 drop-shadow-[0_0_30px_rgba(16,185,129,0.3)]"
+            className="h-20 md:h-24 w-auto relative z-10 brightness-150 ]"
           />
         </motion.div>
 

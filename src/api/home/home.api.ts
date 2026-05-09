@@ -10,3 +10,12 @@ export const getHomeContentApi = async () => {
   const response = await axiosInstance.get("/home/get");
   return response.data;
 };
+
+export const addHomeContentApi = async (formData : []) => {
+  const  response  = await axiosInstance.post("/projects", formData, {
+     headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  })
+  return response;
+}

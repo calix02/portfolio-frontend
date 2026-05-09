@@ -104,7 +104,7 @@ export default function HomePage({
             >
               <img
                 src={Me}
-                className="h-80 md:h-110 lg:h-130 w-auto object-cover transition-transform duration-700 hover:scale-105"
+                className="h-80 md:h-110 lg:h-110 w-auto object-cover transition-transform duration-700 hover:scale-105"
                 alt="Professional Portrait"
               />
             </motion.div>
