@@ -73,6 +73,7 @@ export function MainPortfolio() {
 
       {/* --- Home Section --- */}
       <HomePage
+        isDark={isDark}
         highlightColor={isDark ? "text-gray-600" : "text-black"}
         textColor={isDark ? "text-gray-300" : "text-gray-600"}
         containerVariants={containerVariants}

@@ -1,6 +1,5 @@
-import Me from "@/assets/me.png";
+import Me from "@/assets/me.svg";
 import CircularGallery from "@/component/CircularGallery";
-import StarBorder from "@/component/StarBorder";
 import { motion, type Variants } from "framer-motion";
 import { useState } from "react";
 import {
@@ -109,22 +108,7 @@ export function AboutPage({
               </p>
             </motion.div>
             <motion.div variants={revealVariant} className="mt-3 flex gap-2">
-              <StarBorder
-                as="button"
-                className="custom-class"
-                color="cyan"
-                speed="1s"
-              >
-                Hire Me
-              </StarBorder>
-              <StarBorder
-                as="button"
-                className="custom-class"
-                color="cyan"
-                speed="1s"
-              >
-                Book an Appointment
-              </StarBorder>
+             
             </motion.div>
           </div>
         </div>
