@@ -14,8 +14,18 @@ import { SkillPage } from "./SkillPage";
 import { TestimonialPage } from "./TestimonialPage.";
 
 export function MainPortfolio() {
-  const [isDark, setIsDark] = useState<boolean>(true);
+  //  Get theme from localStorage
+  const [isDark, setIsDark] = useState<boolean>(() => {
+    const savedTheme = localStorage.getItem("theme");
+    return savedTheme ? savedTheme === "dark" : true;
+  });
+
   const [showLogin, setShowLogin] = useState(false);
+
+  // Save theme whenever it changes
+  useEffect(() => {
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  }, [isDark]);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -65,7 +75,7 @@ export function MainPortfolio() {
     },
   };
 
-  if (loading) return <SplashScreen onComplete={() => setLoading(false)} />;
+  if (loading) return <SplashScreen isDark={isDark} onComplete={() => setLoading(false)} />;
 
   return (
     <div

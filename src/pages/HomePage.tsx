@@ -34,7 +34,7 @@ export default function HomePage({
               ? homeData?.role
               : "Software Developer & Freelancer"}
           </p>
-          <h1 className="bg-linear-to-b from-gray-200 to-black bg-clip-text text-transparent text-5xl md:text-7xl font-bold  leading-[1.1]">
+          <h1 className="bg-linear-to-b from-gray-200 to-black bg-clip-text text-transparent text-3xl md:text-7xl font-bold  leading-[1.1]">
             {homeData?.quotes1
               ? homeData.quotes1
               : "From concept to deployment"}{" "}

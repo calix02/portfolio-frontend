@@ -9,7 +9,7 @@ const getStatus = (progress: number) => {
   return "Initializing...";
 };
 
-export function SplashScreen({ onComplete }: { onComplete: () => void }) {
+export function SplashScreen({ onComplete, isDark }: { onComplete: () => void; isDark: boolean }) {
   const [loadingProgress, setLoadingProgress] = useState(0);
   const status = getStatus(loadingProgress); //
 
@@ -51,7 +51,7 @@ export function SplashScreen({ onComplete }: { onComplete: () => void }) {
       variants={containerVariants}
       initial="initial"
       exit="exit"
-      className="fixed inset-0 z-9999 flex flex-col items-center justify-center background-dark2 text-white overflow-hidden"
+      className={`fixed inset-0 z-9999 flex flex-col items-center justify-center ${isDark ? "background-dark2" : "background-light"} text-white overflow-hidden`}
     >
      
 
@@ -84,7 +84,7 @@ export function SplashScreen({ onComplete }: { onComplete: () => void }) {
 
         <div className="overflow-hidden">
           <motion.h2
-            className="text-white tracking-[1em] uppercase text-[10px] md:text-[12px] font-light"
+            className={`${isDark ? "text-white" : "text-[#050505]"} tracking-[1em] uppercase text-[10px] md:text-[12px] font-light`}
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
@@ -133,10 +133,10 @@ export function SplashScreen({ onComplete }: { onComplete: () => void }) {
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-8 left-8 flex flex-col gap-2">
           <div className="w-8 h-px bg-white/20" />
-          <div className="w-1 h-1 bg-blue-500 rounded-full" />
+          <div className="w-1 h-1 bg-emerald-500 rounded-full" />
         </div>
         <div className="absolute bottom-8 right-8 flex flex-col items-end gap-2">
-          <div className="w-1 h-1 bg-blue-500 rounded-full" />
+          <div className="w-1 h-1 bg-emerald-500 rounded-full" />
           <div className="w-8 h-px bg-white/20" />
         </div>
         {/* Subtle Scanline Effect */}
