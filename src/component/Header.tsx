@@ -43,7 +43,7 @@ export function Header({ toggleDark, Icon, textColor }: HeaderProps) {
         opacity: isHidden ? 0 : 1 
       }}
       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-       className="w-[95%] max-w-7xl mx-auto h-20 fixed top-4 left-0 right-0 z-50 flex justify-between items-center px-8 md:px-12 
+       className="w-[95%] max-w-7xl mx-auto h-16 fixed top-4 left-0 right-0 z-50 flex justify-between items-center px-8 md:px-12 
       /* Floating Glass Effect */
       bg-white/10 backdrop-blur-xl rounded-2xl
       border border-black/5 shadow-[0_8px_32px_rgba(0,0,0,0.05)]"

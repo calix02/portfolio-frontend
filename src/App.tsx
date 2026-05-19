@@ -1,6 +1,5 @@
 import { Toaster } from "react-hot-toast";
 import { createBrowserRouter, RouterProvider } from "react-router";
-import { EditorPage } from "./pages/admin-pages/EditorPage";
 import { MainPortfolio } from "./pages/MainPortfolio";
 
 // ✅ Moved outside the component — created only once
@@ -8,10 +7,6 @@ const router = createBrowserRouter([
   {
     path: "/",
     Component: MainPortfolio,
-  },
-  {
-    path: "/editor",
-    Component: EditorPage,
   },
 ]);
 
