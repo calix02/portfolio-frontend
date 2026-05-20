@@ -1,8 +1,10 @@
 import { useHomeData } from "@/hooks/useHomeData";
 import { motion, type Variants } from "framer-motion";
+import { useState } from "react";
 import { FaDownload } from "react-icons/fa";
 import { FaRegEnvelope } from "react-icons/fa6";
 import { FaArrowUpLong } from "react-icons/fa6";
+import { ContactBox } from "@/component/ContactBox";
 
 interface HomePageProps {
   containerVariants: Variants;
@@ -20,12 +22,19 @@ export default function HomePage({
   isDark,
 }: HomePageProps) {
   const { homeData } = useHomeData();
+  const [showContact, setShowContact] = useState<boolean>(false);
+
+  const handleShowContact = () =>{
+    setShowContact(!showContact);
+  }
 
   // Fallbacks based on your multi-disciplinary background
   const fallbackRole = "Full-Stack Developer & Graphic Designer";
   const fallbackHeadline = "Mark Alvarado";
   const fallbackSubheadline =
     "Architecting clean code. Designing seamless experiences.";
+  
+    
 
   return (
     <motion.section
@@ -36,6 +45,7 @@ export default function HomePage({
       variants={containerVariants}
       className="relative z-10 min-h-screen w-full flex items-center justify-center px-6 md:px-12 lg:px-24 py-24 lg:py-0 overflow-hidden"
     >
+     {showContact && <ContactBox onClose={handleShowContact} />}
       {/* Decorative Design Element (Subtle grid/gradient glow for designer aesthetic) */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-size-[14px_24px] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
 
@@ -98,6 +108,7 @@ export default function HomePage({
           className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 w-full sm:w-auto"
         >
           <motion.button
+            onClick={handleShowContact}
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.98 }}
             className="w-full sm:w-48 py-4 bg-neutral-800 text-white dark:bg-white dark:text-neutral-950 shadow-md cursor-pointer flex items-center justify-center gap-2 font-semibold rounded-xl hover:shadow-xl hover:bg-neutral-800 dark:hover:bg-neutral-100 transition-all duration-200"
@@ -117,14 +128,15 @@ export default function HomePage({
             Download CV
           </motion.a>
         </motion.div>
-        <div
+        <motion.div
+         variants={revealVariant}
           className={` ${isDark ? "text-gray-400" : "text-gray-600"} text-center flex items-center justify-center gap-2 absolute bottom-2`}
         >
           <p className="font-medium  text-xs animate-pulse tracking-[0.3em] uppercase">
             Scroll Up to View more
           </p>
           <FaArrowUpLong className="animate-bounce" />
-        </div>
+        </motion.div>
       </div>
     </motion.section>
   );

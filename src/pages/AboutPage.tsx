@@ -28,10 +28,10 @@ export function AboutPage({
   // Mock Experience Data
   const experiences = [
     {
-      title: "Software Developer - Intern",
+      title: "Software Developer & UI/UX Designer - Intern",
       company: "Wayne Enterprise Solution Corporation",
       date: "2026 - Present",
-      desc: "Developing full-stack web applications using React + Vite, Typescript and Tailwind for the frontend, and for the backend is Node js / Express and MongoDB.",
+      desc: "Developinga and designing full-stack web applications using React + Vite, Typescript and Tailwind for the frontend, and for the backend is Node js / Express and MongoDB.",
     },
     {
       title: "Front-End Developer - Student",
