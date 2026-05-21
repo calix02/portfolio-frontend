@@ -76,7 +76,7 @@ export default function HomePage({
             <p className="text-neutral-400 dark:text-neutral-500 font-medium tracking-[0.25em] uppercase text-xs md:text-sm">
               {homeData?.role ? homeData.role : fallbackRole}
             </p>
-            <h1 className="bg-linear-to-b from-neutral-950 to-neutral-700 dark:from-white dark:to-neutral-400 bg-clip-text text-transparent text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1] pb-1">
+            <h1 className="bg-linear-to-b from-neutral-950 to-white dark:from-white dark:to-neutral-400 bg-clip-text text-transparent text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1] pb-1">
               {homeData?.quotes1 ? homeData.quotes1 : fallbackHeadline}
               <span className="block font-light text-neutral-500 dark:text-neutral-400 text-2xl sm:text-3xl md:text-4xl lg:text-5xl mt-3 tracking-tight leading-snug">
                 {homeData?.quotes2 ? homeData.quotes2 : fallbackSubheadline}
@@ -133,13 +133,13 @@ export default function HomePage({
           className="w-full lg:w-2/5 flex items-center justify-center relative px-4"
         >
           {/* Subtle Ambient Glow Effect behind image */}
-          <div className="absolute w-72 h-72 rounded-full bg-neutral-400/10 dark:bg-white/5 blur-3xl -z-10 pointer-events-none" />
+          <div className="absolute w-72 h-72  -z-10 pointer-events-none" />
           
           {/* Main Visual Frame */}
           <motion.div 
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="relative group w-100   aspect-square rounded-2xl overflow-hidden shadow-2xl  dark:border-neutral-900  dark:bg-neutral-800"
+            className="relative group w-100   aspect-square rounded-2xl overflow-hidden   dark:border-neutral-900  dark:bg-neutral-800"
           >
            
             <img 

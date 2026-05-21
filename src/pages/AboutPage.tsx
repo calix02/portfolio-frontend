@@ -95,12 +95,12 @@ export function AboutPage({
             >
               Mark Alvarado
               <RiVerifiedBadgeFill
-                className="text-emerald-500 text-3xl drop-shadow-md"
+                className="text-blue-500 text-3xl drop-shadow-md"
                 title="Verified Developer"
               />
             </motion.h1>
             <motion.div variants={revealVariant} className="mt-4 space-y-2">
-              <p className="text-emerald-600 font-semibold flex items-center justify-center sm:justify-start gap-2 text-lg">
+              <p className="text-blue-600 font-semibold flex items-center justify-center sm:justify-start gap-2 text-lg">
                 <FaCode className="text-sm" /> Full Stack Developer
               </p>
               <p className="text-gray-500 flex items-center justify-center sm:justify-start gap-2 italic">
@@ -116,7 +116,7 @@ export function AboutPage({
         {/* Scrollable Experience Section */}
         <motion.div variants={revealVariant} className="space-y-4 ">
           <h2 className="flex items-center font-bold tracking-[0.2em] uppercase text-xs text-gray-400 gap-2">
-            <FaBriefcase className="text-emerald-500" /> Professional Experience
+            <FaBriefcase className="text-blue-500" /> Professional Experience
           </h2>
 
           <div
@@ -131,11 +131,11 @@ export function AboutPage({
                 >
                   <div className="flex justify-between items-start mb-1">
                     <h3 className="font-bold text-gray-800">{exp.title}</h3>
-                    <span className="text-[10px] font-bold bg-blue-50 text-emerald-600 px-2 py-1 rounded-full uppercase italic">
+                    <span className="text-[10px] font-bold bg-blue-50 text-blue-600 px-2 py-1 rounded-full uppercase italic">
                       {exp.date}
                     </span>
                   </div>
-                  <p className="text-sm text-emerald-500 font-medium mb-2">
+                  <p className="text-sm text-blue-500 font-medium mb-2">
                     {exp.company}
                   </p>
                   <p className="text-sm text-gray-500 leading-relaxed">
@@ -158,7 +158,7 @@ export function AboutPage({
             variants={revealVariant}
             className="flex items-center font-bold tracking-[0.2em] uppercase text-xs text-gray-400 gap-2"
           >
-            <FaUserCircle className="text-emerald-500 text-lg" /> The Story
+            <FaUserCircle className="text-blue-500 text-lg" /> The Story
           </motion.h2>
           <motion.p
             variants={revealVariant}
@@ -166,7 +166,7 @@ export function AboutPage({
           >
             I am a passionate{" "}
             <span
-              className={`${highlightColor} font-semibold underline decoration-emerald-500/30 underline-offset-4`}
+              className={`${highlightColor} font-semibold underline decoration-blue-500/30 underline-offset-4`}
             >
               Full Stack Developer
             </span>{" "}
@@ -192,7 +192,7 @@ export function AboutPage({
           style={{ height: "400px" }}
         >
           <h2 className="flex items-center font-bold absolute top-6 left-0 tracking-[0.2em] uppercase text-xs text-gray-400 gap-2">
-            <IoRibbonSharp className="text-emerald-500 text-lg" /> Highlights &
+            <IoRibbonSharp className="text-blue-500 text-lg" /> Highlights &
             Certs
           </h2>
           <div className="h-full w-full">
