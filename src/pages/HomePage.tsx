@@ -107,15 +107,15 @@ export default function HomePage({
           variants={revealVariant}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 w-full sm:w-auto"
         >
-          <motion.button
-            onClick={handleShowContact}
+          <motion.a
+          href="#projects"
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.98 }}
             className="w-full sm:w-48 py-4 bg-neutral-800 text-white dark:bg-white dark:text-neutral-950 shadow-md cursor-pointer flex items-center justify-center gap-2 font-semibold rounded-xl hover:shadow-xl hover:bg-neutral-800 dark:hover:bg-neutral-100 transition-all duration-200"
           >
             <FaRegEnvelope className="text-sm" />
-            Let's Collaborate
-          </motion.button>
+            Explore My Work
+          </motion.a>
 
           <motion.a
             href="src/assets/cv/cv.pdf"

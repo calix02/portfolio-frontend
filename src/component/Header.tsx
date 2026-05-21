@@ -83,8 +83,7 @@ export function Header({ toggleDark, Icon, textColor }: HeaderProps) {
         
         {/* Mobile Menu Toggle */}
         <div className="md:hidden flex flex-col gap-1 cursor-pointer p-2">
-          <div className="w-5 h-0.5 bg-white"></div>
-          <div className="w-5 h-0.5 bg-white"></div>
+         
         </div>
       </div>
       

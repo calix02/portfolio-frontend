@@ -55,7 +55,7 @@ export function AboutPage({
       initial="initial"
       whileInView="whileInView"
       viewport={{ once: false, amount: 0.2 }}
-      className="relative z-10 flex flex-col lg:flex-row  items-center justify-center min-h-screen w-full px-6 md:px-20 py-24 gap-16 overflow-hidden"
+      className="relative z-10 flex flex-col lg:flex-row  items-center justify-center min-h-screen w-full px-6 md:px-20 py-24 gap-8 overflow-hidden"
     >
       {selectedCert && (
         <div
@@ -91,7 +91,7 @@ export function AboutPage({
           <div className="text-center sm:text-left pt-2">
             <motion.h1
               variants={revealVariant}
-              className="font-medium tracking-[0.2rem] text-4xl md:text-5xl bg-clip-text text-transparent bg-linear-to-b from-white to-gray-500 flex items-center justify-center sm:justify-start gap-3"
+              className="font-medium tracking-[0.2rem] text-3xl bg-clip-text text-transparent bg-linear-to-b from-white to-gray-500 flex items-center justify-center sm:justify-start gap-3"
             >
               Mark Alvarado
               <RiVerifiedBadgeFill
