@@ -17,7 +17,7 @@ const projects = [
     category: "Financial System",
     description:
       "A centralized digital ledger engineered to eliminate manual accounting errors. It features real-time synchronization across institutional modules.",
-    techs: ["React", "Tailwind", "PHP"],
+    techs: ["React", "Tailwind", "Javascript"],
     image: Efeesync,
     accent: "#3b82f6",
   },
@@ -26,7 +26,7 @@ const projects = [
     category: "Logistics / AI",
     description:
       "Enterprise-grade General Inventory System with glassmorphic dashboards, predictive stock tracking, and automated warehouse reporting.",
-    techs: ["Firebase", "TypeScript", "React"],
+    techs: ["Express", "Node.js", "TypeScript", "React", "Tailwind"],
     image: Gis,
     accent: "#8b5cf6",
   },
@@ -35,7 +35,7 @@ const projects = [
     category: "IoT / Hardware",
     description:
       "Physical computing interface connecting ESP32 sensors to a high-performance web dashboard for real-time environmental monitoring.",
-    techs: ["IoT", "ESP32", "Three.js"],
+    techs: ["React", "Tailwind" , "Javascript", "PHP"],
     image: Rkia,
     accent: "#10b981",
   },
@@ -44,13 +44,17 @@ const projects = [
     category: "IoT / Hardware",
     description:
       "Physical computing interface connecting ESP32 sensors to a high-performance web dashboard for real-time environmental monitoring.",
-    techs: ["IoT", "ESP32", "Three.js"],
+    techs: ["React", "Tailwind" , "Javascript"],
     image: Cit,
     accent: "#10b981",
   },
 ];
 
-export function ProjectPage() {
+interface ProjectPageProps {
+  isDark: boolean;
+}
+
+export function ProjectPage({isDark} : ProjectPageProps) {
   const [index, setIndex] = useState(0);
 
   const next = () => setIndex((prev) => (prev + 1) % projects.length);
@@ -60,7 +64,7 @@ export function ProjectPage() {
   return (
     <section
       id="projects"
-      className="relative h-screen w-full  text-white overflow-hidden flex items-center justify-center font-sans"
+      className={`relative h-screen w-full ${isDark ? "text-white" : "text-[#050505]"} pb-20 flex items-center justify-center font-sans`}
     >
       {/* CONTENT GRID */}
       <div className="relative z-10 w-full max-w-350 px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -88,7 +92,7 @@ export function ProjectPage() {
                 </span>
               </h2>
 
-              <p className="text-neutral-400 text-lg max-w-md leading-relaxed border-l border-white/10 pl-6 mb-8">
+              <p className={` ${isDark ? "text-neutral-400" : "text-gray-700"}  text-lg max-w-md leading-relaxed border-l border-white/10 pl-6 mb-8`}>
                 {projects[index].description}
               </p>
 
@@ -96,7 +100,7 @@ export function ProjectPage() {
                 {projects[index].techs.map((tech) => (
                   <span
                     key={tech}
-                    className="px-4 py-1.5 bg-white/5 border border-white/10 backdrop-blur-md rounded-full text-[11px] font-bold tracking-widest uppercase text-neutral-300"
+                    className={`px-4 py-1.5 ${isDark ? "bg-white/5 text-neutral-300" : "bg-black/10 text-[#050505]"}  border border-white/10 backdrop-blur-md rounded-full text-[11px] font-bold tracking-widest uppercase `}
                   >
                     {tech}
                   </span>
@@ -115,7 +119,7 @@ export function ProjectPage() {
                 <motion.a
                   whileHover={{ backgroundColor: "rgba(255,255,255,0.1)" }}
                   href="#"
-                  className="p-4 rounded-full border border-white/10 text-white"
+                  className={`p-4 rounded-full border  ${isDark ? "text-white border-white/10" : "text-[#050505] border-black/20"} `}
                 >
                   <FiGithub size={20} />
                 </motion.a>
@@ -165,13 +169,11 @@ export function ProjectPage() {
             </motion.div>
           </AnimatePresence>
         </div>
-      </div>
-
-      {/* FOOTER CONTROLS */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-12 z-20">
+         {/* FOOTER CONTROLS */}
+      <div className="absolute lg:-bottom-10 -bottom-15 left-1/2  -translate-x-1/2 flex items-center gap-12 z-20">
         <button
           onClick={prev}
-          className="p-4 rounded-full border border-white/10 hover:bg-white hover:text-black transition-all group"
+          className={`p-4 rounded-full border cursor-pointer  ${isDark ? "border-white/10 hover:bg-white hover:text-black" : "border-black/50  hover:bg-black hover:text-white"}  transition-all group`}
         >
           <FiChevronLeft size={24} className="group-hover:scale-110" />
         </button>
@@ -180,18 +182,21 @@ export function ProjectPage() {
           {projects.map((_, i) => (
             <div
               key={i}
-              className={`h-1.5 rounded-full transition-all duration-500 ${index === i ? "w-10 bg-white" : "w-2 bg-white/20"}`}
+              className={`h-1.5 rounded-full transition-all duration-500 ${index === i ?   ` ${isDark ? "w-10 bg-white" : "w-10 bg-black"}`  : (isDark ? "w-2 bg-white/20" : "w-2 bg-black/20")}`}
             />
           ))}
         </div>
 
         <button
           onClick={next}
-          className="p-4 rounded-full border border-white/10 hover:bg-white hover:text-black transition-all group"
+          className={`p-4 rounded-full border cursor-pointer  ${isDark ? "border-white/10 hover:bg-white hover:text-black" : "border-black/50  hover:bg-black hover:text-white"} transition-all group`}
         >
           <FiChevronRight size={24} className="group-hover:scale-110" />
         </button>
       </div>
+      </div>
+
+     
     </section>
   );
 }

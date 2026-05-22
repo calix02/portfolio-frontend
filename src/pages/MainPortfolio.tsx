@@ -100,8 +100,8 @@ export function MainPortfolio() {
       />
 
       {/* --- Project Section --- */}
-      <ProjectPage />
-      <TestimonialPage />
+      <ProjectPage isDark={isDark} />
+      <TestimonialPage isDark={isDark} />
       <ContactPage
         revealVariant={revealVariant}
         containerVariants={containerVariants}

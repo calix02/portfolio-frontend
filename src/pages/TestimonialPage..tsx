@@ -49,10 +49,12 @@ const MarqueeRow = ({
   items,
   direction = "left",
   speed = 40,
+  isDark
 }: {
   items: typeof testimonials;
   direction?: "left" | "right";
   speed?: number;
+  isDark : boolean;
 }) => {
   const moveRight = direction === "right";
 
@@ -103,11 +105,11 @@ const MarqueeRow = ({
                     />
                   ))}
                 </div>
-                <div className="p-2 rounded-lg bg-white/5 border border-white/5">
-                  <MessageSquareQuote size={18} className="text-white/20" />
+                <div className={`p-2 rounded-lg ${isDark ? "bg-white/5 border border-white/5" : "bg-black/10 border border-black/10"} `}>
+                  <MessageSquareQuote size={18} className={` ${isDark ? "text-white/20"  : "text-[#050505]"}`} />
                 </div>
               </div>
-              <p className="text-neutral-400 text-sm leading-relaxed mb-8">
+              <p className={` ${isDark ? "text-neutral-400" : "text-[#050505]"} text-sm leading-relaxed mb-8`}>
                 "{testimonial.quote}"
               </p>
             </div>
@@ -137,7 +139,10 @@ const MarqueeRow = ({
   );
 };
 
-export function TestimonialPage() {
+interface TestimonialProps  {
+  isDark : boolean;
+}
+export function TestimonialPage({isDark} : TestimonialProps) {
   return (
     <motion.section
       id="testimonials"
@@ -172,8 +177,8 @@ export function TestimonialPage() {
 
         {/* Carousel Rows */}
         <div className="flex flex-col gap-4 w-full">
-          <MarqueeRow items={testimonials} direction="right" speed={60} />
-          <MarqueeRow items={testimonials} direction="left" speed={55} />
+          <MarqueeRow isDark={isDark} items={testimonials} direction="right" speed={60} />
+          <MarqueeRow isDark={isDark} items={testimonials} direction="left" speed={55} />
         </div>
 
         {/* Footer */}

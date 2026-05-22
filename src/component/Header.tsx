@@ -76,7 +76,7 @@ export function Header({ toggleDark, Icon, textColor }: HeaderProps) {
           onClick={toggleDark}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="hidden sm:block cursor-pointer p-2 bg-white text-black text-xl font-bold rounded-full shadow-lg hover:bg-gray-200 transition-all"
+          className=" cursor-pointer p-2 bg-white text-black text-xl font-bold rounded-full shadow-lg hover:bg-gray-200 transition-all"
         >
           <Icon className="transition-transform duration-500"/>
         </motion.button>
