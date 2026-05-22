@@ -58,6 +58,7 @@ export function MainPortfolio() {
   };
 
   if (loading) return <SplashScreen isDark={isDark} onComplete={() => setLoading(false)} />;
+  
 
   return (
     <div
