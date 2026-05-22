@@ -114,7 +114,7 @@ export function ProjectPage({isDark} : ProjectPageProps) {
                   href="#"
                   className="px-8 py-4 bg-white text-black rounded-full font-bold flex items-center gap-2 transition-shadow hover:shadow-[0_0_40px_rgba(255,255,255,0.2)]"
                 >
-                  Explore <FiExternalLink />
+                  Explore More <FiExternalLink />
                 </motion.a>
                 <motion.a
                   whileHover={{ backgroundColor: "rgba(255,255,255,0.1)" }}
@@ -195,6 +195,8 @@ export function ProjectPage({isDark} : ProjectPageProps) {
         </button>
       </div>
       </div>
+
+      
 
      
     </section>

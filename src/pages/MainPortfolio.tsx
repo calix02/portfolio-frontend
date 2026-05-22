@@ -11,6 +11,7 @@ import HomePage from "./HomePage";
 import { ProjectPage } from "./ProjectPage";
 import { SkillPage } from "./SkillPage";
 import { TestimonialPage } from "./TestimonialPage.";
+import { GraphicPage } from "./GraphicPage";
 
 export function MainPortfolio() {
   //  Get theme from localStorage
@@ -102,6 +103,7 @@ export function MainPortfolio() {
 
       {/* --- Project Section --- */}
       <ProjectPage isDark={isDark} />
+      <GraphicPage />
       <TestimonialPage isDark={isDark} />
       <ContactPage
         revealVariant={revealVariant}

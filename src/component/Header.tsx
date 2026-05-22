@@ -10,7 +10,7 @@ type HeaderProps = {
 };
 
 export function Header({ toggleDark, Icon, textColor }: HeaderProps) {
-  const navItems = ["Home", "About", "Skills", "Projects", "Testimonials", "Contact"];
+  const navItems = ["Home", "About", "Skills", "Projects", "Graphics", "Testimonials", "Contact"];
   
   // Track visibility state
   const [isHidden, setIsHidden] = useState(false);
