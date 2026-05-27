@@ -4,7 +4,7 @@ import {
   useTransform,
   type PanInfo,
 } from "framer-motion"; // Changed from 'motion/react' to standard 'framer-motion'
-import { useEffect, useState, useMemo } from "react";
+import { useState } from "react";
 
 interface CardRotateProps {
   children: React.ReactNode;
@@ -24,7 +24,7 @@ function CardRotate({
   const rotateX = useTransform(y, [-100, 100], [60, -60]);
   const rotateY = useTransform(x, [-100, 100], [-60, 60]);
 
-  function handleDragEnd(_event: any, info: PanInfo) {
+  function handleDragEnd(_event: unknown, info: PanInfo) {
     if (Math.abs(info.offset.x) > sensitivity || Math.abs(info.offset.y) > sensitivity) {
       onSendToBack();
       // Reset position for when this card eventually comes back to the front
@@ -75,12 +75,9 @@ export default function Stack({
   sendToBackOnClick = false,
   onCardChange,
 }: StackProps) {
-  // 1. Initialize the stack only once using useMemo or a functional state initializer
-  const initialStack = useMemo(() => 
-    cards.map((content, index) => ({ id: index, content })), 
-  []);
-
-  const [stack, setStack] = useState(initialStack);
+  const [stack, setStack] = useState(() =>
+    cards.map((content, index) => ({ id: index, content })),
+  );
 
   // 2. CRITICAL: Fixed rotation logic
   const sendToBack = (id: number) => {

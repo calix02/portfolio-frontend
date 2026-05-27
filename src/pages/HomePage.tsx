@@ -1,9 +1,7 @@
 import { useHomeData } from "@/hooks/useHomeData";
 import { motion, type Variants } from "framer-motion";
-import { useState } from "react";
 import { FaDownload } from "react-icons/fa";
 import { FaRegEnvelope, FaArrowUpLong } from "react-icons/fa6";
-import { ContactBox } from "@/component/ContactBox";
 import Image from "@/assets/developer.svg";
 
 interface HomePageProps {
@@ -22,11 +20,8 @@ export default function HomePage({
   isDark,
 }: HomePageProps) {
   const { homeData } = useHomeData();
-  const [showContact, setShowContact] = useState<boolean>(false);
 
-  const handleShowContact = () => {
-    setShowContact(!showContact);
-  };
+ 
 
   // Fallbacks based on your multi-disciplinary background
   const fallbackRole = "Full-Stack Developer & Graphic Designer";
@@ -43,7 +38,6 @@ export default function HomePage({
       variants={containerVariants}
       className="relative z-10 min-h-screen w-full flex items-center justify-center px-6 md:px-12 lg:px-24 py-24 lg:py-0 overflow-hidden"
     >
-      {showContact && <ContactBox onClose={handleShowContact} />}
       
       {/* Modern Grid Background Graphic */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-size-[14px_24px] mask-[radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
@@ -76,7 +70,7 @@ export default function HomePage({
             <p className="text-neutral-400 dark:text-neutral-500 font-medium tracking-[0.25em] uppercase text-xs md:text-sm">
               {homeData?.role ? homeData.role : fallbackRole}
             </p>
-            <h1 className="bg-linear-to-b from-neutral-950 to-white dark:from-white dark:to-neutral-400 bg-clip-text text-transparent text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1] pb-1">
+            <h1 className="bg-linear-to-r from-indigo-400 via-purple-400 to-cyan-600 bg-clip-text text-transparent text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1] pb-1">
               {homeData?.quotes1 ? homeData.quotes1 : fallbackHeadline}
               <span className="block font-light text-neutral-500 dark:text-neutral-400 text-2xl sm:text-3xl md:text-4xl lg:text-5xl mt-3 tracking-tight leading-snug">
                 {homeData?.quotes2 ? homeData.quotes2 : fallbackSubheadline}

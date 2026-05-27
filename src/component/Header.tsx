@@ -2,14 +2,17 @@ import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { useState } from "react";
 import Logo from "@/assets/logo.svg";
 import type { IconType } from "react-icons/lib";
+import { IoMenu } from "react-icons/io5";
+
 
 type HeaderProps = {
   toggleDark: () => void;
   Icon: IconType;
   textColor: string;
+  isDark: boolean;
 };
 
-export function Header({ toggleDark, Icon, textColor }: HeaderProps) {
+export function Header({ toggleDark, Icon, textColor, isDark }: HeaderProps) {
   const navItems = ["Home", "About", "Skills", "Projects", "Graphics", "Testimonials", "Contact"];
   
   // Track visibility state
@@ -83,6 +86,7 @@ export function Header({ toggleDark, Icon, textColor }: HeaderProps) {
         
         {/* Mobile Menu Toggle */}
         <div className="md:hidden flex flex-col gap-1 cursor-pointer p-2">
+          <IoMenu className={`text-2xl ${isDark ? "text-white" : "text-[#050505]"}`} />
          
         </div>
       </div>

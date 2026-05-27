@@ -1,4 +1,4 @@
-import Cit from "@/assets/projects/Cit.png";
+import Cit from "@/assets/projects/cit.png";
 import Efeesync from "@/assets/projects/efeesync.png";
 import Gis from "@/assets/projects/gis.png";
 import Rkia from "@/assets/projects/rkia.png";
