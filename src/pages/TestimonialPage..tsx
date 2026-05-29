@@ -1,5 +1,9 @@
 import { motion } from "framer-motion";
 import { CheckCircle, MessageSquareQuote, Star } from "lucide-react";
+import Avatar1 from "@/assets/avatars/avatar1.jpg";
+import Avatar2 from "@/assets/avatars/avatar2.jpg";
+import Avatar3 from "@/assets/avatars/avatar3.jpg";
+import Avatar4 from "@/assets/avatars/avatar4.jpg";
 
 // ... (testimonials and avatarStack data remain the same)
 
@@ -7,15 +11,15 @@ const testimonials = [
   {
     name: "Michael Chin",
     role: "IT Director, Global Systems",
-    avatar: "/assets/avatars/avatar1.png",
+    avatar: Avatar1,
     quote:
       "The graphic design work for our rebrand was exceptional. MVP Visuals captured our vision and created a cohesive identity that resonates with...",
     stars: 5,
   },
   {
-    name: "Sarah Johnson",
+    name: "James Johnson",
     role: "CEO, Innovate Solutions",
-    avatar: "/assets/avatars/avatar2.png",
+    avatar: Avatar2,
     quote:
       "Outstanding service and incredible results! MVP Visuals helped us launch our e-commerce platform with a beautiful, user-friendly design...",
     stars: 5,
@@ -23,15 +27,15 @@ const testimonials = [
   {
     name: "James Wilson",
     role: "Product Manager, TechCorp",
-    avatar: "/assets/avatars/avatar3.png",
+    avatar: Avatar3,
     quote:
       "Working with MVP Visuals on our network infrastructure was seamless. They delivered a robust, scalable solution that has significantly...",
     stars: 5,
   },
   {
-    name: "Elena Rodriguez",
+    name: "Eric Rodriguez",
     role: "Marketing Head, FlowState",
-    avatar: "/assets/avatars/avatar4.png",
+    avatar: Avatar4,
     quote:
       "The attention to detail and creative flair brought to our project was unmatched. Truly a partner in our digital growth.",
     stars: 4,
@@ -39,10 +43,10 @@ const testimonials = [
 ];
 
 const avatarStack = [
-  { name: "User 1", image: "/assets/avatars/avatar1.png" },
-  { name: "User 2", image: "/assets/avatars/avatar2.png" },
-  { name: "User 3", image: "/assets/avatars/avatar3.png" },
-  { name: "User 4", image: "/assets/avatars/avatar4.png" },
+  { name: "User 1", image: Avatar1 },
+  { name: "User 2", image: Avatar2 },
+  { name: "User 3", image: Avatar3 },
+  { name: "User 4", image: Avatar4 },
 ];
 
 const MarqueeRow = ({
