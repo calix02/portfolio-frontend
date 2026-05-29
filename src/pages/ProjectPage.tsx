@@ -120,7 +120,7 @@ export function ProjectPage({ isDark }: ProjectPageProps) {
                 </motion.a>
                 <motion.a
                   whileHover={{ backgroundColor: "rgba(255,255,255,0.1)" }}
-                  href="#"
+                  href="https://github.com/calix02"
                   className={`p-4 rounded-full border  ${isDark ? "text-white border-white/10" : "text-[#050505] border-black/20"} `}
                 >
                   <FiGithub size={20} />
