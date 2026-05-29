@@ -101,7 +101,7 @@ export function AboutPage({
             </motion.h1>
             <motion.div variants={revealVariant} className="mt-4 space-y-2">
               <p className="text-blue-600 font-semibold flex items-center justify-center sm:justify-start gap-2 text-lg">
-                <FaCode className="text-sm" /> Full Stack Developer
+                <FaCode className="text-sm" /> Web Developer
               </p>
               <p className="text-gray-500 flex items-center justify-center sm:justify-start gap-2 italic">
                 <FaMapMarkerAlt className="text-sm" /> Lupi, Camarines Sur, PH
@@ -168,7 +168,7 @@ export function AboutPage({
             <span
               className={`${highlightColor} font-semibold underline decoration-blue-500/30 underline-offset-4`}
             >
-              Full Stack Developer
+              Web Developer
             </span>{" "}
             dedicated to building digital experiences that are both functional
             and visually stunning.

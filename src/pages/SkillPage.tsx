@@ -53,8 +53,6 @@ const SKILL_CATEGORIES = [
       "Automating deployments and managing cloud-native infrastructure.",
     skills: [
       { name: "Vercel", level: "Expert" },
-      { name: "AWS", level: "Intermediate" },
-      { name: "Docker", level: "Intermediate" },
       { name: "Cloudflare", level: "Advanced" },
     ],
   },

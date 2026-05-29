@@ -24,7 +24,7 @@ export default function HomePage({
  
 
   // Fallbacks based on your multi-disciplinary background
-  const fallbackRole = "Full-Stack Developer & Graphic Designer";
+  const fallbackRole = "Web Developer & Graphic Designer";
   const fallbackHeadline = "Mark Alvarado";
   const fallbackSubheadline =
     "Architecting clean code. Designing seamless experiences.";
