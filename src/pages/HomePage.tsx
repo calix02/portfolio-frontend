@@ -109,7 +109,7 @@ export default function HomePage({
             </motion.a>
 
             <motion.a
-              href="src/assets/cv/cv.pdf"
+              href="src/assets/cv/Mark_Alvarado_Web_Developer.pdf"
               download
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.98 }}

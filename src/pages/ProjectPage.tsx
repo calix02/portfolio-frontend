@@ -35,7 +35,7 @@ const projects = [
     category: "IoT / Hardware",
     description:
       "Physical computing interface connecting ESP32 sensors to a high-performance web dashboard for real-time environmental monitoring.",
-    techs: ["React", "Tailwind" , "Javascript", "PHP"],
+    techs: ["React", "Tailwind", "Javascript", "PHP"],
     image: Rkia,
     accent: "#10b981",
   },
@@ -44,7 +44,7 @@ const projects = [
     category: "IoT / Hardware",
     description:
       "Physical computing interface connecting ESP32 sensors to a high-performance web dashboard for real-time environmental monitoring.",
-    techs: ["React", "Tailwind" , "Javascript"],
+    techs: ["React", "Tailwind", "Javascript"],
     image: Cit,
     accent: "#10b981",
   },
@@ -54,7 +54,7 @@ interface ProjectPageProps {
   isDark: boolean;
 }
 
-export function ProjectPage({isDark} : ProjectPageProps) {
+export function ProjectPage({ isDark }: ProjectPageProps) {
   const [index, setIndex] = useState(0);
 
   const next = () => setIndex((prev) => (prev + 1) % projects.length);
@@ -92,7 +92,9 @@ export function ProjectPage({isDark} : ProjectPageProps) {
                 </span>
               </h2>
 
-              <p className={` ${isDark ? "text-neutral-400" : "text-gray-700"}  text-lg max-w-md leading-relaxed border-l border-white/10 pl-6 mb-8`}>
+              <p
+                className={` ${isDark ? "text-neutral-400" : "text-gray-700"}  text-lg max-w-md leading-relaxed border-l border-white/10 pl-6 mb-8`}
+              >
                 {projects[index].description}
               </p>
 
@@ -136,7 +138,7 @@ export function ProjectPage({isDark} : ProjectPageProps) {
               initial={{ opacity: 0, x: 100, rotateY: -20 }}
               animate={{ opacity: 1, x: 0, rotateY: 0 }}
               exit={{ opacity: 0, x: -100, rotateY: 20 }}
-              transition={{ duration: 0.8, ease: "circOut" }}
+              transition={{ duration: 0.4, ease: "circOut" }}
               className="relative w-full max-w-2xl aspect-video"
               style={{ perspective: "1000px" }}
             >
@@ -169,36 +171,32 @@ export function ProjectPage({isDark} : ProjectPageProps) {
             </motion.div>
           </AnimatePresence>
         </div>
-         {/* FOOTER CONTROLS */}
-      <div className="absolute lg:-bottom-10 -bottom-15 left-1/2  -translate-x-1/2 flex items-center gap-12 z-20">
-        <button
-          onClick={prev}
-          className={`p-4 rounded-full border cursor-pointer  ${isDark ? "border-white/10 hover:bg-white hover:text-black" : "border-black/50  hover:bg-black hover:text-white"}  transition-all group`}
-        >
-          <FiChevronLeft size={24} className="group-hover:scale-110" />
-        </button>
+        {/* FOOTER CONTROLS */}
+        <div className="absolute lg:-bottom-10 -bottom-15 left-1/2  -translate-x-1/2 flex items-center gap-12 z-20">
+          <button
+            onClick={prev}
+            className={`p-4 rounded-full border cursor-pointer  ${isDark ? "border-white/10 hover:bg-white hover:text-black" : "border-black/50  hover:bg-black hover:text-white"}  transition-all group`}
+          >
+            <FiChevronLeft size={24} className="group-hover:scale-110" />
+          </button>
 
-        <div className="flex gap-3">
-          {projects.map((_, i) => (
-            <div
-              key={i}
-              className={`h-1.5 rounded-full transition-all duration-500 ${index === i ?   ` ${isDark ? "w-10 bg-white" : "w-10 bg-black"}`  : (isDark ? "w-2 bg-white/20" : "w-2 bg-black/20")}`}
-            />
-          ))}
+          <div className="flex gap-3">
+            {projects.map((_, i) => (
+              <div
+                key={i}
+                className={`h-1.5 rounded-full transition-all duration-500 ${index === i ? ` ${isDark ? "w-10 bg-white" : "w-10 bg-black"}` : isDark ? "w-2 bg-white/20" : "w-2 bg-black/20"}`}
+              />
+            ))}
+          </div>
+
+          <button
+            onClick={next}
+            className={`p-4 rounded-full border cursor-pointer  ${isDark ? "border-white/10 hover:bg-white hover:text-black" : "border-black/50  hover:bg-black hover:text-white"} transition-all group`}
+          >
+            <FiChevronRight size={24} className="group-hover:scale-110" />
+          </button>
         </div>
-
-        <button
-          onClick={next}
-          className={`p-4 rounded-full border cursor-pointer  ${isDark ? "border-white/10 hover:bg-white hover:text-black" : "border-black/50  hover:bg-black hover:text-white"} transition-all group`}
-        >
-          <FiChevronRight size={24} className="group-hover:scale-110" />
-        </button>
       </div>
-      </div>
-
-      
-
-     
     </section>
   );
 }

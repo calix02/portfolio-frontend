@@ -14,20 +14,21 @@ import { TestimonialPage } from "./TestimonialPage.";
 import { GraphicPage } from "./GraphicPage";
 
 export function MainPortfolio() {
+  const [openNav, setOpenNav] = useState<boolean>(false);
+
+  const toggleMenu = () => {
+    setOpenNav(!openNav);
+  };
   //  Get theme from localStorage
   const [isDark, setIsDark] = useState<boolean>(() => {
     const savedTheme = localStorage.getItem("theme");
     return savedTheme ? savedTheme === "dark" : true;
   });
 
-
   // Save theme whenever it changes
   useEffect(() => {
     localStorage.setItem("theme", isDark ? "dark" : "light");
   }, [isDark]);
-
- 
-    
 
   const toggleDark = () => {
     setIsDark(!isDark);
@@ -58,16 +59,20 @@ export function MainPortfolio() {
     },
   };
 
-  if (loading) return <SplashScreen isDark={isDark} onComplete={() => setLoading(false)} />;
-  
+  if (loading)
+    return (
+      <SplashScreen isDark={isDark} onComplete={() => setLoading(false)} />
+    );
 
   return (
     <div
       className={`w-full min-h-screen relative transition duration-300 overflow-x-hidden ${isDark ? "background-dark2" : "background-light"} xt-black selection:bg-black selection:text-white`}
     >
-   
+      {openNav && <div className="inset-0 bg-black/80 fixed z-40"></div>}
 
       <Header
+        openNav={openNav}
+        toggleMenu={toggleMenu}
         isDark={isDark}
         textColor={isDark ? "text-gray-300" : "text-gray-500"}
         toggleDark={toggleDark}
