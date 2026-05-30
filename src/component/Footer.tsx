@@ -5,7 +5,6 @@ import {
   FaArrowUp,
   FaFacebookF,
   FaGithub,
-  FaInstagram,
   FaLinkedinIn,
   FaRegEnvelope,
 } from "react-icons/fa6";
@@ -15,6 +14,21 @@ interface FooterProps {
 }
 
 export default function Footer({ revealVariant }: FooterProps) {
+
+  const social = [
+    {
+      icon: FaFacebookF,
+      link: "https://web.facebook.com/mark.alvarado.3726"
+    },
+    {
+      icon: FaGithub,
+      link: "https://github.com/calix02"
+    },
+    {
+      icon: FaLinkedinIn,
+      link: "https://www.linkedin.com/in/mark-alvarado28/"
+    }
+  ]
   // Use current year for copyright
   const currentYear = new Date().getFullYear();
   const [isVisible, setIsVisible] = useState(false);
@@ -57,15 +71,15 @@ export default function Footer({ revealVariant }: FooterProps) {
             that leave a lasting impression.
           </p>
           <div className="flex gap-4">
-            {[FaGithub, FaLinkedinIn, FaFacebookF, FaInstagram].map(
+            {social.map(
               (Icon, index) => (
                 <motion.a
                   key={index}
-                  href="#"
+                  href={Icon.link}
                   whileHover={{ y: -3 }}
                   className="w-10 h-10 flex items-center justify-center rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-600 hover:text-white hover:border-zinc-700 transition-all"
                 >
-                  <Icon size={16} />
+                  <Icon.icon size={16} />
                 </motion.a>
               ),
             )}

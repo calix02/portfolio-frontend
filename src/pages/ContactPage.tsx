@@ -20,6 +20,20 @@ export default function ContactPage({
   revealVariant,
   textColor,
 }: ContactPageProps) {
+
+  const social = [
+    { icon: FaFacebookF,
+      link: "https://web.facebook.com/mark.alvarado.3726"
+    },
+    {
+      icon: FaGithub,
+      link: "https://github.com/calix02"
+    },
+    {
+      icon: FaLinkedinIn,
+      link: "https://www.linkedin.com/in/mark-alvarado28/"
+    }
+  ]
   return (
     <motion.section
       id="contact"
@@ -95,15 +109,15 @@ export default function ContactPage({
             Digital Footprint
           </p>
           <div className="flex gap-4">
-            {[FaRegEnvelope, FaGithub, FaLinkedinIn, FaFacebookF].map(
+            {social.map(
               (Icon, index) => (
                 <motion.a
                   key={index}
-                  href="#"
+                  href={Icon.link}
                   whileHover={{ y: -5 }}
                   className="w-12 h-12 flex items-center justify-center rounded-xl bg-zinc-900 border border-zinc-800 text-gray-400 hover:text-white hover:border-gray-500 transition-all"
                 >
-                  <Icon size={18} />
+                  <Icon.icon size={18} />
                 </motion.a>
               ),
             )}
