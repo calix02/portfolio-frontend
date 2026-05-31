@@ -1,9 +1,14 @@
-import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useMotionValueEvent,
+  AnimatePresence,
+} from "framer-motion";
 import { useState } from "react";
 import Logo from "@/assets/logo.svg";
 import type { IconType } from "react-icons/lib";
 import { IoMenu } from "react-icons/io5";
-
+import { type Variants } from "framer-motion";
 
 type HeaderProps = {
   toggleDark: () => void;
@@ -14,9 +19,43 @@ type HeaderProps = {
   openNav: boolean;
 };
 
-export function Header({ toggleDark, Icon, textColor, isDark, toggleMenu, openNav }: HeaderProps) {
-  const navItems = ["Home", "About", "Skills", "Projects", "Graphics", "Testimonials", "Contact"];
-  
+export function Header({
+  toggleDark,
+  Icon,
+  textColor,
+  isDark,
+  toggleMenu,
+  openNav,
+}: HeaderProps) {
+  const navItems = [
+    "Home",
+    "About",
+    "Skills",
+    "Projects",
+    "Graphics",
+    "Testimonials",
+    "Contact",
+  ];
+
+  const mobileMenuVariants: Variants = {
+    initial: { opacity: 0, y: -30, scale: 0.98 },
+    animate: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.8,
+        ease: [0.16, 1, 0.3, 1] as const,
+      },
+    },
+    exit: {
+      opacity: 0,
+      y: -20,
+      scale: 0.98,
+      transition: { duration: 0.2, ease: [0.16, 1, 0.3, 1] as const },
+    },
+  };
+
   // Track visibility state
   const [isHidden, setIsHidden] = useState(false);
   const { scrollY } = useScroll();
@@ -24,15 +63,15 @@ export function Header({ toggleDark, Icon, textColor, isDark, toggleMenu, openNa
   // Framer Motion's optimized way to listen to scroll changes
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() ?? 0;
-    
+
     // 1. Show if we are near the top
     if (latest < 50) {
       setIsHidden(false);
-    } 
+    }
     // 2. Hide if scrolling DOWN
     else if (latest > previous && latest > 150) {
       setIsHidden(true);
-    } 
+    }
     // 3. Show if scrolling UP
     else if (latest < previous) {
       setIsHidden(false);
@@ -43,18 +82,18 @@ export function Header({ toggleDark, Icon, textColor, isDark, toggleMenu, openNa
     <motion.header
       // Transition logic: Initial load vs Scroll behavior
       initial={{ y: -100, opacity: 0 }}
-      animate={{ 
+      animate={{
         y: isHidden ? -120 : 0, // Slide up further than top-4 to fully hide
-        opacity: isHidden ? 0 : 1 
+        opacity: isHidden ? 0 : 1,
       }}
       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-       className="w-[95%] max-w-7xl mx-auto h-16 fixed top-4 left-0 right-0 z-50 flex justify-between items-center px-8 md:px-12 
+      className="w-[95%] max-w-7xl mx-auto h-16 fixed top-4 left-0 right-0 z-50 flex justify-between items-center px-8 md:px-12 
       /* Floating Glass Effect */
       bg-white/10 backdrop-blur-xl 
       border border-black/5 shadow-[0_8px_32px_rgba(0,0,0,0.05)]"
     >
       {/* --- Logo Section --- */}
-      <motion.div 
+      <motion.div
         whileHover={{ scale: 1.02 }}
         className="flex justify-center items-center cursor-pointer"
       >
@@ -77,39 +116,54 @@ export function Header({ toggleDark, Icon, textColor, isDark, toggleMenu, openNa
 
       {/* --- Action Button --- */}
       <div className="flex items-center gap-4">
-        <motion.button 
+        <motion.button
           onClick={toggleDark}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className=" cursor-pointer p-2 bg-white text-black text-xl font-bold rounded-full shadow-lg hover:bg-gray-200 transition-all"
         >
-          <Icon className="transition-transform duration-500"/>
+          <Icon className="transition-transform duration-500" />
         </motion.button>
-        
+
         {/* Mobile Menu Toggle */}
         <div className="md:hidden flex flex-col gap-1 cursor-pointer p-2">
-          <IoMenu onClick={toggleMenu} className={`text-2xl ${isDark ? "text-white" : "text-[#050505]"}`} />
+          <IoMenu
+            onClick={toggleMenu}
+            className={`text-2xl ${isDark ? "text-white" : "text-[#050505]"}`}
+          />
         </div>
       </div>
-      
+
       {/* Subtle background glow */}
       <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/5 to-transparent -z-10 rounded-2xl" />
-      <div className={` ${openNav ? "absolute" : "hidden"} left-1/2 -translate-x-1/2 lg:hidden ${isDark ? "background-dark2" : "background-light"} backdrop-blur-xl w-full py-10 top-15  border border-black/5 shadow-[0_8px_32px_rgba(0,0,0,0.05)]`}>
-       <nav className=" flex flex-col gap-3 items-start px-10">
-        {navItems.map((item) => (
-          <motion.a
-            key={item}
-            href={`#${item.toLowerCase()}`}
-            className={`relative ${isDark ? "text-white" : "text-[#050505]"} text-sm font-medium transition-colors hover:text-white group`}
+      <AnimatePresence>
+        {openNav && (
+          <motion.div
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            variants={mobileMenuVariants}
+            className={`absolute left-1/2 -translate-x-1/2 lg:hidden ${isDark ? "background-dark2" : "background-light"} backdrop-blur-xl w-full py-10 top-15 border border-black/5 shadow-[0_8px_32px_rgba(0,0,0,0.05)]`}
           >
-            {item}
-            <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-white transition-all duration-300 group-hover:w-full" />
-          </motion.a>
-        ))}
-      </nav>
-
-      </div>
-     
+            <nav className="flex flex-col gap-3 items-start px-10">
+              {navItems.map((item) => (
+                <motion.a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  onClick={toggleMenu}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                  className={`relative ${isDark ? "text-white" : "text-[#050505]"} text-sm font-medium transition-colors hover:text-white group`}
+                >
+                  {item}
+                  <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-white transition-all duration-300 group-hover:w-full" />
+                </motion.a>
+              ))}
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.header>
   );
 }
