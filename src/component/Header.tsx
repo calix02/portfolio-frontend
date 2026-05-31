@@ -2,13 +2,11 @@ import {
   motion,
   useScroll,
   useMotionValueEvent,
-  AnimatePresence,
 } from "framer-motion";
 import { useState } from "react";
 import Logo from "@/assets/logo.svg";
 import type { IconType } from "react-icons/lib";
 import { IoMenu } from "react-icons/io5";
-import { type Variants } from "framer-motion";
 
 type HeaderProps = {
   toggleDark: () => void;
@@ -25,7 +23,7 @@ export function Header({
   textColor,
   isDark,
   toggleMenu,
-  openNav,
+
 }: HeaderProps) {
   const navItems = [
     "Home",
@@ -37,24 +35,7 @@ export function Header({
     "Contact",
   ];
 
-  const mobileMenuVariants: Variants = {
-    initial: { opacity: 0, y: -30, scale: 0.98 },
-    animate: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.8,
-        ease: [0.16, 1, 0.3, 1] as const,
-      },
-    },
-    exit: {
-      opacity: 0,
-      y: -20,
-      scale: 0.98,
-      transition: { duration: 0.2, ease: [0.16, 1, 0.3, 1] as const },
-    },
-  };
+
 
   // Track visibility state
   const [isHidden, setIsHidden] = useState(false);
@@ -87,7 +68,7 @@ export function Header({
         opacity: isHidden ? 0 : 1,
       }}
       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-      className="w-[95%] max-w-7xl mx-auto h-16 fixed top-4 left-0 right-0 z-50 flex justify-between items-center px-8 md:px-12 
+      className="w-[95%] max-w-7xl  mx-auto h-16 fixed top-4 left-0 right-0 z-50 flex  justify-between items-center px-8 md:px-12 
       /* Floating Glass Effect */
       bg-white/10 backdrop-blur-xl 
       border border-black/5 shadow-[0_8px_32px_rgba(0,0,0,0.05)]"
@@ -136,34 +117,6 @@ export function Header({
 
       {/* Subtle background glow */}
       <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/5 to-transparent -z-10 rounded-2xl" />
-      <AnimatePresence>
-        {openNav && (
-          <motion.div
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            variants={mobileMenuVariants}
-            className={`absolute left-1/2 -translate-x-1/2 lg:hidden ${isDark ? "background-dark2" : "background-light"} backdrop-blur-xl w-full py-10 top-15 border border-black/5 shadow-[0_8px_32px_rgba(0,0,0,0.05)]`}
-          >
-            <nav className="flex flex-col gap-3 items-start px-10">
-              {navItems.map((item) => (
-                <motion.a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  onClick={toggleMenu}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                  className={`relative ${isDark ? "text-white" : "text-[#050505]"} text-sm font-medium transition-colors hover:text-white group`}
-                >
-                  {item}
-                  <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-white transition-all duration-300 group-hover:w-full" />
-                </motion.a>
-              ))}
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </motion.header>
   );
 }

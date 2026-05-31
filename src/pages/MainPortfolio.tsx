@@ -12,6 +12,7 @@ import { ProjectPage } from "./ProjectPage";
 import { SkillPage } from "./SkillPage";
 import { TestimonialPage } from "./TestimonialPage.";
 import { GraphicPage } from "./GraphicPage";
+import { SideNav } from "@/component/SideNav";
 
 export function MainPortfolio() {
   const [openNav, setOpenNav] = useState<boolean>(false);
@@ -66,9 +67,14 @@ export function MainPortfolio() {
 
   return (
     <div
+   
       className={`w-full min-h-screen relative transition duration-300 overflow-x-hidden ${isDark ? "background-dark2" : "background-light"} xt-black selection:bg-black selection:text-white`}
     >
-
+      {openNav && (
+        <div  onClick={toggleMenu} className="inset-0 bg-black/90 z-80 fixed">
+          <SideNav isDark={isDark} />
+        </div>
+      )}
       <Header
         openNav={openNav}
         toggleMenu={toggleMenu}

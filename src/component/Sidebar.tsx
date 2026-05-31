@@ -26,7 +26,7 @@ export default function Sidebar() {
     <motion.aside
       initial={false}
       animate={{ width: isExpanded ? "260px" : "80px" }}
-      className="h-screen bg-[#050505] border-r border-white/5 flex flex-col z-50 transition-all ease-[cubic-bezier(0.175,0.885,0.32,1.275)] sticky top-0"
+      className="h-screen bg-[#050505] border-r lg:hidden border-white/5 flex flex-col z-50 transition-all ease-[cubic-bezier(0.175,0.885,0.32,1.275)] fixed left-0"
     >
       {/* --- Header / Toggle Section --- */}
       <div className="h-20 flex items-center px-6 mb-8 relative">
