@@ -1,7 +1,7 @@
 import Footer from "@/component/Footer";
 import { Header } from "@/component/Header";
 import { SplashScreen } from "@/component/SplashScreen";
-import { type Variants } from "framer-motion";
+import { AnimatePresence, type Variants } from "framer-motion";
 import { useEffect, useState } from "react";
 import { FiSun } from "react-icons/fi";
 import { MdOutlineDarkMode } from "react-icons/md";
@@ -70,11 +70,13 @@ export function MainPortfolio() {
    
       className={`w-full min-h-screen relative transition duration-300 overflow-x-hidden ${isDark ? "background-dark2" : "background-light"} xt-black selection:bg-black selection:text-white`}
     >
+      <AnimatePresence>
       {openNav && (
         <div  onClick={toggleMenu} className="inset-0 bg-black/90 z-80 fixed">
           <SideNav isDark={isDark} />
         </div>
       )}
+      </AnimatePresence>
       <Header
         openNav={openNav}
         toggleMenu={toggleMenu}

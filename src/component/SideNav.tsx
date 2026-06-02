@@ -1,4 +1,5 @@
 import Logo from "@/assets/logo.svg";
+import {  motion } from "framer-motion";
 type SideNavProps = {
   isDark: boolean;
 };
@@ -13,9 +14,28 @@ export function SideNav({ isDark }: SideNavProps) {
     "Contact",
   ];
 
+  const fadeIn = {
+    hidden: {
+        opacity: 0,
+        x:-50,
+    },
+    visible: {
+        opacity: 1,
+        x: 0,
+        transition : {
+            duration: 0.5,
+            ease: [0.12, 1, 0.3, 1] as const,
+        }
+    }
+  }
+
   return (
-    <div
-    
+    <motion.div
+    variants={fadeIn}
+    initial="hidden"
+    whileInView="visible"
+    exit="hidden"
+
       className={`w-50 h-screen ${isDark ? "background-dark2 text-white" : "background-light text-[#050505]"}`}
     >
       <div className="w-full flex flex-col gap-2 py-10 items-center justify-center">
@@ -35,6 +55,6 @@ export function SideNav({ isDark }: SideNavProps) {
         ))}
 
       </nav>
-    </div>
+    </motion.div>
   );
 }
