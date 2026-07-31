@@ -68,7 +68,7 @@ export function Header({
         opacity: isHidden ? 0 : 1,
       }}
       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-      className="w-[95%] max-w-7xl  mx-auto h-16 fixed top-4 left-0 right-0 z-50 flex  justify-between items-center px-8 md:px-12 
+      className="w-[95%] max-w-7xl  rounded-2xl  mx-auto h-16 fixed top-4 left-0 right-0 z-50 flex  justify-between items-center px-8 md:px-12 
       /* Floating Glass Effect */
       bg-white/10 backdrop-blur-xl 
       border border-black/5 shadow-[0_8px_32px_rgba(0,0,0,0.05)]"
@@ -87,10 +87,10 @@ export function Header({
           <motion.a
             key={item}
             href={`#${item.toLowerCase()}`}
-            className={`relative ${textColor} text-sm font-medium transition-colors hover:text-white group`}
+            className={`relative ${textColor} text-sm font-medium transition-colors hover:text-[#b50f0f] group`}
           >
             {item}
-            <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-white transition-all duration-300 group-hover:w-full" />
+            <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-[#b50f0f] transition-all duration-300 group-hover:w-full" />
           </motion.a>
         ))}
       </nav>
