@@ -1,7 +1,8 @@
 // Coverflow Gallery — Originkit
 // Originkit — defaults rewritten to match preview.
 "use client"
-
+import C1 from "@/assets/certificates/c1.png";
+import C2 from "@/assets/certificates/c2.png";
 import {
     useState,
     useEffect,
@@ -112,7 +113,7 @@ export default function Gallery(props: Smooth3DSlideshowProps) {
     }
     const {
         slides = DEFAULT_SLIDES,
-        cardWidth = 557,
+        cardWidth = 757,
         cardHeight = 420,
         radius = 0,
         tilt = 7,
@@ -388,7 +389,7 @@ const COMPONENT_DEFAULTS: Smooth3DSlideshowProps = {
     slides: [
         {
             image: {
-                src: "https://imagedelivery.net/IEUjvl3YUlxY-MrTpOAWDQ/7d4d2641-d6a8-4fef-e85c-b12ed100d500/w=800",
+                src: C1,
             },
             title: "James Walker",
         },
@@ -417,8 +418,8 @@ const COMPONENT_DEFAULTS: Smooth3DSlideshowProps = {
             title: "Lucas Martin",
         },
     ],
-    cardWidth: 400,
-    cardHeight: 400,
+    cardWidth: 650,
+    cardHeight: 450,
     radius: 3,
     tilt: 12,
     sideTilt: 8,

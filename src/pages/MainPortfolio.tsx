@@ -13,6 +13,7 @@ import { SkillPage } from "./SkillPage";
 import { TestimonialPage } from "./TestimonialPage.";
 import { GraphicPage } from "./GraphicPage";
 import { SideNav } from "@/component/SideNav";
+import Achievements from "./Achievements";
 
 export function MainPortfolio() {
   const [openNav, setOpenNav] = useState<boolean>(false);
@@ -95,6 +96,7 @@ export function MainPortfolio() {
         revealVariant={revealVariant}
       />
 
+
       {/* --- About Section --- */}
       <AboutPage
         bgColor={isDark ? "bg-black/50" : "bg-white/50"}
@@ -104,6 +106,7 @@ export function MainPortfolio() {
         revealVariant={revealVariant}
       />
       {/* --- Skill Section --- */}
+      <Achievements/>
 
       <SkillPage
         containerVariants={containerVariants}

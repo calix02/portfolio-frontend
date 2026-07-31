@@ -266,15 +266,11 @@ function __OriginkitBase_DigitalRain(props: DigitalRainProps) {
     return (
         <div
             ref={wrapRef}
-            style={{
-                ...style,
-                position: "relative",
-                overflow: "hidden",
-            }}
+          className="inset-0 "
         >
             <canvas
                 ref={canvasRef}
-                style={{ width: "100%", height: "100%", display: "block" }}
+              className="w-screen h-screen "
             />
         </div>
     )
