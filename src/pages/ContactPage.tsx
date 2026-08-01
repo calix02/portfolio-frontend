@@ -1,4 +1,4 @@
-import { motion, type Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { FaPhoneAlt } from "react-icons/fa";
 import {
   FaFacebookF,
@@ -9,17 +9,8 @@ import {
   FaRegEnvelope,
 } from "react-icons/fa6";
 
-interface ContactPageProps {
-  containerVariants: Variants;
-  revealVariant: Variants;
-  textColor: string;
-}
 
-export default function ContactPage({
-  containerVariants,
-  revealVariant,
-  textColor,
-}: ContactPageProps) {
+export default function ContactPage() {
 
   const social = [
     { icon: FaFacebookF,
@@ -37,15 +28,12 @@ export default function ContactPage({
   return (
     <motion.section
       id="contact"
-      initial="initial"
-      whileInView="whileInView"
-      viewport={{ once: false, amount: 0.2 }}
-      variants={containerVariants}
+      
       className="relative z-10 min-h-screen w-full flex flex-col lg:flex-row items-center justify-between px-6 md:px-12 lg:px-24 py-32 "
     >
       {/* --- Left Side: Information --- */}
       <div className="w-full lg:w-1/2 flex flex-col justify-center space-y-10 text-left">
-        <motion.div variants={revealVariant} className="space-y-4">
+        <motion.div  className="space-y-4">
           <h1 className="text-5xl md:text-7xl font-bold leading-tight text-white">
             Get In{" "}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-gray-300 to-gray-500">
@@ -53,7 +41,7 @@ export default function ContactPage({
             </span>
           </h1>
           <p
-            className={`${textColor} max-w-md leading-relaxed text-lg text-gray-400`}
+            className={` max-w-md leading-relaxed text-lg text-gray-400`}
           >
             Elevating your digital presence through strategic design and robust
             technical solutions. Let&apos;s discuss your next project.
@@ -61,7 +49,7 @@ export default function ContactPage({
         </motion.div>
 
         {/* Contact Details */}
-        <motion.div variants={revealVariant} className="space-y-8">
+        <motion.div className="space-y-8">
           <div className="flex items-center gap-6 group">
             <div className="p-4 rounded-full bg-zinc-900 border border-zinc-800 text-gray-300 group-hover:bg-white group-hover:text-black transition-all duration-300">
               <FaRegEnvelope size={20} />
@@ -70,7 +58,7 @@ export default function ContactPage({
               <p className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-bold">
                 Send an Email
               </p>
-              <p className={` ${textColor} font-semibold text-lg`}>
+              <p className={` font-semibold text-lg`}>
                 alvaradomarkangelo28@gmail.com
               </p>
             </div>
@@ -84,7 +72,7 @@ export default function ContactPage({
               <p className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-bold">
                 Based
               </p>
-              <p className={` ${textColor} font-semibold text-lg`}>
+              <p className={`  font-semibold text-lg`}>
                 Lupi Camarines Sur{" "}
               </p>
             </div>
@@ -98,13 +86,13 @@ export default function ContactPage({
               <p className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-bold">
                 Contact Number
               </p>
-              <p className={` ${textColor} font-semibold text-lg`}>0920-406-8405</p>
+              <p className={` font-semibold text-lg`}>0920-406-8405</p>
             </div>
           </div>
         </motion.div>
 
         {/* Socials */}
-        <motion.div variants={revealVariant} className="space-y-4">
+        <motion.div  className="space-y-4">
           <p className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-bold">
             Digital Footprint
           </p>
@@ -127,7 +115,6 @@ export default function ContactPage({
 
       {/* --- Right Side: Contact Form --- */}
       <motion.div
-        variants={revealVariant}
         className="w-full lg:max-w-3xl mt-16 lg:mt-0"
       >
         <div className="relative p-8 md:p-10 bg-zinc-900/50 backdrop-blur-xl rounded-[2.5rem] border border-zinc-800 shadow-2xl">

@@ -1,5 +1,5 @@
 import GlareHover from "@/component/GlareHover";
-import { motion, type Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { Cloud, Code2, Database, Terminal } from "lucide-react";
 
 const SKILL_CATEGORIES = [
@@ -57,41 +57,23 @@ const SKILL_CATEGORIES = [
     ],
   },
 ];
-interface SkillPageProps {
-  containerVariants: Variants;
-  revealVariant: Variants;
-  textColor: string;
-  highlightColor: string;
-  bgColor: string;
-  borderColor: string;
-}
-export function SkillPage({
-  textColor,
-  highlightColor,
-  bgColor,
-  borderColor,
-  containerVariants,
-  revealVariant,
-}: SkillPageProps) {
+
+export function SkillPage() {
   return (
     <motion.section
       id="skills"
       initial="initial"
-      variants={containerVariants}
-      whileInView="whileInView"
-      viewport={{ once: true, amount: 0.1 }}
+     
       className="relative min-h-screen w-full  text-white flex flex-col items-center justify-center px-6 md:px-12 py-32 overflow-hidden"
     >
       <div className="max-w-7xl w-full relative z-10">
         {/* Header with Glass Detail */}
         <div className="mb-20 space-y-6">
           <motion.div
-            variants={revealVariant}
             className="flex items-center gap-3"
           >
             <div className="h-px w-12 bg-white/20" />
             <motion.span
-              variants={revealVariant}
               className="text-xs font-mono tracking-[0.4em] uppercase text-blue-500"
             >
               Stack & Capabilities
@@ -99,7 +81,6 @@ export function SkillPage({
           </motion.div>
 
           <motion.h2
-            variants={revealVariant}
             className={`text-5xl bg-linear-to-b from-gray-200 to-gray-800 bg-clip-text text-transparent md:text-7xl font-black tracking-tighter leading-tight`}
           >
             Powering the <br />
@@ -113,7 +94,6 @@ export function SkillPage({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {SKILL_CATEGORIES.map((category, idx) => (
             <motion.div
-              variants={revealVariant}
               key={idx}
               whileHover={{ y: -5 }}
               transition={{ type: "spring", stiffness: 300 }}
@@ -132,8 +112,8 @@ export function SkillPage({
                 transitionDuration={800}
                 playOnce={false}
                 className="relative flex justify-center flex-col px-10"
-                background={bgColor}
-                borderColor={borderColor}
+                background= '#050505'
+                borderColor= '#333'
               >
                 {/* Decorative Icon Background */}
                 <div className="absolute -top-12 -right-12 text-white/3scale-[4] rotate-12 group-hover:rotate-0 transition-transform duration-700">
@@ -154,11 +134,11 @@ export function SkillPage({
                   </div>
                 </div>
 
-                <h3 className={`${highlightColor} text-3xl font-bold mb-4`}>
+                <h3 className={`text-3xl font-bold mb-4`}>
                   {category.title}
                 </h3>
                 <p
-                  className={`${textColor} text-sm leading-relaxed mb-8 max-w-xs`}
+                  className={`text-sm leading-relaxed mb-8 max-w-xs`}
                 >
                   {category.description}
                 </p>
@@ -172,7 +152,7 @@ export function SkillPage({
                     >
                       <div className="flex items-center gap-2">
                         <span
-                          className={` ${textColor}  text-sm font-medium group-hover/skill:text-white]`}
+                          className={` text-sm font-medium group-hover/skill:text-white]`}
                         >
                           {skill.name}
                         </span>

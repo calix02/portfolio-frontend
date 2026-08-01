@@ -9,7 +9,7 @@ const getStatus = (progress: number) => {
   return "Initializing...";
 };
 
-export function SplashScreen({ onComplete, isDark }: { onComplete: () => void; isDark: boolean }) {
+export function SplashScreen({ onComplete }: { onComplete: () => void; }) {
   const [loadingProgress, setLoadingProgress] = useState(0);
   const status = getStatus(loadingProgress); //
 
@@ -84,7 +84,7 @@ export function SplashScreen({ onComplete, isDark }: { onComplete: () => void; i
 
         <div className="overflow-hidden">
           <motion.h2
-            className={`${isDark ? "text-white" : "text-[#050505]"} tracking-[1em] uppercase text-[10px] md:text-[12px] font-light`}
+            className={` text-white tracking-[1em] uppercase text-[10px] md:text-[12px] font-light`}
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
