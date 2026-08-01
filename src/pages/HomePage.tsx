@@ -9,8 +9,6 @@ import Background from "@/component/Background";
 
 import Pattern from "@/assets/pattern/pattern1.svg"
 import useInOutAnimation from "@/hooks/animations/useInOutAnimation";
-import useRightAnimation from "@/hooks/animations/animationVariants";
-import useAnimationVariants from "@/hooks/animations/animationVariants";
 import animationVariants from "@/hooks/animations/animationVariants";
 
 export default function HomePage() {
@@ -60,12 +58,12 @@ export default function HomePage() {
       initial="hidden"
       whileInView="visible"
       viewport= {{amount: 0.25}}
-      className="w-screen h-screen absolute flex text-white ">
+      className="w-screen h-screen absolute flex  text-white ">
       {/*Left side */}
-      <div className="flex flex-col justify-center items-center p-10  w-full">
+      <div className="flex flex-col justify-center items-center lg:p-10 text-center  w-full">
        <motion.h3 variants={animate.itemVariants} className=" font-semibold  poppins-regular text-2xl">Hi I'm </motion.h3><br />
-       <motion.h1  variants={animate.itemVariants} className="text-6xl poppins-bold ">Mark Alvarado</motion.h1>
-       <motion.h1  variants={animate.itemVariants} className="text-7xl poppins-extrabold text-primaryColor"><span className="bg-linear-to-r from-primaryColor via-[#353333] to-white bg-clip-text text-transparent">Fullstack Web</span> Developer</motion.h1>
+       <motion.h1  variants={animate.itemVariants} className="lg:text-6xl text-2xl poppins-bold ">Mark Alvarado</motion.h1>
+       <motion.h1  variants={animate.itemVariants} className="lg:text-7xl text-4xl poppins-extrabold text-primaryColor "><span className="bg-linear-to-r from-primaryColor via-[#353333] to-white bg-clip-text text-transparent">Fullstack Web</span> Developer</motion.h1>
        <motion.p  variants={animate.itemVariants} className="poppins-regular text-lg">"Crafting clean, reponsive and user-focused web experiences "</motion.p>
        <div className="flex gap-3 mt-3">
         {socials.map((social, index) =>(
@@ -81,12 +79,12 @@ export default function HomePage() {
        initial="hidden"
        whileInView="visible"
        viewport= {{amount: 0.25}}
-         className="flex justify-center gap-3 mt-10">
-        <motion.button variants={animateL.leftVariants} className="w-50 h-12 rounded-2xl border bg-white/0.5 backdrop-blur-xs flex justify-center items-center gap-2 cursor-pointer">
+         className="flex justify-center w-full lg:flex-row flex-col gap-3 mt-10">
+        <motion.button variants={animateL.leftVariants} className="lg:w-50 w-full h-12 rounded-2xl border bg-white/0.5 backdrop-blur-xs flex justify-center items-center gap-2 cursor-pointer">
           <span>Explore Works</span>
           <FaCode/>
         </motion.button>
-        <motion.button variants={animateL.rightVariants} className="w-50 h-12 rounded-2xl border cursor-pointer bg-white/0.5 backdrop-blur-xs flex items-center justify-center gap-2 ">
+        <motion.button variants={animateL.rightVariants} className="lg:w-50 w-full h-12 rounded-2xl border cursor-pointer bg-white/0.5 backdrop-blur-xs flex items-center justify-center gap-2 ">
           <span>Connect with Me</span>
           <FaEnvelope/>
         </motion.button>
