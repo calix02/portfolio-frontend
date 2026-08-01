@@ -211,8 +211,8 @@ useEffect(() => {
                   }}
                   className={`rounded-xl px-4 py-2.5 text-sm font-semibold transition-all ${
                     activeTab === item
-                      ? "bg-linear-to-r from-emerald-500/20 to-teal-500/20 text-emerald-400 border border-emerald-500/30"
-                      : "text-slate-200 hover:bg-white/5 hover:text-emerald-400"
+                      ? "bg-linear-to-r from-primaryColor/20 to-primaryColor/20 text-primaryColor border border-primaryColor/30"
+                      : "text-slate-200 hover:bg-white/5 hover:text-primaryColor"
                   }`}
                 >
                   {item}
@@ -221,7 +221,7 @@ useEffect(() => {
               <a
                 href="#services"
                 onClick={() => setMobileMenuOpen(false)}
-                className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-emerald-500 to-teal-500 px-4 py-2.5 text-sm font-bold text-slate-950 shadow-md shadow-emerald-500/20"
+                className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-slate-50  px-4 py-2.5 text-sm font-bold  shadow-md shadow-white/20"
               >
                 <span>Explore Services</span>
                 <ArrowRight className="h-4 w-4" />

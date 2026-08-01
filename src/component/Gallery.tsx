@@ -3,6 +3,12 @@
 "use client"
 import C1 from "@/assets/certificates/c1.png";
 import C2 from "@/assets/certificates/c2.png";
+import C3 from "@/assets/certificates/c3.png";
+import C4 from "@/assets/certificates/c4.png";
+import C5 from "@/assets/certificates/c5.png";
+import C6 from "@/assets/certificates/c6.png";
+
+
 import {
     useState,
     useEffect,
@@ -395,30 +401,32 @@ const COMPONENT_DEFAULTS: Smooth3DSlideshowProps = {
         },
         {
             image: {
-                src: "https://imagedelivery.net/IEUjvl3YUlxY-MrTpOAWDQ/933a7615-f4b6-4eae-8ed1-705fa0e24400/w=800",
+                src: C2,
             },
-            title: "Olivia Carter",
         },
         {
             image: {
-                src: "https://imagedelivery.net/IEUjvl3YUlxY-MrTpOAWDQ/859c75ea-953e-489e-be61-91a03a35d700/w=800",
+                src: C3,
             },
-            title: "Amelia Foster",
         },
         {
             image: {
-                src: "https://imagedelivery.net/IEUjvl3YUlxY-MrTpOAWDQ/31afae9c-5ba3-4ec3-2534-ed8198ed1100/w=800",
+                src: C4,
             },
-            title: "Benjamin Harris",
         },
         {
             image: {
-                src: "https://imagedelivery.net/IEUjvl3YUlxY-MrTpOAWDQ/ed7b1c40-3332-43d8-a9eb-4615ef341b00/w=800",
+                src: C5,
             },
-            title: "Lucas Martin",
         },
+        {
+            image: {
+                src: C6,
+            },
+        },
+            
     ],
-    cardWidth: 650,
+    cardWidth: 680,
     cardHeight: 450,
     radius: 3,
     tilt: 12,
