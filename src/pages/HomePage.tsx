@@ -1,32 +1,19 @@
-import { useHomeData } from "@/hooks/useHomeData";
 import { motion, type Variants } from "framer-motion";
 import { FaFacebook } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaCode } from "react-icons/fa";
-import { FaDownload } from "react-icons/fa";
-import { FaRegEnvelope, FaArrowUpLong, FaEnvelope } from "react-icons/fa6";
-import Image from "@/assets/developer.svg";
+import { FaEnvelope } from "react-icons/fa6";
 import Background from "@/component/Background";
-import Gallery from "@/component/Gallery";
+
 import Pattern from "@/assets/pattern/pattern1.svg"
+import useInOutAnimation from "@/hooks/animations/useInOutAnimation";
+import useRightAnimation from "@/hooks/animations/animationVariants";
+import useAnimationVariants from "@/hooks/animations/animationVariants";
+import animationVariants from "@/hooks/animations/animationVariants";
 
-interface HomePageProps {
-  containerVariants: Variants;
-  revealVariant: Variants;
-  textColor: string;
-  highlightColor: string;
-  isDark: boolean;
-}
-
-export default function HomePage({
-  containerVariants,
-  revealVariant,
-  textColor,
-  highlightColor,
-  isDark,
-}: HomePageProps) {
+export default function HomePage() {
 
   const socials = [
     {
@@ -55,7 +42,8 @@ export default function HomePage({
     },
 
   ]
-
+  const animate = useInOutAnimation();
+  const animateL = animationVariants();
 
   return (
     <motion.section
@@ -65,38 +53,44 @@ export default function HomePage({
     >
       <div className="absolute bottom-0 w-full">
         <img src={Pattern} alt="Pattern" className="w-full h-full object-cover -scale-y-100 " />
-
       </div>
      <Background/>
-     <motion.div    initial="initial"
-      whileInView="whileInView"
-      viewport={{ once: true, amount: 0.2 }}
-      variants={containerVariants} className="w-screen h-screen absolute flex text-white ">
+     <motion.div 
+     variants={animate.containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport= {{amount: 0.25}}
+      className="w-screen h-screen absolute flex text-white ">
       {/*Left side */}
       <div className="flex flex-col justify-center items-center p-10  w-full">
-       <motion.h3 variants={revealVariant} className=" font-semibold  poppins-regular text-2xl">Hi I'm </motion.h3><br />
-       <motion.h1  variants={revealVariant} className="text-6xl poppins-bold ">Mark Alvarado</motion.h1>
-       <motion.h1  variants={revealVariant} className="text-7xl poppins-extrabold text-[#560101]"><span className="bg-linear-to-r from-[#560101] via-[#353333] to-white bg-clip-text text-transparent">Fullstack Web</span> Developer</motion.h1>
-       <motion.p  variants={revealVariant} className="poppins-regular text-lg">"Crafting clean, reponsive and user-focused web experiences "</motion.p>
+       <motion.h3 variants={animate.itemVariants} className=" font-semibold  poppins-regular text-2xl">Hi I'm </motion.h3><br />
+       <motion.h1  variants={animate.itemVariants} className="text-6xl poppins-bold ">Mark Alvarado</motion.h1>
+       <motion.h1  variants={animate.itemVariants} className="text-7xl poppins-extrabold text-primaryColor"><span className="bg-linear-to-r from-primaryColor via-[#353333] to-white bg-clip-text text-transparent">Fullstack Web</span> Developer</motion.h1>
+       <motion.p  variants={animate.itemVariants} className="poppins-regular text-lg">"Crafting clean, reponsive and user-focused web experiences "</motion.p>
        <div className="flex gap-3 mt-3">
         {socials.map((social, index) =>(
-          <a key={index} href={social.link} className={`${social.color} p-2 bg-white/0.5 backdrop-blur-xs border  rounded-xl transition duration-300 scale-0.75  text-2xl`}>
+          <motion.a variants={animate.itemVariants} key={index} href={social.link} className={`${social.color} p-2 bg-white/0.5 backdrop-blur-xs border  rounded-xl transition duration-300 scale-0.75  text-2xl`}>
             {social.icon}
-          </a>
+          </motion.a>
 
         ))}
        
        </div>
-       <div className="flex justify-center gap-3 mt-10">
-        <button className="w-50 h-12 rounded-2xl border bg-white/0.5 backdrop-blur-xs flex justify-center items-center gap-2 cursor-pointer">
+       <motion.div 
+       variants={animateL.containerVariants}
+       initial="hidden"
+       whileInView="visible"
+       viewport= {{amount: 0.25}}
+         className="flex justify-center gap-3 mt-10">
+        <motion.button variants={animateL.leftVariants} className="w-50 h-12 rounded-2xl border bg-white/0.5 backdrop-blur-xs flex justify-center items-center gap-2 cursor-pointer">
           <span>Explore Works</span>
           <FaCode/>
-        </button>
-        <button className="w-50 h-12 rounded-2xl border cursor-pointer bg-white/0.5 backdrop-blur-xs flex items-center justify-center gap-2 ">
+        </motion.button>
+        <motion.button variants={animateL.rightVariants} className="w-50 h-12 rounded-2xl border cursor-pointer bg-white/0.5 backdrop-blur-xs flex items-center justify-center gap-2 ">
           <span>Connect with Me</span>
           <FaEnvelope/>
-        </button>
-       </div>
+        </motion.button>
+       </motion.div>
       </div>
      
      </motion.div>
