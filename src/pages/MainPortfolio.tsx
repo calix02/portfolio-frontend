@@ -16,15 +16,7 @@ import Header2 from "@/component/Header2";
 export function MainPortfolio() {
 
   const [loading, setLoading] = useState<boolean>(true);
-  // Container variant to stagger children animations
-  const containerVariants = {
-    initial: {},
-    whileInView: {
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
+
 
   // Content reveal variant
 
@@ -46,24 +38,12 @@ export function MainPortfolio() {
     );
 
   return (
-    <div
-   
-      className={`w-full min-h-screen relative transition duration-300 overflow-x-hidden background-dark2 xt-black selection:bg-black selection:text-white`}
-    >
+    <div className={`w-full min-h-screen relative transition duration-300 overflow-x-hidden background-dark2 xt-black selection:bg-black selection:text-white`}>
       
       <Header2/>
-      
-
-      {/* --- Home Section --- */}
       <HomePage/>
-
-      {/* --- About Section --- */}
       <CertificationPage/>
-      {/* --- Skill Section --- */}
-      <Achievements/>
       <SkillPage/>
-
-      {/* --- Project Section --- */}
       <ProjectPage  />
       <GraphicPage />
       <TestimonialPage />

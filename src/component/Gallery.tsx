@@ -391,7 +391,7 @@ const COMPONENT_DEFAULTS: Smooth3DSlideshowProps = {
             image: {
                 src: C1,
             },
-            title: "James Walker",
+            
         },
         {
             image: {
