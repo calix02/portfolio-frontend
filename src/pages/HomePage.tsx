@@ -10,6 +10,7 @@ import { FaRegEnvelope, FaArrowUpLong, FaEnvelope } from "react-icons/fa6";
 import Image from "@/assets/developer.svg";
 import Background from "@/component/Background";
 import Gallery from "@/component/Gallery";
+import Pattern from "@/assets/pattern/pattern1.svg"
 
 interface HomePageProps {
   containerVariants: Variants;
@@ -62,6 +63,10 @@ export default function HomePage({
    
       className="relative z-10 min-h-screen w-full flex items-center justify-center px-6 md:px-12 lg:px-24 py-24 lg:py-0 overflow-hidden"
     >
+      <div className="absolute bottom-0 w-full">
+        <img src={Pattern} alt="Pattern" className="w-full h-full object-cover -scale-y-100 " />
+
+      </div>
      <Background/>
      <motion.div    initial="initial"
       whileInView="whileInView"
@@ -95,9 +100,6 @@ export default function HomePage({
       </div>
      
      </motion.div>
-      
-   
-  
       
     </motion.section>
   );

@@ -69,7 +69,7 @@ export function MainPortfolio() {
   return (
     <div
    
-      className={`w-full min-h-screen relative transition duration-300 overflow-x-hidden ${isDark ? "background-dark2" : "background-light"} xt-black selection:bg-black selection:text-white`}
+      className={`w-full min-h-screen relative transition duration-300 overflow-x-hidden background-dark2 xt-black selection:bg-black selection:text-white`}
     >
       <AnimatePresence>
       {openNav && (

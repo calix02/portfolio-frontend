@@ -55,7 +55,7 @@ export function AboutPage({
       initial="initial"
       whileInView="whileInView"
       viewport={{ once: false, amount: 0.2 }}
-      className="relative z-10 flex flex-col lg:flex-row  items-center justify-center min-h-screen w-full px-6 md:px-20 py-24 gap-8 overflow-hidden"
+      className="relative z-10 flex flex-col lg:flex-row bg-slate-50  items-center justify-center min-h-screen w-full px-6 md:px-20 py-24 gap-8 overflow-hidden"
     >
       {selectedCert && (
         <div

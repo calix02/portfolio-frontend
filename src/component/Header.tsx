@@ -18,25 +18,20 @@ type HeaderProps = {
 };
 
 export function Header({
-  toggleDark,
   Icon,
   textColor,
-  isDark,
   toggleMenu,
 
 }: HeaderProps) {
   const navItems = [
     "Home",
-    "About",
-    "Achievements",
+    "Certifications",
     "Skills",
     "Projects",
     "Graphics",
     "Testimonials",
     "Contact",
   ];
-
-
 
   // Track visibility state
   const [isHidden, setIsHidden] = useState(false);
@@ -98,20 +93,13 @@ export function Header({
 
       {/* --- Action Button --- */}
       <div className="flex items-center gap-4">
-        <motion.button
-          onClick={toggleDark}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className=" cursor-pointer p-2 bg-white text-black text-xl font-bold rounded-full shadow-lg hover:bg-gray-200 transition-all"
-        >
-          <Icon className="transition-transform duration-500" />
-        </motion.button>
+      
 
         {/* Mobile Menu Toggle */}
         <div className="md:hidden flex flex-col gap-1 cursor-pointer p-2">
           <IoMenu
             onClick={toggleMenu}
-            className={`text-2xl ${isDark ? "text-white" : "text-[#050505]"}`}
+            className={`text-2xl text-white" : "text-[#050505]`}
           />
         </div>
       </div>
