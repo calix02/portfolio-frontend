@@ -62,7 +62,7 @@ export function ProjectPage() {
   return (
     <section
       id="projects"
-      className={`relative h-screen w-full  text-white pb-20 flex items-center justify-center font-sans`}
+      className={`relative h-screen w-full bg-slate-50  text-white pb-20 flex items-center justify-center font-sans`}
     >
       {/* CONTENT GRID */}
       <div className="relative z-10 w-full max-w-350 px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">

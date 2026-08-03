@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Cloud, Code2, Database, Terminal, BarChart2, Sparkles } from "lucide-react";
+import Pattern from "@/assets/pattern/intersecting-waves-split.svg"
 
 const SKILL_CATEGORIES = [
   {
@@ -103,12 +104,13 @@ export function SkillPage() {
   return (
     <section
       id="skills"
-      className="relative min-h-screen w-full  text-zinc-100 py-24 px-4 sm:px-8 lg:px-16 overflow-hidden flex flex-col justify-center items-center"
+      className="relative min-h-screen w-full bg-[#0a0a0a]  text-zinc-100 pt-24 pb-35 px-4 sm:px-8 lg:px-16 overflow-hidden flex flex-col justify-center items-center"
     >
-      {/* Background Radial Spotlights */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-200 h-200 bg-linear-to-b from-cyan-500/10 via-transparent to-transparent blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-125 h-125 bg-indigo-600/5 blur-[150px] pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0">
+        <img src={Pattern} alt="" className="object-cover -scale-y-100" />
 
+      </div>
+     
       <div className="max-w-6xl w-full relative z-10 space-y-16">
         {/* Header Section */}
         <div className="text-left space-y-3 border-b border-zinc-800/60 pb-8">
