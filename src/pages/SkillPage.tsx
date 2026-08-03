@@ -1,31 +1,34 @@
-import GlareHover from "@/component/GlareHover";
 import { motion } from "framer-motion";
-import { Cloud, Code2, Database, Terminal } from "lucide-react";
-import Pattern from "@/assets/pattern/intersecting-wave-layers.svg";
-
+import { Cloud, Code2, Database, Terminal, BarChart2, Sparkles } from "lucide-react";
 
 const SKILL_CATEGORIES = [
   {
-    title: "Frontend",
-    icon: <Code2 className="w-5 h-5" />,
-    color: "from-[#560101] to-slate-950",
-    glow: "rgba(59, 130, 246, 0.15)",
+    title: "Frontend Engineering",
+    icon: <Code2 className="w-5 h-5 text-cyan-400" />,
+    color: "cyan",
+    glowColor: "rgba(34, 211, 238, 0.15)",
+    badgeColor: "border-cyan-500/30 text-cyan-400 bg-cyan-950/30",
     description:
-      "Developing responsive, pixel-perfect interfaces with a focus on UX.",
+      "Developing responsive, pixel-perfect interfaces with a primary focus on high performance and UX.",
     skills: [
       { name: "React", level: "Advanced" },
       { name: "TypeScript", level: "Advanced" },
       { name: "Tailwind CSS", level: "Expert" },
-      { name: "Javascript", level: "Advanced" },
+      { name: "JavaScript", level: "Advanced" },
+      { name: "Zustand", level: "Advanced" },
+      { name: "Framer Motion", level: "Advanced" },
+      { name: "HTML5", level: "Advanced" },
+      { name: "CSS3", level: "Advanced" },
     ],
   },
   {
-    title: "Backend",
-    icon: <Terminal className="w-5 h-5" />,
-    color: "from-[#560101] to-slate-950",
-    glow: "rgba(16, 185, 129, 0.15)",
+    title: "Backend Engineering",
+    icon: <Terminal className="w-5 h-5 text-emerald-400" />,
+    color: "emerald",
+    glowColor: "rgba(52, 211, 153, 0.15)",
+    badgeColor: "border-emerald-500/30 text-emerald-400 bg-emerald-950/30",
     description:
-      "Architecting scalable server-side logic and secure API endpoints.",
+      "Architecting scalable server-side logic, robust database interactions, and secure APIs.",
     skills: [
       { name: "Node.js", level: "Advanced" },
       { name: "Express", level: "Advanced" },
@@ -34,12 +37,13 @@ const SKILL_CATEGORIES = [
     ],
   },
   {
-    title: "Database",
-    icon: <Database className="w-5 h-5" />,
-    color: "from-[#560101] to-slate-950",
-    glow: "rgba(245, 158, 11, 0.15)",
+    title: "Database Systems",
+    icon: <Database className="w-5 h-5 text-amber-400" />,
+    color: "amber",
+    glowColor: "rgba(251, 191, 36, 0.15)",
+    badgeColor: "border-amber-500/30 text-amber-400 bg-amber-950/30",
     description:
-      "Data modeling and optimization for high-performance retrieval.",
+      "Data modeling, indexing strategies, and query optimization for scalable data retrieval.",
     skills: [
       { name: "MongoDB", level: "Advanced" },
       { name: "PostgreSQL", level: "Advanced" },
@@ -47,106 +51,140 @@ const SKILL_CATEGORIES = [
     ],
   },
   {
-    title: "DevOps",
-    icon: <Cloud className="w-5 h-5" />,
-    color: "from-[#560101] to-slate-950",
-    glow: "rgba(168, 85, 247, 0.15)",
+    title: "Cloud & Infrastructure",
+    icon: <Cloud className="w-5 h-5 text-violet-400" />,
+    color: "violet",
+    glowColor: "rgba(167, 139, 250, 0.15)",
+    badgeColor: "border-violet-500/30 text-violet-400 bg-violet-950/30",
     description:
-      "Automating deployments and managing cloud-native infrastructure.",
+      "Automating deployments, edge functions, and managing cloud-native application environments.",
     skills: [
+      { name: "Netlify", level: "Expert" },
+      { name: "Render", level: "Expert" },
       { name: "Vercel", level: "Expert" },
       { name: "Cloudflare", level: "Advanced" },
     ],
   },
+  {
+    title: "Data Analytics",
+    icon: <BarChart2 className="w-5 h-5 text-rose-400" />,
+    color: "rose",
+    glowColor: "rgba(251, 113, 133, 0.15)",
+    badgeColor: "border-rose-500/30 text-rose-400 bg-rose-950/30",
+    description:
+      "Extracting key insights, building quantitative data pipelines, and interactive reporting.",
+    skills: [
+      { name: "Excel", level: "Advanced" },
+      { name: "SQL", level: "Advanced" },
+      { name: "Tableau", level: "Intermediate" },
+      { name: "Python", level: "Intermediate" },
+    ],
+  },
 ];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.12 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 15 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" as const },
+  },
+};
 
 export function SkillPage() {
   return (
-    <motion.section
+    <section
       id="skills"
-      initial="initial"
-     
-      className="relative min-h-screen w-full  text-white flex flex-col items-center justify-center px-6 md:px-12 py-32 overflow-hidden"
+      className="relative min-h-screen w-full  text-zinc-100 py-24 px-4 sm:px-8 lg:px-16 overflow-hidden flex flex-col justify-center items-center"
     >
-     
-      <div className="max-w-7xl w-full relative z-10">
-        {/* Header with Glass Detail */}
-        
-        <h1></h1>
-        {/* The Skill Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {SKILL_CATEGORIES.map((category, idx) => (
+      {/* Background Radial Spotlights */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-200 h-200 bg-linear-to-b from-cyan-500/10 via-transparent to-transparent blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-125 h-125 bg-indigo-600/5 blur-[150px] pointer-events-none" />
+
+      <div className="max-w-6xl w-full relative z-10 space-y-16">
+        {/* Header Section */}
+        <div className="text-left space-y-3 border-b border-zinc-800/60 pb-8">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs text-zinc-400 font-mono tracking-wider">
+            <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+            <span>TECHNICAL SPECIFICATIONS</span>
+          </div>
+          <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white">
+            Skills & Stack
+          </h2>
+          <p className="text-zinc-400 text-sm sm:text-base max-w-xl leading-relaxed">
+            A comprehensive overview of core competencies, infrastructure tooling, and development environments.
+          </p>
+        </div>
+
+        {/* Section List (No Cards, Pure Rows) */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="divide-y divide-zinc-800/60"
+        >
+          {SKILL_CATEGORIES.map((category) => (
             <motion.div
-              key={idx}
-              whileHover={{ y: -5 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="group relative"
+              key={category.title}
+              variants={itemVariants}
+              className="group relative py-8 transition-colors duration-300 hover:bg-zinc-900/20"
             >
-              {/* Card Background Glow */}
+              {/* Subtle ambient hover line highlight */}
               <div
-                className={` absolute inset-0 rounded-[2.5rem] blur-2xl opacity-0  group-hover:opacity-100 transition-opacity duration-500`}
-                style={{ backgroundColor: category.glow }}
+                className="absolute left-0 top-0 bottom-0 w-0.5 bg-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               />
-              <GlareHover
-                glareColor="#ffffff"
-                glareOpacity={0.3}
-                glareAngle={-30}
-                glareSize={300}
-                transitionDuration={800}
-                playOnce={false}
-                className="relative flex justify-center flex-col px-10"
-                background= '#050505'
-                borderColor= '#333'
-              >
-                {/* Decorative Icon Background */}
-                <div className="absolute -top-12 -right-12 text-white/3scale-[4] rotate-12 group-hover:rotate-0 transition-transform duration-700">
-                  {category.icon}
-                </div>
-              
 
-                <div className="flex items-start justify-between mb-8">
-                  <div
-                    className={`p-4 rounded-2xl bg-linear-to-br ${category.color} shadow-lg shadow-black/20`}
-                  >
-                    {category.icon}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start pl-2">
+                {/* Left side: Category Header */}
+                <div className="lg:col-span-4 space-y-2">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-zinc-900 border border-zinc-800/80">
+                      {category.icon}
+                    </div>
+                    <h3 className="text-lg font-bold text-white tracking-wide">
+                      {category.title}
+                    </h3>
                   </div>
-                  
+                  <p className="text-zinc-400 text-sm leading-relaxed max-w-sm">
+                    {category.description}
+                  </p>
                 </div>
 
-                <h3 className={`text-3xl font-bold mb-4`}>
-                  {category.title}
-                </h3>
-                <p
-                  className={`text-sm leading-relaxed mb-8 max-w-xs`}
-                >
-                  {category.description}
-                </p>
-
-                {/* Skill Chips */}
-                <div className={`flex flex-wrap gap-3`}>
-                  {category.skills.map((skill) => (
-                    <div
-                      key={skill.name}
-                      className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:border-white/30 transition-all cursor-default group/skill"
-                    >
-                      <div className="flex items-center gap-2">
-                        <span
-                          className={` text-sm font-medium group-hover/skill:text-white]`}
-                        >
+                {/* Right side: Modern Pill Badges */}
+                <div className="lg:col-span-8">
+                  <div className="flex flex-wrap gap-2.5">
+                    {category.skills.map((skill) => (
+                      <div
+                        key={skill.name}
+                        className="group/pill relative flex items-center gap-3 px-3.5 py-2 rounded-lg bg-zinc-900/60 border border-zinc-800/80 hover:border-zinc-700 hover:bg-zinc-900 transition-all duration-200"
+                      >
+                        <span className="text-xs font-medium text-zinc-300 group-hover/pill:text-white transition-colors">
                           {skill.name}
                         </span>
-                        <div
-                          className={`w-1.5 h-1.5 rounded-full bg-linear-to-r ${category.color} opacity-40 group-hover/skill:opacity-100 group-hover/skill:scale-125 transition-all`}
-                        />
+
+                        <span
+                          className={`text-[10px] font-mono px-2 py-0.5 rounded border ${category.badgeColor}`}
+                        >
+                          {skill.level}
+                        </span>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              </GlareHover>
+              </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
-    </motion.section>
+    </section>
   );
 }
