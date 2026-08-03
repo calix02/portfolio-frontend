@@ -3,6 +3,7 @@ import Gallery from "@/component/Gallery";
 import useInOutAnimation from "@/hooks/animations/useInOutAnimation";
 import { motion } from "framer-motion";
 import { GrAchievement } from "react-icons/gr";
+import Pattern from "@/assets/pattern/intersecting-curves.svg";
 
 export default function CertificationPage() {
   const animate = useInOutAnimation();
@@ -11,6 +12,10 @@ export default function CertificationPage() {
       id="certifications" 
       className="relative w-full min-h-screen bg-slate-50 flex flex-col items-center justify-center py-20 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
+       <div className="absolute inset-x-0 bottom-0">
+        <img src={Pattern} alt="" className="object-cover -scale-y-100" />
+
+      </div>
       {/* Decorative Background Glows */}
       <div className="absolute top-1/4 -left-20 w-72 h-72 bg-primaryColor/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 -right-20 w-72 h-72 bg-slate-200/50 rounded-full blur-3xl pointer-events-none" />
