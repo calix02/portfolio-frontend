@@ -7,6 +7,8 @@ import C3 from "@/assets/certificates/c3.png";
 import C4 from "@/assets/certificates/c4.png";
 import C5 from "@/assets/certificates/c5.png";
 import C6 from "@/assets/certificates/c6.png";
+import C7 from "@/assets/certificates/Badge-Javascript1.png";
+import C8 from "@/assets/certificates/Certificate-Javascript1.png";
 
 
 import {
@@ -422,6 +424,16 @@ const COMPONENT_DEFAULTS: Smooth3DSlideshowProps = {
         {
             image: {
                 src: C6,
+            },
+        },
+         {
+            image: {
+                src: C7,
+            },
+        },
+         {
+            image: {
+                src: C8,
             },
         },
             

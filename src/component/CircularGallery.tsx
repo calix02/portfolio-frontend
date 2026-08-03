@@ -13,6 +13,9 @@ import C3 from "@/assets/certificates/c3.png";
 import C4 from "@/assets/certificates/c4.png";
 import C5 from "@/assets/certificates/c5.png";
 import C6 from "@/assets/certificates/c6.png";
+import C7 from "@/assets/certificates/Badge-Javascript1.png";
+import C8 from "@/assets/certificates/Certificate-Javascript1.png";
+
 
 
 import { useEffect, useRef } from "react";
@@ -553,6 +556,14 @@ class App {
       },
       {
         image: C6,
+        text: "",
+      },
+      {
+        image: C7,
+        text: "",
+      },
+      {
+        image: C8,
         text: "",
       },
       
