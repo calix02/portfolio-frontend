@@ -9,8 +9,7 @@ import HomePage from "./HomePage";
 import { ProjectPage } from "./ProjectPage";
 import { SkillPage } from "./SkillPage";
 import  TestimonialPage  from "./TestimonialPage.";
-import { GraphicPage } from "./GraphicPage";
-import Achievements from "./Achievements";
+
 import Header2 from "@/component/Header2";
 
 export function MainPortfolio() {
@@ -45,7 +44,6 @@ export function MainPortfolio() {
       <CertificationPage/>
       <SkillPage/>
       <ProjectPage  />
-      <GraphicPage />
       <TestimonialPage />
       <ContactPage
       />

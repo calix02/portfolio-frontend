@@ -13,7 +13,7 @@ const projects = [
       "A centralized digital ledger engineered for CBSUA-Sipocot councils to eliminate manual accounting errors. Streamlines monitoring, recording, and processing of student fees with real-time accuracy.",
     techs: ["React", "Tailwind CSS", "JavaScript"],
     image: Efeesync,
-    accent: "from-blue-500 via-cyan-500 to-teal-400",
+    accent: "from-primaryColor to-black",
     badgeColor: "bg-blue-50 border-blue-200 text-blue-700",
     glow: "group-hover:shadow-blue-500/10",
   },
@@ -24,7 +24,7 @@ const projects = [
       "Enterprise-grade General Inventory System featuring dynamic dashboards, predictive stock tracking, and automated reporting for multi-tier warehouse facilities.",
     techs: ["Express", "Node.js", "TypeScript", "React", "Tailwind CSS"],
     image: Gis,
-    accent: "from-violet-500 via-purple-500 to-indigo-500",
+    accent: "from-primaryColor to-black",
     badgeColor: "bg-purple-50 border-purple-200 text-purple-700",
     glow: "group-hover:shadow-purple-500/10",
   },
@@ -35,7 +35,7 @@ const projects = [
       "Physical computing interface connecting ESP32 environmental sensors to a high-performance web dashboard for real-time telemetry, telemetry alerts, and logging.",
     techs: ["React", "Tailwind CSS", "JavaScript", "PHP"],
     image: Rkia,
-    accent: "from-emerald-500 via-teal-500 to-cyan-500",
+    accent: "from-primaryColor to-black",
     badgeColor: "bg-emerald-50 border-emerald-200 text-emerald-700",
     glow: "group-hover:shadow-emerald-500/10",
   },
@@ -46,7 +46,7 @@ const projects = [
       "A centralized digital asset and capstone research repository optimized for fast search indexing, categorizing, and seamless student access.",
     techs: ["React", "Tailwind CSS", "JavaScript"],
     image: Cit,
-    accent: "from-amber-500 via-orange-500 to-red-400",
+    accent: "from-primaryColor to-black",
     badgeColor: "bg-amber-50 border-amber-200 text-amber-700",
     glow: "group-hover:shadow-amber-500/10",
   },
@@ -60,18 +60,7 @@ export function ProjectPage() {
       id="projects"
       className="relative min-h-screen w-full bg-slate-50 text-slate-900 py-24 px-4 sm:px-8 lg:px-16 overflow-hidden flex flex-col justify-center items-center"
     >
-      {/* Background Ambient Radial Effects */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-200 h-100 bg-linear-to-b from-sky-200/40 via-blue-100/20 to-transparent blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-150 h-150 bg-indigo-100/30 blur-[160px] pointer-events-none" />
-
-      {/* Background Subtle Grid Pattern */}
-      <div 
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
-        style={{
-          backgroundImage: `radial-gradient(#0f172a 1px, transparent 1px)`,
-          backgroundSize: '24px 24px'
-        }}
-      />
+     
 
       <div className="max-w-6xl w-full relative z-10 space-y-16">
         {/* Header Section */}

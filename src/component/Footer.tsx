@@ -1,4 +1,4 @@
-import Logo from "@/assets/logo.svg";
+import Logo from "@/assets/logo2.png";
 import { AnimatePresence, motion, type Variants } from "framer-motion";
 import { useEffect, useState } from "react";
 import {
