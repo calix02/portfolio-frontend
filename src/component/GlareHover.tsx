@@ -85,7 +85,7 @@ const GlareHover: React.FC<GlareHoverProps> = ({
 
   return (
     <div
-      className={`relative  overflow-hidden border cursor-pointer lg:p-10 p-5 ${className}`}
+      className={`relative  overflow-hidden border cursor-pointer lg:p-5 p-5 ${className}`}
       style={{
         background,
         borderRadius,

@@ -2,198 +2,161 @@ import Cit from "@/assets/projects/cit.png";
 import Efeesync from "@/assets/projects/efeesync.png";
 import Gis from "@/assets/projects/gis.png";
 import Rkia from "@/assets/projects/rkia.png";
-import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
-import {
-  FiChevronLeft,
-  FiChevronRight,
-  FiExternalLink,
-  FiGithub,
-} from "react-icons/fi";
+import { motion } from "framer-motion";
+import {  FolderGit2, Sparkles, ArrowUpRight } from "lucide-react";
 
 const projects = [
   {
     title: "EfeeSync",
     category: "Financial System",
     description:
-      "A centralized digital ledger engineered to eliminate manual accounting errors. It features real-time synchronization across institutional modules.",
-    techs: ["React", "Tailwind", "Javascript"],
+      "A centralized digital ledger engineered for CBSUA-Sipocot councils to eliminate manual accounting errors. Streamlines monitoring, recording, and processing of student fees with real-time accuracy.",
+    techs: ["React", "Tailwind CSS", "JavaScript"],
     image: Efeesync,
-    accent: "#3b82f6",
+    accent: "from-blue-500 via-cyan-500 to-teal-400",
+    badgeColor: "bg-blue-50 border-blue-200 text-blue-700",
+    glow: "group-hover:shadow-blue-500/10",
   },
   {
     title: "Warehouse GIS",
     category: "Logistics / AI",
     description:
-      "Enterprise-grade General Inventory System with glassmorphic dashboards, predictive stock tracking, and automated warehouse reporting.",
-    techs: ["Express", "Node.js", "TypeScript", "React", "Tailwind"],
+      "Enterprise-grade General Inventory System featuring dynamic dashboards, predictive stock tracking, and automated reporting for multi-tier warehouse facilities.",
+    techs: ["Express", "Node.js", "TypeScript", "React", "Tailwind CSS"],
     image: Gis,
-    accent: "#8b5cf6",
+    accent: "from-violet-500 via-purple-500 to-indigo-500",
+    badgeColor: "bg-purple-50 border-purple-200 text-purple-700",
+    glow: "group-hover:shadow-purple-500/10",
   },
   {
     title: "RKIA Portal",
     category: "IoT / Hardware",
     description:
-      "Physical computing interface connecting ESP32 sensors to a high-performance web dashboard for real-time environmental monitoring.",
-    techs: ["React", "Tailwind", "Javascript", "PHP"],
+      "Physical computing interface connecting ESP32 environmental sensors to a high-performance web dashboard for real-time telemetry, telemetry alerts, and logging.",
+    techs: ["React", "Tailwind CSS", "JavaScript", "PHP"],
     image: Rkia,
-    accent: "#10b981",
+    accent: "from-emerald-500 via-teal-500 to-cyan-500",
+    badgeColor: "bg-emerald-50 border-emerald-200 text-emerald-700",
+    glow: "group-hover:shadow-emerald-500/10",
   },
   {
     title: "CIT Repository",
-    category: "IoT / Hardware",
+    category: "Academic / Archival",
     description:
-      "Physical computing interface connecting ESP32 sensors to a high-performance web dashboard for real-time environmental monitoring.",
-    techs: ["React", "Tailwind", "Javascript"],
+      "A centralized digital asset and capstone research repository optimized for fast search indexing, categorizing, and seamless student access.",
+    techs: ["React", "Tailwind CSS", "JavaScript"],
     image: Cit,
-    accent: "#10b981",
+    accent: "from-amber-500 via-orange-500 to-red-400",
+    badgeColor: "bg-amber-50 border-amber-200 text-amber-700",
+    glow: "group-hover:shadow-amber-500/10",
   },
 ];
 
 
 
 export function ProjectPage() {
-  const [index, setIndex] = useState(0);
-
-  const next = () => setIndex((prev) => (prev + 1) % projects.length);
-  const prev = () =>
-    setIndex((prev) => (prev - 1 + projects.length) % projects.length);
-
   return (
     <section
       id="projects"
-      className={`relative h-screen w-full bg-slate-50  text-white pb-20 flex items-center justify-center font-sans`}
+      className="relative min-h-screen w-full bg-slate-50 text-slate-900 py-24 px-4 sm:px-8 lg:px-16 overflow-hidden flex flex-col justify-center items-center"
     >
-      {/* CONTENT GRID */}
-      <div className="relative z-10 w-full max-w-350 px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        {/* LEFT SIDE: PROJECT INFO */}
-        <div className="lg:col-span-5 space-y-8">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -30 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-px " />
-                <span className="text-xs font-mono tracking-[0.4em] uppercase text-blue-500">
-                  Project {index + 1}
-                </span>
-              </div>
+      {/* Background Ambient Radial Effects */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-200 h-100 bg-linear-to-b from-sky-200/40 via-blue-100/20 to-transparent blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-150 h-150 bg-indigo-100/30 blur-[160px] pointer-events-none" />
 
-              <h2 className="text-6xl lg:text-8xl font-black tracking-tighter bg-linear-to-b from-gray-200 to-black bg-clip-text text-transparent mb-4 leading-none">
-                {projects[index].title.split(" ")[0]}
-                <span className="block text-transparent bg-clip-text bg-linear-to-b from-gray-200 to-black">
-                  {projects[index].title.split(" ")[1] || "Project"}
-                </span>
-              </h2>
+      {/* Background Subtle Grid Pattern */}
+      <div 
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(#0f172a 1px, transparent 1px)`,
+          backgroundSize: '24px 24px'
+        }}
+      />
 
-              <p
-                className={` text-neutral-400   text-lg max-w-md leading-relaxed border-l border-white/10 pl-6 mb-8`}
-              >
-                {projects[index].description}
-              </p>
-
-              <div className="flex flex-wrap gap-2 mb-10">
-                {projects[index].techs.map((tech) => (
-                  <span
-                    key={tech}
-                    className={`px-4 py-1.5  bg-white/5 text-neutral-300 border border-white/10 backdrop-blur-md rounded-full text-[11px] font-bold tracking-widest uppercase `}
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <div className="flex items-center gap-4">
-                <motion.a
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  href="#"
-                  className="px-8 py-4 bg-white text-black rounded-full font-bold flex items-center gap-2 transition-shadow hover:shadow-[0_0_40px_rgba(255,255,255,0.2)]"
-                >
-                  Explore More <FiExternalLink />
-                </motion.a>
-                <motion.a
-                  whileHover={{ backgroundColor: "rgba(255,255,255,0.1)" }}
-                  href="https://github.com/calix02"
-                  className={`p-4 rounded-full border "text-white border-white/10 `}
-                >
-                  <FiGithub size={20} />
-                </motion.a>
-              </div>
-            </motion.div>
-          </AnimatePresence>
+      <div className="max-w-6xl w-full relative z-10 space-y-16">
+        {/* Header Section */}
+        <div className="text-left space-y-4 border-b border-slate-200/80 pb-8">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-slate-200 text-xs text-sky-700 font-mono tracking-wider shadow-xs">
+            <Sparkles className="w-3.5 h-3.5 text-sky-500" />
+            <span>PORTFOLIO & SOLUTIONS</span>
+          </div>
+          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900">
+            Featured Works
+          </h2>
+          <p className="text-slate-600 text-sm sm:text-base max-w-xl leading-relaxed">
+            A showcase of real-world applications, IoT integration dashboards, and financial platforms engineered with clean design and robust technical architectures.
+          </p>
         </div>
 
-        {/* RIGHT SIDE: THE HERO CARD */}
-        <div className="lg:col-span-7 relative flex justify-center lg:justify-end">
-          <AnimatePresence mode="wait">
+        {/* Projects Grid */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10"
+        >
+          {projects.map((project, idx) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, x: 100, rotateY: -20 }}
-              animate={{ opacity: 1, x: 0, rotateY: 0 }}
-              exit={{ opacity: 0, x: -100, rotateY: 20 }}
-              transition={{ duration: 0.4, ease: "circOut" }}
-              className="relative w-full max-w-2xl aspect-video"
-              style={{ perspective: "1000px" }}
+              key={idx}
+              whileHover={{ y: -8 }}
+              transition={{ duration: 0.3 }}
+              className={`group relative flex flex-col justify-between rounded-3xl bg-white border border-slate-200/80 shadow-md hover:shadow-2xl ${project.glow} transition-all duration-300 overflow-hidden`}
             >
-              {/* Glass Frame */}
-              <div className="absolute inset-0 bg-white/5 backdrop-blur-2xl border border-white/20 rounded-4xl p-3 shadow-2xl shadow-black">
-                <div className="w-full h-full rounded-3xl overflow-hidden bg-[#0a0a0a]">
-                  <motion.img
-                    src={projects[index].image}
-                    className="w-full h-full object-cover"
-                    alt=""
+              {/* Top Accent Line */}
+              <div
+                className={`absolute inset-x-0 top-0 h-1.5 bg-linear-to-r ${project.accent} opacity-80 group-hover:opacity-100 transition-opacity duration-300`}
+              />
+
+              <div className="p-6 sm:p-8 space-y-6">
+                {/* Project Image Box with Hover Scale */}
+                <div className="relative aspect-video w-full rounded-2xl overflow-hidden bg-slate-100 border border-slate-200/80 shadow-inner">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500 ease-out"
                   />
+                  <div className="absolute inset-0 bg-slate-900/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+
+                {/* Category & Title */}
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span
+                      className={`text-xs font-semibold px-2.5 py-0.5 rounded-full border ${project.badgeColor}`}
+                    >
+                      {project.category}
+                    </span>
+                    <FolderGit2 className="w-4 h-4 text-slate-400 group-hover:text-slate-700 transition-colors" />
+                  </div>
+
+                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight flex items-center justify-between">
+                    <span>{project.title}</span>
+                    <ArrowUpRight className="w-5 h-5 text-slate-400 opacity-0 group-hover:opacity-100 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200" />
+                  </h3>
+                </div>
+
+                {/* Description */}
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  {project.description}
+                </p>
+              </div>
+
+              {/* Footer Tech Stack Pills */}
+              <div className="p-6 sm:p-8 pt-0 mt-auto">
+                <div className="pt-4 border-t border-slate-100 flex flex-wrap gap-2">
+                  {project.techs.map((tech, techIdx) => (
+                    <span
+                      key={techIdx}
+                      className="text-xs font-medium px-3 py-1 rounded-lg bg-slate-100/80 border border-slate-200/60 text-slate-700 group-hover:bg-slate-100 transition-colors"
+                    >
+                      {tech}
+                    </span>
+                  ))}
                 </div>
               </div>
-
-              {/* Floaties */}
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="absolute -top-6 -right-6 px-6 py-4 bg-white/10 backdrop-blur-3xl border border-white/20 rounded-2xl hidden md:flex items-center gap-3"
-              >
-                <div className="w-3 h-3 rounded-full bg-blue-500 animate-pulse" />
-                <span className="text-xs font-bold tracking-widest uppercase">
-                  Live Status: Active
-                </span>
-              </motion.div>
             </motion.div>
-          </AnimatePresence>
-        </div>
-        {/* FOOTER CONTROLS */}
-        <div className="absolute lg:-bottom-10 -bottom-15 left-1/2  -translate-x-1/2 flex items-center gap-12 z-20">
-          <button
-            onClick={prev}
-            className={`p-4 rounded-full border cursor-pointer  "border-white/10 hover:bg-white hover:text-black  transition-all group`}
-          >
-            <FiChevronLeft size={24} className="group-hover:scale-110" />
-          </button>
-
-          <div className="flex gap-3">
-            {projects.map((_, i) => (
-              <div
-                key={i}
-                className={`h-1.5 rounded-full transition-all duration-500  w-2 bg-white`}
-              />
-            ))}
-          </div>
-
-          <button
-            onClick={next}
-            className={`p-4 rounded-full border cursor-pointer  border-white/10 hover:bg-white hover:text-black transition-all group`}
-          >
-            <FiChevronRight size={24} className="group-hover:scale-110" />
-          </button>
-        </div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
