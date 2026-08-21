@@ -47,7 +47,7 @@ export default function Footer({ revealVariant }: FooterProps) {
   }, []);
 
   return (
-    <footer className="relative z-10 w-full px-6 md:px-12 lg:px-24 pt-12 pb-6 bg-slate-50 border-t border-zinc-800">
+    <footer className="relative z-10 w-full px-6 md:px-12 lg:px-24 pt-12 pb-6 bg-slate-50 ">
       {/* Background Watermark Text from Image (MVP VISUALS) */}
       <div className="absolute inset-0 z-0 overflow-hidden select-none pointer-events-none opacity-[0.03]">
         <span className="absolute left-[-5%] top-[10%] text-[25vw] font-black leading-none text-white whitespace-nowrap">

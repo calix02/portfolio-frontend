@@ -40,7 +40,7 @@ export default function HomePage() {
   return (
     <motion.section
       id="home"
-      className="relative z-10 min-h-screen w-full flex items-center justify-center px-6 md:px-12 lg:px-24 py-24 lg:py-0 overflow-hidden"
+      className="relative z-10 min-h-screen w-full flex items-center justify-center px-6 md:px-12 lg:px-24 overflow-hidden"
     >
       <div className="absolute bottom-0 w-full">
         <img
@@ -104,18 +104,18 @@ export default function HomePage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ amount: 0.25 }}
-            className="flex justify-center w-full lg:flex-row flex-col gap-3 mt-10"
+            className="flex justify-center items-center font-semibold w-full lg:flex-row flex-col gap-3 mt-10"
           >
             <motion.button
               variants={animateL.leftVariants}
-              className="lg:w-50 w-full h-12 rounded-2xl border bg-white/0.5 backdrop-blur-xs flex justify-center items-center gap-2 cursor-pointer"
+              className="lg:w-50 w-[70%] h-12 rounded-2xl border bg-slate-50 text-primaryColor backdrop-blur-xs flex justify-center items-center gap-2 cursor-pointer"
             >
               <span>Explore Works</span>
               <FaCode />
             </motion.button>
             <motion.button
               variants={animateL.rightVariants}
-              className="lg:w-50 w-full h-12 rounded-2xl border cursor-pointer bg-white/0.5 backdrop-blur-xs flex items-center justify-center gap-2 "
+              className="lg:w-50 w-[70%] h-12 rounded-2xl border cursor-pointer bg-white/0.5 backdrop-blur-xs flex items-center justify-center gap-2 "
             >
               <span>Connect with Me</span>
               <FaEnvelope />

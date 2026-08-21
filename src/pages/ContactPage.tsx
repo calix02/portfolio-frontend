@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { FaPhoneAlt } from "react-icons/fa";
+import Pattern from "@/assets/pattern/pattern1.svg";
 import {
   FaFacebookF,
   FaGithub,
@@ -24,8 +25,11 @@ export default function ContactPage() {
   return (
     <motion.section
       id="contact"
-      className="relative z-10 min-h-screen  w-full flex flex-col lg:flex-row items-center justify-between px-6 md:px-12 lg:px-24 py-32 "
+      className="relative  min-h-screen  w-full flex flex-col lg:flex-row items-center justify-between  px-6 md:px-12 lg:px-24 pt-32 pb-50 "
     >
+      <div className="absolute bottom-0 inset-x-0">
+        <img src={Pattern} className="object-cover -scale-y-100" alt="" />
+      </div>
       {/* --- Left Side: Information --- */}
       <div className="w-full lg:w-1/2 flex flex-col justify-center space-y-10 text-left">
         <motion.div className="space-y-4">

@@ -98,14 +98,14 @@ export default function Header() {
       className={`fixed top-4 left-1/2 -translate-x-1/2 z-20 w-[92%] max-w-7xl lg:rounded-full rounded-2xl transition-all duration-500 "border-white/15 bg-white-950/50 backdrop-blur-md py-3.5 px-6
         ${
           mobileMenuOpen
-            ? "border-emerald-500/20 bg-slate-950/50 shadow-2xl shadow-emerald-950/20 backdrop-blur-2xl py-2.5 px-6"
+            ? "border-primaryColor/20 bg-slate-950/50 shadow-2xl shadow-emerald-950/20 backdrop-blur-2xl py-2.5 px-6"
             : " bg-white-950/50 backdrop-blur-md py-3.5 px-6"
         } 
         ${isHidden ? "hidden" : "block"}
 
         ${
           scrolled
-            ? "border-emerald-500/20 bg-white-950/50 shadow-2xl shadow-emerald-950/20 backdrop-blur-2xl py-2.5 px-6"
+            ? "border-primaryColor/20 bg-white-950/50 shadow-2xl shadow-emerald-950/20 backdrop-blur-2xl py-2.5 px-6"
             : " bg-white-950/50 backdrop-blur-md py-3.5 px-6"
         }`}
     >
@@ -184,7 +184,7 @@ export default function Header() {
         {/* Mobile Menu Toggle */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="block lg:hidden rounded-full p-2 text-slate-400 hover:bg-white/10 hover:text-emerald-400 transition-colors"
+          className="block lg:hidden rounded-full p-2 text-slate-400 hover:bg-white/10 hover:text-primaryColor transition-colors"
           aria-label="Toggle Navigation"
         >
           {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
