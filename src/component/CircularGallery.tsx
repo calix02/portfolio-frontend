@@ -16,8 +16,6 @@ import C6 from "@/assets/certificates/c6.png";
 import C7 from "@/assets/certificates/Badge-Javascript1.png";
 import C8 from "@/assets/certificates/Certificate-Javascript1.png";
 
-
-
 import { useEffect, useRef } from "react";
 
 type GL = Renderer["gl"];
@@ -566,7 +564,6 @@ class App {
         image: C8,
         text: "",
       },
-      
     ];
     const galleryItems = items && items.length ? items : defaultItems;
     this.mediasImages = galleryItems.concat(galleryItems);

@@ -106,20 +106,22 @@ export default function HomePage() {
             viewport={{ amount: 0.25 }}
             className="flex justify-center items-center font-semibold w-full lg:flex-row flex-col gap-3 mt-10"
           >
-            <motion.button
+            <motion.a
+              href="#projects"
               variants={animateL.leftVariants}
               className="lg:w-50 w-[70%] h-12 rounded-2xl border bg-slate-50 text-primaryColor backdrop-blur-xs flex justify-center items-center gap-2 cursor-pointer"
             >
               <span>Explore Works</span>
               <FaCode />
-            </motion.button>
-            <motion.button
+            </motion.a>
+            <motion.a
+              href="#contact"
               variants={animateL.rightVariants}
               className="lg:w-50 w-[70%] h-12 rounded-2xl border cursor-pointer bg-white/0.5 backdrop-blur-xs flex items-center justify-center gap-2 "
             >
               <span>Connect with Me</span>
               <FaEnvelope />
-            </motion.button>
+            </motion.a>
           </motion.div>
         </div>
       </motion.div>
