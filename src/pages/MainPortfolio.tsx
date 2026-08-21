@@ -1,21 +1,18 @@
 import Footer from "@/component/Footer";
 import { SplashScreen } from "@/component/SplashScreen";
-import {  type Variants } from "framer-motion";
-import {  useState } from "react";
+import { type Variants } from "framer-motion";
+import { useState } from "react";
 
-import  CertificationPage  from "./CertificationPage";
+import CertificationPage from "./CertificationPage";
 import ContactPage from "./ContactPage";
 import HomePage from "./HomePage";
 import { ProjectPage } from "./ProjectPage";
 import { SkillPage } from "./SkillPage";
-import  TestimonialPage  from "./TestimonialPage.";
 
 import Header2 from "@/component/Header2";
 
 export function MainPortfolio() {
-
   const [loading, setLoading] = useState<boolean>(true);
-
 
   // Content reveal variant
 
@@ -31,22 +28,18 @@ export function MainPortfolio() {
     },
   };
 
-  if (loading)
-    return (
-      <SplashScreen  onComplete={() => setLoading(false)} />
-    );
+  if (loading) return <SplashScreen onComplete={() => setLoading(false)} />;
 
   return (
-    <div className={`w-full min-h-screen relative transition duration-300 overflow-x-hidden background-dark2 xt-black selection:bg-black selection:text-white`}>
-      
-      <Header2/>
-      <HomePage/>
-      <CertificationPage/>
-      <SkillPage/>
-      <ProjectPage  />
-      <TestimonialPage />
-      <ContactPage
-      />
+    <div
+      className={`w-full min-h-screen relative transition duration-300 overflow-x-hidden background-dark2 xt-black selection:bg-black selection:text-white`}
+    >
+      <Header2 />
+      <HomePage />
+      <CertificationPage />
+      <SkillPage />
+      <ProjectPage />
+      <ContactPage />
       <Footer revealVariant={revealVariant} />
     </div>
   );

@@ -14,21 +14,20 @@ interface FooterProps {
 }
 
 export default function Footer({ revealVariant }: FooterProps) {
-
   const social = [
     {
       icon: FaFacebookF,
-      link: "https://web.facebook.com/mark.alvarado.3726"
+      link: "https://web.facebook.com/mark.alvarado.3726",
     },
     {
       icon: FaGithub,
-      link: "https://github.com/calix02"
+      link: "https://github.com/calix02",
     },
     {
       icon: FaLinkedinIn,
-      link: "https://www.linkedin.com/in/mark-alvarado28/"
-    }
-  ]
+      link: "https://www.linkedin.com/in/mark-alvarado28/",
+    },
+  ];
   // Use current year for copyright
   const currentYear = new Date().getFullYear();
   const [isVisible, setIsVisible] = useState(false);
@@ -48,7 +47,7 @@ export default function Footer({ revealVariant }: FooterProps) {
   }, []);
 
   return (
-    <footer className="relative z-10 w-full px-6 md:px-12 lg:px-24 pt-12 pb-6 bg-[#0a0a0a] border-t border-zinc-800">
+    <footer className="relative z-10 w-full px-6 md:px-12 lg:px-24 pt-12 pb-6 bg-slate-50 border-t border-zinc-800">
       {/* Background Watermark Text from Image (MVP VISUALS) */}
       <div className="absolute inset-0 z-0 overflow-hidden select-none pointer-events-none opacity-[0.03]">
         <span className="absolute left-[-5%] top-[10%] text-[25vw] font-black leading-none text-white whitespace-nowrap">
@@ -62,7 +61,7 @@ export default function Footer({ revealVariant }: FooterProps) {
         <motion.div variants={revealVariant} className="space-y-6">
           <div className="flex items-center gap-2">
             <img src={Logo} className="h-20" alt="" />
-            <h2 className="text-2xl font-bold text-white tracking-tight">
+            <h2 className="text-2xl font-bold text-slate-950 tracking-tight">
               MARK ALVARADO
             </h2>
           </div>
@@ -71,24 +70,22 @@ export default function Footer({ revealVariant }: FooterProps) {
             that leave a lasting impression.
           </p>
           <div className="flex gap-4">
-            {social.map(
-              (Icon, index) => (
-                <motion.a
-                  key={index}
-                  href={Icon.link}
-                  whileHover={{ y: -3 }}
-                  className="w-10 h-10 flex items-center justify-center rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-600 hover:text-white hover:border-zinc-700 transition-all"
-                >
-                  <Icon.icon size={16} />
-                </motion.a>
-              ),
-            )}
+            {social.map((Icon, index) => (
+              <motion.a
+                key={index}
+                href={Icon.link}
+                whileHover={{ y: -3 }}
+                className="w-10 h-10 flex items-center justify-center rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-600 hover:text-white hover:border-zinc-700 transition-all"
+              >
+                <Icon.icon size={16} />
+              </motion.a>
+            ))}
           </div>
         </motion.div>
 
         {/* Column 2: Navigation */}
         <motion.div variants={revealVariant} className="space-y-6">
-          <h4 className="text-sm font-bold tracking-[0.2em] text-white uppercase relative inline-block">
+          <h4 className="text-sm font-bold tracking-[0.2em] text-slate-950 uppercase relative inline-block">
             NAVIGATION
             <span className="absolute -bottom-1 left-0 w-8 h-0.5 bg-gray-500 rounded-full"></span>
           </h4>
@@ -104,7 +101,7 @@ export default function Footer({ revealVariant }: FooterProps) {
               <li key={link}>
                 <a
                   href={`#${link.toLowerCase()}`}
-                  className="hover:text-white transition-colors"
+                  className="hover:text-red-950 transition-colors"
                 >
                   {link}
                 </a>
@@ -115,7 +112,7 @@ export default function Footer({ revealVariant }: FooterProps) {
 
         {/* Column 3: Our Expertise */}
         <motion.div variants={revealVariant} className="space-y-6">
-          <h4 className="text-sm font-bold tracking-[0.2em] text-white uppercase relative inline-block">
+          <h4 className="text-sm font-bold tracking-[0.2em] text-slate-950 uppercase relative inline-block">
             OUR EXPERTISE
             <span className="absolute -bottom-1 left-0 w-8 h-0.5 bg-gray-500 rounded-full"></span>
           </h4>
@@ -137,7 +134,7 @@ export default function Footer({ revealVariant }: FooterProps) {
 
         {/* Column 4: Let's Connect */}
         <motion.div variants={revealVariant} className="space-y-6">
-          <h4 className="text-sm font-bold tracking-[0.2em] text-white uppercase relative inline-block">
+          <h4 className="text-sm font-bold tracking-[0.2em] text-slate-950 uppercase relative inline-block">
             LET'S CONNECT
             <span className="absolute -bottom-1 left-0 w-8 h-0.5 bg-gray-500 rounded-full"></span>
           </h4>

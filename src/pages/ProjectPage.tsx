@@ -2,10 +2,29 @@ import Cit from "@/assets/projects/cit.png";
 import Efeesync from "@/assets/projects/efeesync.png";
 import Gis from "@/assets/projects/gis.png";
 import Rkia from "@/assets/projects/rkia.png";
+import Lupi from "@/assets/projects/lupi.png";
 import { motion } from "framer-motion";
-import {  FolderGit2, Sparkles, ArrowUpRight } from "lucide-react";
+import { FolderGit2, Sparkles, ArrowUpRight } from "lucide-react";
 
 const projects = [
+  {
+    title: "Progresibong Lupi",
+    category: "Financial System",
+    description:
+      "A modern municipal web platform that provides citizens with accessible information, government services, announcements, events, projects, and community resources.",
+    techs: [
+      "React",
+      "Tailwind CSS",
+      "TypeScript",
+      "Node JS",
+      "Express",
+      "Framer Motion",
+    ],
+    image: Lupi,
+    accent: "from-primaryColor to-black",
+    badgeColor: "bg-blue-50 border-blue-200 text-blue-700",
+    glow: "group-hover:shadow-blue-500/10",
+  },
   {
     title: "EfeeSync",
     category: "Financial System",
@@ -52,16 +71,12 @@ const projects = [
   },
 ];
 
-
-
 export function ProjectPage() {
   return (
     <section
       id="projects"
       className="relative min-h-screen w-full bg-slate-50 text-slate-900 py-24 px-4 sm:px-8 lg:px-16 overflow-hidden flex flex-col justify-center items-center"
     >
-     
-
       <div className="max-w-6xl w-full relative z-10 space-y-16">
         {/* Header Section */}
         <div className="text-left space-y-4 border-b border-slate-200/80 pb-8">
@@ -73,7 +88,9 @@ export function ProjectPage() {
             Featured Works
           </h2>
           <p className="text-slate-600 text-sm sm:text-base max-w-xl leading-relaxed">
-            A showcase of real-world applications, IoT integration dashboards, and financial platforms engineered with clean design and robust technical architectures.
+            A showcase of real-world applications, IoT integration dashboards,
+            and financial platforms engineered with clean design and robust
+            technical architectures.
           </p>
         </div>
 

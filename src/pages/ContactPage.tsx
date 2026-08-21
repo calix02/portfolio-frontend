@@ -9,40 +9,33 @@ import {
   FaRegEnvelope,
 } from "react-icons/fa6";
 
-
 export default function ContactPage() {
-
   const social = [
-    { icon: FaFacebookF,
-      link: "https://web.facebook.com/mark.alvarado.3726"
-    },
+    { icon: FaFacebookF, link: "https://web.facebook.com/mark.alvarado.3726" },
     {
       icon: FaGithub,
-      link: "https://github.com/calix02"
+      link: "https://github.com/calix02",
     },
     {
       icon: FaLinkedinIn,
-      link: "https://www.linkedin.com/in/mark-alvarado28/"
-    }
-  ]
+      link: "https://www.linkedin.com/in/mark-alvarado28/",
+    },
+  ];
   return (
     <motion.section
       id="contact"
-      
-      className="relative z-10 min-h-screen w-full flex flex-col lg:flex-row items-center justify-between px-6 md:px-12 lg:px-24 py-32 "
+      className="relative z-10 min-h-screen  w-full flex flex-col lg:flex-row items-center justify-between px-6 md:px-12 lg:px-24 py-32 "
     >
       {/* --- Left Side: Information --- */}
       <div className="w-full lg:w-1/2 flex flex-col justify-center space-y-10 text-left">
-        <motion.div  className="space-y-4">
+        <motion.div className="space-y-4">
           <h1 className="text-5xl md:text-7xl font-bold leading-tight text-white">
             Get In{" "}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-gray-300 to-gray-500">
               Touch
             </span>
           </h1>
-          <p
-            className={` max-w-md leading-relaxed text-lg text-gray-400`}
-          >
+          <p className={` max-w-md leading-relaxed text-lg text-gray-400`}>
             Elevating your digital presence through strategic design and robust
             technical solutions. Let&apos;s discuss your next project.
           </p>
@@ -58,7 +51,7 @@ export default function ContactPage() {
               <p className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-bold">
                 Send an Email
               </p>
-              <p className={` font-semibold text-lg`}>
+              <p className={` font-semibold text-lg text-slate-100`}>
                 alvaradomarkangelo28@gmail.com
               </p>
             </div>
@@ -72,7 +65,7 @@ export default function ContactPage() {
               <p className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-bold">
                 Based
               </p>
-              <p className={`  font-semibold text-lg`}>
+              <p className={`  font-semibold text-lg text-slate-100`}>
                 Lupi Camarines Sur{" "}
               </p>
             </div>
@@ -86,37 +79,35 @@ export default function ContactPage() {
               <p className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-bold">
                 Contact Number
               </p>
-              <p className={` font-semibold text-lg`}>0920-406-8405</p>
+              <p className={` font-semibold text-lg text-slate-100`}>
+                0920-406-8405
+              </p>
             </div>
           </div>
         </motion.div>
 
         {/* Socials */}
-        <motion.div  className="space-y-4">
+        <motion.div className="space-y-4">
           <p className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-bold">
             Digital Footprint
           </p>
           <div className="flex gap-4">
-            {social.map(
-              (Icon, index) => (
-                <motion.a
-                  key={index}
-                  href={Icon.link}
-                  whileHover={{ y: -5 }}
-                  className="w-12 h-12 flex items-center justify-center rounded-xl bg-zinc-900 border border-zinc-800 text-gray-400 hover:text-white hover:border-gray-500 transition-all"
-                >
-                  <Icon.icon size={18} />
-                </motion.a>
-              ),
-            )}
+            {social.map((Icon, index) => (
+              <motion.a
+                key={index}
+                href={Icon.link}
+                whileHover={{ y: -5 }}
+                className="w-12 h-12 flex items-center justify-center rounded-xl bg-zinc-900 border border-zinc-800 text-gray-400 hover:text-white hover:border-gray-500 transition-all"
+              >
+                <Icon.icon size={18} />
+              </motion.a>
+            ))}
           </div>
         </motion.div>
       </div>
 
       {/* --- Right Side: Contact Form --- */}
-      <motion.div
-        className="w-full lg:max-w-3xl mt-16 lg:mt-0"
-      >
+      <motion.div className="w-full lg:max-w-3xl mt-16 lg:mt-0">
         <div className="relative p-8 md:p-10 bg-zinc-900/50 backdrop-blur-xl rounded-[2.5rem] border border-zinc-800 shadow-2xl">
           <form className="space-y-6">
             <div className="space-y-2">

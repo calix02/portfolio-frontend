@@ -1,17 +1,15 @@
-import { useEffect,  useState } from "react";
-import { motion, AnimatePresence, useMotionValueEvent, useScroll } from "framer-motion";
+import { useEffect, useState } from "react";
+import {
+  motion,
+  AnimatePresence,
+  useMotionValueEvent,
+  useScroll,
+} from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
 import Logo from "@/assets/logo2.png";
 
 export default function Header() {
-  const navItems = [
-    "Home",
-    "Certifications",
-    "Skills",
-    "Projects",
-    "Testimonials",
-    "Contact",
-  ];
+  const navItems = ["Home", "Certifications", "Skills", "Projects", "Contact"];
 
   const [activeTab, setActiveTab] = useState("Home");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -42,38 +40,38 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-// Listen for section intersection to update active tab
-useEffect(() => {
-  const sections = document.querySelectorAll("section[id]");
+  // Listen for section intersection to update active tab
+  useEffect(() => {
+    const sections = document.querySelectorAll("section[id]");
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const sectionId = entry.target.id;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const sectionId = entry.target.id;
 
-          const active = navItems.find(
-            (item) => item.toLowerCase() === sectionId
-          );
+            const active = navItems.find(
+              (item) => item.toLowerCase() === sectionId,
+            );
 
-          if (active) {
-            setActiveTab(active);
+            if (active) {
+              setActiveTab(active);
+            }
           }
-        }
-      });
-    },
-    {
-      threshold: 0.5,
-    }
-  );
+        });
+      },
+      {
+        threshold: 0.5,
+      },
+    );
 
-  sections.forEach((section) => observer.observe(section));
+    sections.forEach((section) => observer.observe(section));
 
-  return () => {
-    sections.forEach((section) => observer.unobserve(section));
-  };
-}, []);
- // Track visibility state
+    return () => {
+      sections.forEach((section) => observer.unobserve(section));
+    };
+  }, []);
+  // Track visibility state
   const [isHidden, setIsHidden] = useState(false);
   const { scrollY } = useScroll();
 
@@ -95,7 +93,6 @@ useEffect(() => {
     }
   });
 
-
   return (
     <header
       className={`fixed top-4 left-1/2 -translate-x-1/2 z-20 w-[92%] max-w-7xl lg:rounded-full rounded-2xl transition-all duration-500 "border-white/15 bg-white-950/50 backdrop-blur-md py-3.5 px-6
@@ -107,10 +104,10 @@ useEffect(() => {
         ${isHidden ? "hidden" : "block"}
 
         ${
-        scrolled
-          ? "border-emerald-500/20 bg-white-950/50 shadow-2xl shadow-emerald-950/20 backdrop-blur-2xl py-2.5 px-6"
-          : " bg-white-950/50 backdrop-blur-md py-3.5 px-6"
-      }`}
+          scrolled
+            ? "border-emerald-500/20 bg-white-950/50 shadow-2xl shadow-emerald-950/20 backdrop-blur-2xl py-2.5 px-6"
+            : " bg-white-950/50 backdrop-blur-md py-3.5 px-6"
+        }`}
     >
       <div className="flex items-center justify-between">
         {/* Logo Section */}
@@ -158,7 +155,11 @@ useEffect(() => {
                     <motion.div
                       layoutId="activePill"
                       className="absolute inset-0 z-0 rounded-full bg-linear-to-r from-primaryColor to-black shadow-sm"
-                      transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 32,
+                      }}
                     />
                   )}
                 </li>
