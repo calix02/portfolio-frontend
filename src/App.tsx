@@ -1,12 +1,17 @@
 import { Toaster } from "react-hot-toast";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import { MainPortfolio } from "./pages/MainPortfolio";
+import NotFound from "./pages/NotFound";
 
 // ✅ Moved outside the component — created only once
 const router = createBrowserRouter([
   {
     path: "/",
     Component: MainPortfolio,
+  },
+  {
+    path: "*",
+    Component: NotFound,
   },
 ]);
 
