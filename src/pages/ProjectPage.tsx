@@ -3,6 +3,7 @@ import Efeesync from "@/assets/projects/efeesync.png";
 import Gis from "@/assets/projects/gis.png";
 import Rkia from "@/assets/projects/rkia.png";
 import Lupi from "@/assets/projects/lupi.png";
+import DevForge from "@/assets/projects/devforge.png";
 import { motion } from "framer-motion";
 import { FolderGit2, Sparkles, ArrowUpRight } from "lucide-react";
 
@@ -21,6 +22,24 @@ const projects = [
       "Framer Motion",
     ],
     image: Lupi,
+    accent: "from-primaryColor to-black",
+    badgeColor: "bg-blue-50 border-blue-200 text-blue-700",
+    glow: "group-hover:shadow-blue-500/10",
+  },
+  {
+    title: "DevForge",
+    category: "Developer TooLs System",
+    description:
+      "A modern municipal web platform that provides citizens with accessible information, government services, announcements, events, projects, and community resources.",
+    techs: [
+      "React",
+      "Tailwind CSS",
+      "TypeScript",
+      "Node JS",
+      "Express",
+      "Framer Motion",
+    ],
+    image: DevForge,
     accent: "from-primaryColor to-black",
     badgeColor: "bg-blue-50 border-blue-200 text-blue-700",
     glow: "group-hover:shadow-blue-500/10",
